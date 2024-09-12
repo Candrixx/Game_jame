@@ -33,9 +33,9 @@ private:
 void draw_map(CAMERA &c, AVATAR &a, MAP &m){
         
    std::cout << std::endl << std::endl << std::endl << std::endl;
-    for(int i = c.get_y(); i<12; i++){
+    for(int i = c.get_y(); i<12 + c.get_y(); i++){
         std::cout << "\t\t\t\t";
-        for(int j = c.get_x(); j<52; j++){
+        for(int j = c.get_x(); j<52 + c.get_x(); j++){
             if(i >= 0 && j >= 0 && i < m.get_heigth() && j < m.get_width()){
                 if(j == a.get_x() && i == a.get_y()) std::cout << a.get_lowbody();
                 else if(j == a.get_x() && i == a.get_y()-1) std::cout << a.get_head();
@@ -60,7 +60,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
                 c.set_x(a.get_x()-25);
                 a.set_dir(1);
             }
-            if((key == DOWN || key == DOWN2) && a.get_y() < m.get_heigth()){
+            if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
                 a.set_y(a.get_y()+1);
                 c.set_y(a.get_y()-5);
                 c.set_x(a.get_x()-25);
@@ -92,7 +92,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
         c.set_x(a.get_x()-25);
         a.set_dir(1);
     }
-    if((key == DOWN || key == DOWN2) && a.get_y() < m.get_heigth()){
+    if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
         a.set_y(a.get_y()+1);
         c.set_y(a.get_y()-5);
         c.set_x(a.get_x()-25);
