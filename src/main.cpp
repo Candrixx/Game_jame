@@ -5,10 +5,16 @@
 #include "../include/map.h"
 #include "../include/avatar.h"
 #define CLEAR_SCREEN system("cls")
-#define ARRIBA 'w'
-#define ABAJO 's'
-#define IZQUIERDA 'a'
-#define DERECHA 'd'
+#define UP 'w'
+#define DOWN 's'
+#define LEFT 'a'
+#define RIGHT 'd'
+#define UP2 'W'
+#define DOWN2 'S'
+#define LEFT2 'A'
+#define RIGHT2 'D'
+#define ACTION 'e'
+#define ACTION2 'E'
 
 class Timer {
 public:
@@ -48,20 +54,24 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
     Timer timer;
     while(true){
         if(!in_animation){
-            if(key == ARRIBA && a.get_y()-4 >= 0){
-                    a.set_y(a.get_y()-1);
-                    a.set_dir(1);
+            if((key == UP || key == UP2) && a.get_y()-4 >= 0){
+                a.set_y(a.get_y()-1);
+                c.set_y(c.get_y()-1);
+                a.set_dir(1);
             }
-            if(key == ABAJO && a.get_y() < m.get_heigth()){
+            if((key == DOWN || key == DOWN2) && a.get_y() < m.get_heigth()){
                 a.set_y(a.get_y()+1);
+                c.set_y(c.get_y()+1);
                 a.set_dir(3);
             }
-            if(key == IZQUIERDA && a.get_x() >= 0){
+            if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
                 a.set_x(a.get_x()-1);
+                c.set_x(c.get_x()-1);
                 a.set_dir(4);
             }
-            if(key == DERECHA && a.get_x() < m.get_width()){
+            if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){
                 a.set_x(a.get_x()+1);
+                c.set_y(c.get_x()+1);
                 a.set_dir(2);
             }
             CLEAR_SCREEN;
@@ -72,20 +82,24 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
         if(timer.get_elapsed_time() >= 0.2) break;
     }
 
-    if(key == ARRIBA && a.get_y()-4 >= 0){
+    if((key == UP || key == UP2) && a.get_y()-4 >= 0){
         a.set_y(a.get_y()-1);
+        c.set_y(c.get_y()-1);
         a.set_dir(1);
     }
-    if(key == ABAJO && a.get_y() < m.get_heigth()){
+    if((key == DOWN || key == DOWN2) && a.get_y() < m.get_heigth()){
         a.set_y(a.get_y()+1);
+        c.set_y(c.get_y()+1);
         a.set_dir(3);
     }
-    if(key == IZQUIERDA && a.get_x() >= 0){
+    if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
         a.set_x(a.get_x()-1);
+        c.set_x(c.get_x()-1);
         a.set_dir(4);
     }
-    if(key == DERECHA && a.get_x() < m.get_width()){
+    if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){                
         a.set_x(a.get_x()+1);
+        c.set_y(c.get_x()+1);
         a.set_dir(2);
     }
     CLEAR_SCREEN;

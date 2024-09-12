@@ -8,6 +8,8 @@ public:
     CAMERA(int x, int y);
     int get_x();
     int get_y();
+    void set_x(int _x);
+    void set_y(int _y);
 };
 
 class AVATAR{

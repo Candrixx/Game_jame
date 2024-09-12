@@ -58,10 +58,10 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(140, 30){
 }
 
 void MAP_PRUEBA::fill_map(){
-
-    for(int i = 0; i<get_heigth(); i++){
-        for(int j=0; j<get_width(); j++){
-            set_map(j, i, 's');
+    for(int i = 0; i < get_heigth(); i++){
+        for(int j = 0; j < get_width(); j++){
+            set_map(j, i, '.');
         }
     }
+    
 }

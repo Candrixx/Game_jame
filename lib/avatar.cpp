@@ -14,6 +14,14 @@ CAMERA::CAMERA(int _x, int _y){
 int CAMERA::get_x(){ return x; }
 int CAMERA::get_y(){ return y; }
 
+void CAMERA::set_x(int _x){
+    this->x = _x;
+}
+
+void CAMERA::set_y(int _y){
+    this->y = _y;
+}
+
 AVATAR::AVATAR(int _x, int _y){
     x = _x;
     y = _y;
