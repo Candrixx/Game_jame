@@ -16,9 +16,10 @@ private:
 };
 
 int main() {
+    std::cin.get();
     Timer timer;
     // Your code to be timed goes here
-    //std::this_thread::sleep_for(std::chrono::seconds(2)); // Simulate some work
+    std::cin.get();
     float elapsed_time = timer.get_elapsed_time();
     std::cout << "Elapsed time: " << elapsed_time << " seconds" << std::endl;
     return 0;

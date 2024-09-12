@@ -13,17 +13,20 @@ public:
 class AVATAR{
     int x, y;
     int dir;
+    char head;
+    char low_body;
 public:
     AVATAR(int _x, int _y);
     int get_x();
     int get_y();
+    char get_head();
+    char get_lowbody();
     void set_x(int x);
     void set_y(int y);
     int get_dir();
     void set_dir(int d);
-    void print_standar(MAP &m);
-    void print_animation(MAP &m);
-    void delte_(MAP &m);
+    void print_animation();
+    void print_standar();
     bool colision(MAP &m);
 };
 

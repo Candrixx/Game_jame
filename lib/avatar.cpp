@@ -18,10 +18,15 @@ AVATAR::AVATAR(int _x, int _y){
     x = _x;
     y = _y;
     dir = 0;
+    head = 'O';
+    low_body = 'A';
 }
 
 int AVATAR::get_x(){ return x; }
 int AVATAR::get_y(){ return y; }
+char AVATAR::get_head(){ return head; }
+char AVATAR::get_lowbody(){ return low_body; }
+
 void AVATAR::set_x(int x){
     this->x = x;
 }
@@ -33,20 +38,14 @@ void AVATAR::set_dir(int dir){
     this->dir = dir; 
 }
 
-void AVATAR::print_standar(MAP &m){
-    m.set_map(x, y-1, 'O');
-    m.set_map(x, y, 'A');
+void AVATAR::print_animation(){
+    head = 'O';
+    low_body = '|';
 }
 
-void AVATAR::print_animation(MAP &m){
-    m.set_map(x, y-1, 'O');
-    m.set_map(x, y, '|');
-}
-
-
-void AVATAR::delte_(MAP &m){
-    m.set_map(x, y-1, ' ');
-    m.set_map(x, y, ' ');
+void AVATAR::print_standar(){
+    head = 'O';
+    low_body = 'A';
 }
 
 bool AVATAR::colision(MAP &m){

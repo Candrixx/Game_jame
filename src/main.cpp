@@ -1,5 +1,6 @@
 #include<iostream>
 #include<conio.h>
+#include<chrono>
 #include<list>
 #include "../include/map.h"
 #include "../include/avatar.h"
@@ -9,6 +10,20 @@
 #define IZQUIERDA 'a'
 #define DERECHA 'd'
 
+class Timer {
+public:
+    Timer() : start_time_(std::chrono::steady_clock::now()) {}
+
+    float get_elapsed_time() const {
+        auto end_time = std::chrono::steady_clock::now();
+        auto elapsed = end_time - start_time_;
+        return static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count()) / 1000.0f;
+    }
+
+private:
+    std::chrono::time_point<std::chrono::steady_clock> start_time_;
+};
+
 void draw_map(CAMERA &c, AVATAR &a, MAP &m){
         
    std::cout << std::endl << std::endl << std::endl << std::endl;
@@ -16,7 +31,9 @@ void draw_map(CAMERA &c, AVATAR &a, MAP &m){
         std::cout << "\t\t\t\t";
         for(int j = c.get_x(); j<52; j++){
             if(i >= 0 && j >= 0 && i < m.get_heigth() && j < m.get_width()){
-                std::cout << m.get_map(j, i);
+                if(j == a.get_x() && i == a.get_y()) std::cout << a.get_lowbody();
+                else if(j == a.get_x() && i == a.get_y()-1) std::cout << a.get_head();
+                else std::cout << m.get_map(j, i);
             }
             else{
                 std::cout << " ";
@@ -27,8 +44,33 @@ void draw_map(CAMERA &c, AVATAR &a, MAP &m){
 }
 
 void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
-
-    a.delte_(m);
+    bool in_animation = false;
+    Timer timer;
+    while(true){
+        if(!in_animation){
+            if(key == ARRIBA && a.get_y()-4 >= 0){
+                    a.set_y(a.get_y()-1);
+                    a.set_dir(1);
+            }
+            if(key == ABAJO && a.get_y() < m.get_heigth()){
+                a.set_y(a.get_y()+1);
+                a.set_dir(3);
+            }
+            if(key == IZQUIERDA && a.get_x() >= 0){
+                a.set_x(a.get_x()-1);
+                a.set_dir(4);
+            }
+            if(key == DERECHA && a.get_x() < m.get_width()){
+                a.set_x(a.get_x()+1);
+                a.set_dir(2);
+            }
+            CLEAR_SCREEN;
+            a.print_animation();
+            draw_map(c, a, m);
+            in_animation = true;
+        }
+        if(timer.get_elapsed_time() >= 0.2) break;
+    }
 
     if(key == ARRIBA && a.get_y()-4 >= 0){
         a.set_y(a.get_y()-1);
@@ -46,32 +88,10 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
         a.set_x(a.get_x()+1);
         a.set_dir(2);
     }
-
     CLEAR_SCREEN;
-    a.print_animation(m);
+    a.print_standar();
     draw_map(c, a, m);
     
-    a.delte_(m);
-
-    if(key == ARRIBA && a.get_y()-4 >= 0){
-        a.set_y(a.get_y()-1);
-        a.set_dir(1);
-    }
-    if(key == ABAJO && a.get_y() < m.get_heigth()){
-        a.set_y(a.get_y()+1);
-        a.set_dir(3);
-    }
-    if(key == IZQUIERDA && a.get_x() >= 0){
-        a.set_x(a.get_x()-1);
-        a.set_dir(4);
-    }
-    if(key == DERECHA && a.get_x() < m.get_width()){
-        a.set_x(a.get_x()+1);
-        a.set_dir(2);
-    }
-    CLEAR_SCREEN;
-    a.print_standar(m);
-    draw_map(c, a, m);
 
 }
 
@@ -82,7 +102,6 @@ int main(){
     map->fill_map();
     AVATAR a = AVATAR(26, 6);
     CAMERA c = CAMERA(0, 0);
-    a.print_standar(*map);
     draw_map(c, a, *map);
     while(true){
         
