@@ -5,14 +5,13 @@
 class ENTRY_EXITS{
     int entry_x, entry_y;
     int exit_x, exit_y;
-    char c;
 public:
     ENTRY_EXITS(int entry_x, int entry_y, int exit_x, int exit_y);
     int get_entry_x();
     int get_entry_y();
     int get_exit_x();
     int get_exit_y();
-    void print(char **map);
+    void print(char **&m);
     void delete_(char** map);
 };
 

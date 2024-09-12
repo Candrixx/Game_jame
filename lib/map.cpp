@@ -5,7 +5,6 @@ ENTRY_EXITS::ENTRY_EXITS(int entry_x, int entry_y, int exit_x, int exit_y){
     this->entry_y = entry_y;
     this->exit_x = exit_x;
     this->exit_y = exit_y;
-    c = '_';
 }
 
 int ENTRY_EXITS::get_entry_x(){ return entry_x; }
@@ -13,12 +12,12 @@ int ENTRY_EXITS::get_entry_y(){ return entry_y; }
 int ENTRY_EXITS::get_exit_x(){ return exit_x; }
 int ENTRY_EXITS::get_exit_y(){ return exit_y; }
 
-void ENTRY_EXITS::print(char** map){
-    map[exit_x][exit_y] = c;
+void ENTRY_EXITS::print(char **&m){
+    m[exit_y][exit_x] = '_';
 }
 
 void ENTRY_EXITS::delete_(char** map){
-    map[exit_x][exit_y] = ' ';
+    map[exit_y][exit_x] = ' ';
 }
 
 
@@ -46,11 +45,11 @@ std::list<ENTRY_EXITS*>* MAP::get_entries_exits(){ return &entries_exits; }
 int MAP::get_width(){ return width; }
 int MAP::get_heigth(){ return heigth; }
 char MAP::get_map(int _x, int _y){
-    return map[_x][_y]; 
+    return this->map[_y][_x]; 
 }
 
 void MAP::set_map(int _x, int _y ,char c){
-    map[_x][_y] = c;
+    this->map[_y][_x] = c;
 }
 
 MAP_PRUEBA::MAP_PRUEBA(): MAP(140, 30){
@@ -62,7 +61,7 @@ void MAP_PRUEBA::fill_map(){
 
     for(int i = 0; i<get_heigth(); i++){
         for(int j=0; j<get_width(); j++){
-            set_map(i, j, 's');
+            set_map(j, i, 's');
         }
     }
 }
