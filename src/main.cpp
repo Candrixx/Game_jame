@@ -56,22 +56,26 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
         if(!in_animation){
             if((key == UP || key == UP2) && a.get_y()-4 >= 0){
                 a.set_y(a.get_y()-1);
-                c.set_y(c.get_y()-1);
+                c.set_y(a.get_y()-5);
+                c.set_x(a.get_x()-25);
                 a.set_dir(1);
             }
             if((key == DOWN || key == DOWN2) && a.get_y() < m.get_heigth()){
                 a.set_y(a.get_y()+1);
-                c.set_y(c.get_y()+1);
+                c.set_y(a.get_y()-5);
+                c.set_x(a.get_x()-25);
                 a.set_dir(3);
             }
             if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
                 a.set_x(a.get_x()-1);
-                c.set_x(c.get_x()-1);
+                c.set_y(a.get_y()-5);
+                c.set_x(a.get_x()-25);
                 a.set_dir(4);
             }
             if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){
                 a.set_x(a.get_x()+1);
-                c.set_y(c.get_x()+1);
+                c.set_y(a.get_y()-5);
+                c.set_x(a.get_x()-25);
                 a.set_dir(2);
             }
             CLEAR_SCREEN;
@@ -84,22 +88,26 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
 
     if((key == UP || key == UP2) && a.get_y()-4 >= 0){
         a.set_y(a.get_y()-1);
-        c.set_y(c.get_y()-1);
+        c.set_y(a.get_y()-5);
+        c.set_x(a.get_x()-25);
         a.set_dir(1);
     }
     if((key == DOWN || key == DOWN2) && a.get_y() < m.get_heigth()){
         a.set_y(a.get_y()+1);
-        c.set_y(c.get_y()+1);
+        c.set_y(a.get_y()-5);
+        c.set_x(a.get_x()-25);
         a.set_dir(3);
     }
     if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
         a.set_x(a.get_x()-1);
-        c.set_x(c.get_x()-1);
+        c.set_y(a.get_y()-5);
+        c.set_x(a.get_x()-25);
         a.set_dir(4);
     }
     if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){                
         a.set_x(a.get_x()+1);
-        c.set_y(c.get_x()+1);
+        c.set_y(a.get_y()-5);
+        c.set_x(a.get_x()-25);
         a.set_dir(2);
     }
     CLEAR_SCREEN;
