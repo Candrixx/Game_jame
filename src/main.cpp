@@ -1,30 +1,33 @@
 #include<iostream>
 #include<conio.h>
 #include<list>
-#include "C:\Users\USER\Documents\ProyectoTutorialC++\GameJam\include/map.h"
-#include "C:\Users\USER\Documents\ProyectoTutorialC++\GameJam\include/avatar.h"
+#include "../include/map.h"
+#include "../include/avatar.h"
+#define CLEAR_SCREEN system("cls")
 #define ARRIBA 'w'
 #define ABAJO 's'
 #define IZQUIERDA 'a'
 #define DERECHA 'd'
 
 void draw_map(CAMERA &c, AVATAR &a, MAP &m){
-    a.print(m);
+    
+    a.print_standar(m);
     
     for(int i = c.get_y(); i<12; i++){
-        for(int j = c.get_x(), j<52; j++){
+        for(int j = c.get_x(); j<52; j++){
             if(i >= 0 && j >= 0 && i < m.get_heigth() && j < m.get_width()){
-                cout << m.get_map()[i][j];
+                std::cout << m.get_map(i, j);
             }
             else{
-                cout << " ";
+                std::cout << " ";
             }
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 }
 
-void move_avatar(char key, AVATAR &a, CAMERA &c, MAp &m){
+void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
+
     a.delte_(m);
 
     if(key == ARRIBA && a.get_y()-4 >= 0){
@@ -76,13 +79,16 @@ int main(){
     AVATAR a = AVATAR(26, 6);
     CAMERA c = CAMERA(0, 0);
 
-    while(true){
-        draw_map(c, a, m);
-        if(kbhit()){
-            char key = getch();
-            move_avatar(key, a, c, m);
-        }
-    }
+     draw_map(c, a, *map);
+     std::cin.get();
+    // while(true){
+    //     draw_map(c, a, *map);
+    //     if(kbhit()){
+    //         char key = getch();
+    //         move_avatar(key, a, c, *map);
+    //     }
+    //     CLEAR_SCREEN;
+    // }
 
     return 0;
 }

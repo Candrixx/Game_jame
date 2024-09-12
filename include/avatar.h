@@ -1,6 +1,6 @@
 #ifndef AVATAR_H
 #define AVATAR_H
-#include "C:\Users\USER\Documents\ProyectoTutorialC++\GameJam\include/map.h"
+#include "../include/map.h"
 
 class CAMERA{
     int x, y;

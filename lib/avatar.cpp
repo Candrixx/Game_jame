@@ -1,4 +1,5 @@
-#include "C:\Users\USER\Documents\ProyectoTutorialC++\GameJam\include/avatar.h"
+#include "../include/avatar.h"
+#include "../include/map.h"
 #define ARRIBA 'w'
 #define ABAJO 's'
 #define IZQUIERDA 'a'
@@ -33,18 +34,19 @@ void AVATAR::set_dir(int dir){
 }
 
 void AVATAR::print_standar(MAP &m){
-    m.get_map()[x][y-1] = 'O';
-    m.get_map()[x][y] = 'A';
+    m.set_map(x, y-1, 'O');
+    m.set_map(x, y, 'A');
 }
 
 void AVATAR::print_animation(MAP &m){
-    m.get_map()[x][y-1] = 'O';
-    m.get_map()[x][y] = '|';
+    m.set_map(x, y-1, 'O');
+    m.set_map(x, y, '|');
 }
 
+
 void AVATAR::delte_(MAP &m){
-    m.get_map()[x][y-1] = ' ';
-    m.get_map()[x][y] = ' ';
+    m.set_map(x, y-1, ' ');
+    m.set_map(x, y, ' ');
 }
 
 bool AVATAR::colision(MAP &m){

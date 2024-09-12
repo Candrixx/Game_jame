@@ -1,5 +1,6 @@
 #include <iostream>
 #include <conio.h>
+#include<chrono>
 #define UP 'w'
 #define DOWN 's'
 #define LEFT 'a'
@@ -124,7 +125,6 @@ int main() {
         if (lights_up_flag || lights_out(minigame_key))
             break;
         }
-
         std::cout << "Menu" << std::endl;
         main_key = getch();
         if (main_key == ESC)

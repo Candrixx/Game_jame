@@ -25,7 +25,8 @@ class MAP{
 public:
     MAP(int width, int heigth);
     ~MAP();
-    char **get_map();
+    char get_map(int _x, int _y);
+    void set_map(int _x, int _y ,char c);
     virtual void fill_map() = 0; 
     std::list<int>* get_map_objects();
     std::list<int>* get_player_objects();
@@ -34,9 +35,10 @@ public:
     int get_heigth();
 };
 
-class MAP_PRUEBA:MAP{
+class MAP_PRUEBA:public MAP{
 public:
     MAP_PRUEBA();
+    void fill_map() override;
 };
 
 #endif
