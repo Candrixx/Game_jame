@@ -2,6 +2,7 @@
 #define AVATAR_H
 #include "../include/map.h"
 #include "../include/map_objects.h"
+#include "../include/inventory.h"
 
 class CAMERA{
     int x, y;
@@ -18,6 +19,7 @@ class AVATAR{
     int dir;
     char head;
     char low_body;
+    INVENTORY inventory;
 public:
     AVATAR(int _x, int _y);
     int get_x();
@@ -32,6 +34,7 @@ public:
     void print_standar();
     bool collides(MAP &m);
     bool is_behind(MAP &m, int c);
+    void open_inventory();
 };
 
 

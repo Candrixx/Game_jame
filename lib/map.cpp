@@ -14,7 +14,7 @@ int ENTRY_EXITS::get_exit_x(){ return exit_x; }
 int ENTRY_EXITS::get_exit_y(){ return exit_y; }
 
 void ENTRY_EXITS::print(char **&m){
-    m[exit_y][exit_x] = '_';
+    m[exit_y][exit_x] = '/';
 }
 
 void ENTRY_EXITS::delete_(char** map){
@@ -58,31 +58,25 @@ void MAP::set_map(int _x, int _y ,char c){
     this->map[_y][_x] = c;
 }
 
-MAP_PRUEBA::MAP_PRUEBA(): MAP(140, 30, "Mapa Prueba"){
+MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     fill_map();
     std::list<ENTRY_EXITS*>* e = get_entries_exits();
     e->push_back(new ENTRY_EXITS(0, 0, 1, 12));
     e->push_back(new ENTRY_EXITS(0, 0, get_width()-2, 12));
     std::list<ENTRY_EXITS*>::iterator itE;
-    itE = e->begin();
     char ** m = get_map_matriz();
-    (*itE)->print(m);
-    itE++;
-    (*itE)->print(m);
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
     mo->push_back(new CUPBOARD(12, 3, 15, 4));
     mo->push_back(new CUPBOARD(34, 3, 37, 4));
     mo->push_back(new CUPBOARD(45, 3, 48, 4));
     mo->push_back(new CUPBOARD(34, 12, 37, 13));
-    itMO = mo->begin();
-    (*itMO)->print(m);
-    itMO++;
-    (*itMO)->print(m);
-    itMO++;
-    (*itMO)->print(m);
-    itMO++;
-    (*itMO)->print(m);  
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    } 
 }
 
 void MAP_PRUEBA::fill_map(){

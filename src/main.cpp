@@ -15,6 +15,8 @@
 #define RIGHT2 'D'
 #define ACTION 'e'
 #define ACTION2 'E'
+#define INVENTORY 'i'
+#define INVENTORY2 'I'
 
 class Timer {
 public:
@@ -63,7 +65,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
                     c.set_x(a.get_x()-26);
                 }
             }
-            if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
+            else if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
                 a.set_dir(3);
                 if(!a.collides(m)){
                     a.set_y(a.get_y()+1);
@@ -71,7 +73,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
                     c.set_x(a.get_x()-26);
                 }
             }
-            if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
+            else if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
                 a.set_dir(4);
                 if(!a.collides(m)){
                     a.set_x(a.get_x()-1);
@@ -79,7 +81,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
                     c.set_x(a.get_x()-26);
                 }
             }
-            if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
+            else if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
                 a.set_dir(2);
                 if(!a.collides(m)){
                     a.set_x(a.get_x()+1);
@@ -103,7 +105,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
             c.set_x(a.get_x()-26);
         }
     }
-    if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
+    else if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
         a.set_dir(3);
         if(!a.collides(m)){
             a.set_y(a.get_y()+1);
@@ -111,7 +113,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
             c.set_x(a.get_x()-26);
         }
     }
-    if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
+    else if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
         a.set_dir(4);
         if(!a.collides(m)){
             a.set_x(a.get_x()-1);
@@ -119,7 +121,7 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
             c.set_x(a.get_x()-26);
         }
     }
-    if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
+    else if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
         a.set_dir(2);
         if(!a.collides(m)){
             a.set_x(a.get_x()+1);
@@ -145,7 +147,12 @@ int main(){
         
         if(kbhit()){
             char key = getch();
-            move_avatar(key, a, c, *map);
+            if(key == INVENTORY || key == INVENTORY2) {
+                a.open_inventory();
+                CLEAR_SCREEN;
+                draw_map(c, a, *map);
+            }
+            else move_avatar(key, a, c, *map);
         }
     }
 

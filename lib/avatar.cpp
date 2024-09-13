@@ -100,3 +100,7 @@ bool AVATAR::is_behind(MAP &m, int c){
     return false;
 }
 
+void AVATAR::open_inventory(){
+    inventory.inventory_interface();
+}
+
