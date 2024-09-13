@@ -88,3 +88,15 @@ bool AVATAR::collides(MAP &m){
     return false;
 }
 
+bool AVATAR::is_behind(MAP &m, int c){
+    std::list<MAP_OBJECT*>* mo = m.get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        if((get_y() - c + 1 == (*itMO)->get_up_left_y() || get_y() - c + 2 == (*itMO)->get_up_left_y()) && (*itMO)->get_up_left_x() <= get_x() && get_x() <= (*itMO)->get_bot_right_x()){
+            return true;
+        }
+    }
+
+    return false;
+}
+

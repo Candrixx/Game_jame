@@ -37,20 +37,20 @@ CUPBOARD::CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_
 }
 
 void CUPBOARD::print(char** &map){
-    map[get_up_left_y()][get_up_left_x()] = 218;
-    map[get_up_left_y()][get_bot_right_x()] = 191;
+    map[get_up_left_y()][get_up_left_x()] = 124;
+    map[get_up_left_y()][get_up_left_x()+1] = 32;
+    map[get_up_left_y()][get_up_left_x()+2] = 32;
+    map[get_up_left_y()][get_up_left_x()+3] = 124;
     map[get_bot_right_y()][get_bot_right_x()] = 217;
-    map[get_bot_right_y()][get_up_left_x()] = 192;
-    map[get_up_left_y()+1][get_up_left_x()] = 124;
-    map[get_up_left_y()+1][get_bot_right_x()] = 124;
-    map[get_up_left_y()+2][get_up_left_x()] = 124;
-    map[get_up_left_y()+2][get_bot_right_x()] = 124;
-    map[get_bot_right_y()][get_up_left_x()+1] = 196;
-    map[get_up_left_y()][get_up_left_x()+1] = 196;
-    map[get_bot_right_y()][get_up_left_x()+2] = 196;
-    map[get_up_left_y()][get_up_left_x()+2] = 196;
-    map[get_up_left_y()+1][get_up_left_x()+1] = 46;
-    map[get_up_left_y()+1][get_up_left_x()+2] = 46;
-    map[get_bot_right_y()-1][get_bot_right_x()-1] = 32;
-    map[get_bot_right_y()-1][get_bot_right_x()-2] = 32;
+    map[get_bot_right_y()][get_bot_right_x()-1] = 196;
+    map[get_bot_right_y()][get_bot_right_x()-2] = 196;
+    map[get_bot_right_y()][get_bot_right_x()-3] = 192;
+    map[get_up_left_y()-1][get_up_left_x()] = 124;
+    map[get_up_left_y()-1][get_up_left_x()+1] = 46;
+    map[get_up_left_y()-1][get_up_left_x()+2] = 46;
+    map[get_up_left_y()-1][get_up_left_x()+3] = 124;
+    map[get_up_left_y()-2][get_up_left_x()] = 218;
+    map[get_up_left_y()-2][get_up_left_x()+1] = 196;
+    map[get_up_left_y()-2][get_up_left_x()+2] = 196;
+    map[get_up_left_y()-2][get_up_left_x()+3] = 191;
 }

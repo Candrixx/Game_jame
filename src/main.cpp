@@ -38,8 +38,8 @@ void draw_map(CAMERA &c, AVATAR &a, MAP &m){
         std::cout << "\t\t\t\t";
         for(int j = c.get_x(); j<52 + c.get_x(); j++){
             if(i >= 0 && j >= 0 && i < m.get_heigth() && j < m.get_width()){
-                if(j == a.get_x() && i == a.get_y() && i < m.get_heigth()-4) std::cout << a.get_lowbody();
-                else if(j == a.get_x() && i == a.get_y()-1 && i < m.get_heigth()-4) std::cout << a.get_head();
+                if(j == a.get_x() && i == a.get_y() && i < m.get_heigth()-4 && !a.is_behind(m, 0)) std::cout << a.get_lowbody();
+                else if(j == a.get_x() && i == a.get_y()-1 && i < m.get_heigth()-4 && !a.is_behind(m, 1)) std::cout << a.get_head();
                 else std::cout << m.get_map(j, i);
             }
             else{

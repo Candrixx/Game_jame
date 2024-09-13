@@ -71,15 +71,18 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(140, 30, "Mapa Prueba"){
     (*itE)->print(m);
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
-    mo->push_back(new CUPBOARD(12, 1, 15, 4));
-    mo->push_back(new CUPBOARD(34, 1, 37, 4));
-    mo->push_back(new CUPBOARD(45, 1, 48, 4));
+    mo->push_back(new CUPBOARD(12, 3, 15, 4));
+    mo->push_back(new CUPBOARD(34, 3, 37, 4));
+    mo->push_back(new CUPBOARD(45, 3, 48, 4));
+    mo->push_back(new CUPBOARD(34, 12, 37, 13));
     itMO = mo->begin();
     (*itMO)->print(m);
     itMO++;
     (*itMO)->print(m);
     itMO++;
     (*itMO)->print(m);
+    itMO++;
+    (*itMO)->print(m);  
 }
 
 void MAP_PRUEBA::fill_map(){

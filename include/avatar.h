@@ -31,6 +31,7 @@ public:
     void print_animation();
     void print_standar();
     bool collides(MAP &m);
+    bool is_behind(MAP &m, int c);
 };
 
 
