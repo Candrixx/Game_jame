@@ -63,22 +63,22 @@ bool AVATAR::collides(MAP &m){
     for(itMO = mo->begin(); itMO!=mo->end(); itMO++){
         switch(get_dir()){
             case 1:
-            if(get_y()-1 == (*itMO)->get_bot_right_y() && (*itMO)->get_up_left_x() > get_x() && get_x() < (*itMO)->get_bot_right_x()){
+            if(get_y()-1 == (*itMO)->get_bot_right_y() && (*itMO)->get_up_left_x() <= get_x() && get_x() <= (*itMO)->get_bot_right_x()){
                 return true;
             }
             break;
             case 2:
-            if(get_x()+1 == (*itMO)->get_up_left_x() && (*itMO)->get_up_left_y() > get_y() && get_y() < (*itMO)->get_bot_right_y()){
+            if(get_x()+1 == (*itMO)->get_up_left_x() && (*itMO)->get_up_left_y() <= get_y() && get_y() <= (*itMO)->get_bot_right_y()){
                 return true;
             }
             break;
             case 3:
-            if(get_y()+1 == (*itMO)->get_up_left_y() && (*itMO)->get_up_left_x() > get_x() && get_x() < (*itMO)->get_bot_right_x()){
+            if(get_y()+1 == (*itMO)->get_up_left_y() && (*itMO)->get_up_left_x() <= get_x() && get_x() <= (*itMO)->get_bot_right_x()){
                 return true;
             }
             break;
             case 4:
-            if(get_x()-1 == (*itMO)->get_bot_right_x() && (*itMO)->get_up_left_y() > get_y() && get_y() < (*itMO)->get_bot_right_y()){
+            if(get_x()-1 == (*itMO)->get_bot_right_x() && (*itMO)->get_up_left_y() <= get_y() && get_y() <= (*itMO)->get_bot_right_y()){
                 return true;
             }
             break;
