@@ -33,6 +33,7 @@ private:
 void draw_map(CAMERA &c, AVATAR &a, MAP &m){
         
    std::cout << std::endl << std::endl << std::endl << std::endl;
+   std::cout << "\t\t\t\t" << m.get_nombre() << std::endl;
     for(int i = c.get_y(); i<12 + c.get_y(); i++){
         std::cout << "\t\t\t\t";
         for(int j = c.get_x(); j<52 + c.get_x(); j++){
@@ -56,26 +57,26 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
         if(!in_animation){
             if((key == UP || key == UP2) && a.get_y()-4 >= 0){
                 a.set_y(a.get_y()-1);
-                c.set_y(a.get_y()-5);
-                c.set_x(a.get_x()-25);
+                c.set_y(a.get_y()-6);
+                c.set_x(a.get_x()-26);
                 a.set_dir(1);
             }
             if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
                 a.set_y(a.get_y()+1);
-                c.set_y(a.get_y()-5);
-                c.set_x(a.get_x()-25);
+                c.set_y(a.get_y()-6);
+                c.set_x(a.get_x()-26);
                 a.set_dir(3);
             }
             if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
                 a.set_x(a.get_x()-1);
-                c.set_y(a.get_y()-5);
-                c.set_x(a.get_x()-25);
+                c.set_y(a.get_y()-6);
+                c.set_x(a.get_x()-26);
                 a.set_dir(4);
             }
             if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){
                 a.set_x(a.get_x()+1);
-                c.set_y(a.get_y()-5);
-                c.set_x(a.get_x()-25);
+                c.set_y(a.get_y()-6);
+                c.set_x(a.get_x()-26);
                 a.set_dir(2);
             }
             CLEAR_SCREEN;
@@ -88,26 +89,26 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
 
     if((key == UP || key == UP2) && a.get_y()-4 >= 0){
         a.set_y(a.get_y()-1);
-        c.set_y(a.get_y()-5);
-        c.set_x(a.get_x()-25);
+        c.set_y(a.get_y()-6);
+        c.set_x(a.get_x()-26);
         a.set_dir(1);
     }
     if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
         a.set_y(a.get_y()+1);
-        c.set_y(a.get_y()-5);
-        c.set_x(a.get_x()-25);
+        c.set_y(a.get_y()-6);
+        c.set_x(a.get_x()-26);
         a.set_dir(3);
     }
     if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
         a.set_x(a.get_x()-1);
-        c.set_y(a.get_y()-5);
-        c.set_x(a.get_x()-25);
+        c.set_y(a.get_y()-6);
+        c.set_x(a.get_x()-26);
         a.set_dir(4);
     }
     if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){                
         a.set_x(a.get_x()+1);
-        c.set_y(a.get_y()-5);
-        c.set_x(a.get_x()-25);
+        c.set_y(a.get_y()-6);
+        c.set_x(a.get_x()-26);
         a.set_dir(2);
     }
     CLEAR_SCREEN;

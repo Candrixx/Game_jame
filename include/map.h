@@ -1,6 +1,8 @@
 #ifndef MAPA_H
 #define MAPA_H
 #include<list>
+#include<iostream>
+#include<string.h>
 
 class ENTRY_EXITS{
     int entry_x, entry_y;
@@ -18,13 +20,15 @@ public:
 class MAP{
     char ** map;
     int width, heigth;
+    std::string nombre; 
     std::list<int> map_objects;
     std::list<int> player_objects;
     std::list<ENTRY_EXITS*> entries_exits;
 public:
-    MAP(int width, int heigth);
+    MAP(int width, int heigth, std::string _nombre);
     ~MAP();
     char get_map(int _x, int _y);
+    std::string get_nombre();
     void set_map(int _x, int _y ,char c);
     virtual void fill_map() = 0; 
     std::list<int>* get_map_objects();

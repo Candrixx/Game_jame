@@ -22,13 +22,14 @@ void ENTRY_EXITS::delete_(char** map){
 
 
 
-MAP::MAP(int width, int heigth){
+MAP::MAP(int width, int heigth, std::string nombre){
      this->map = new char* [heigth];
      for(int i=0; i<heigth; i++){
         this->map[i] = new char[width];
      }
      this->width = width;
      this->heigth = heigth;
+     this->nombre = nombre;
 }
 
 MAP::~MAP(){
@@ -47,20 +48,33 @@ int MAP::get_heigth(){ return heigth; }
 char MAP::get_map(int _x, int _y){
     return this->map[_y][_x]; 
 }
+std::string MAP::get_nombre(){ return nombre;}
 
 void MAP::set_map(int _x, int _y ,char c){
     this->map[_y][_x] = c;
 }
 
-MAP_PRUEBA::MAP_PRUEBA(): MAP(140, 30){
+MAP_PRUEBA::MAP_PRUEBA(): MAP(140, 30, "Mapa Prueba"){
     std::list<ENTRY_EXITS*>* e = get_entries_exits();
     e->push_back(new ENTRY_EXITS(0, 0, 1, 12));
 }
 
 void MAP_PRUEBA::fill_map(){
     for(int i = 0; i < get_heigth(); i++){
-        for(int j = 0; j < get_width(); j++){
-            set_map(j, i, '.');
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-4, char(205));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-2; j++){
+            set_map(j, i, char(32));
         }
     }
     

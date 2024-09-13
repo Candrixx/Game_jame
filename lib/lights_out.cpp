@@ -7,14 +7,20 @@
 #define ESC 27
 #define SPACE 32
 #define CLEAR_SCREEN system("cls")
+#define UP2 'W'
+#define DOWN2 'S'
+#define LEFT2 'A'
+#define RIGHT2 'D'
+#define ACTION 'e'
+#define ACTION2 'E'
 
 
 class LightsOut {
+    
     public:
 
     int xPos = 0;
     int yPos = 0;
-    char lastChar;
 
     char lights_mat[5][23] = {{'X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'},
                               {'X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'},
@@ -51,16 +57,16 @@ bool lights_out(char key) {
     
     lightsOut.print_lights_out();
 
-    if (key == UP && lightsOut.yPos > 0) {
+    if ((key == UP || key == UP2) && lightsOut.yPos > 0) {
         lightsOut.yPos--;
     }
-    else if (key == RIGHT && lightsOut.xPos < 22) {
+    else if ((key == RIGHT || key == RIGHT2) && lightsOut.xPos < 22) {
         lightsOut.xPos++;
     }
-    else if (key == DOWN && lightsOut.yPos < 4) {
+    else if ((key == DOWN || key == DOWN2) && lightsOut.yPos < 4) {
         lightsOut.yPos++;
     }
-    else if (key == LEFT && lightsOut.xPos > 0) {
+    else if ((key == LEFT || key == LEFT2) && lightsOut.xPos > 0) {
         lightsOut.xPos--;
     }
     else if (key == SPACE) {
@@ -106,7 +112,7 @@ bool lights_out(char key) {
 
 bool run_lights_out() {
 
-    char minigame_key, main_key;
+    char minigame_key;
     bool lights_up_flag = false;
 
     while (true) {
@@ -122,15 +128,10 @@ bool run_lights_out() {
         }
 
         if (lights_up_flag)
-            break;
+            return false;
         else if (lights_out(minigame_key))
             return true;
         }
-
-        std::cout << "Menu" << std::endl;
-        main_key = getch();
-        if (main_key == ESC)
-            break;
     }
     return false;
 }
