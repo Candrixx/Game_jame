@@ -33,13 +33,13 @@ private:
 void draw_map(CAMERA &c, AVATAR &a, MAP &m){
         
    std::cout << std::endl << std::endl << std::endl << std::endl;
-   std::cout << "\t\t\t\t" << m.get_nombre() << std::endl;
+   std::cout << "\t\t\t\t" << m.get_name() << std::endl;
     for(int i = c.get_y(); i<12 + c.get_y(); i++){
         std::cout << "\t\t\t\t";
         for(int j = c.get_x(); j<52 + c.get_x(); j++){
             if(i >= 0 && j >= 0 && i < m.get_heigth() && j < m.get_width()){
-                if(j == a.get_x() && i == a.get_y()) std::cout << a.get_lowbody();
-                else if(j == a.get_x() && i == a.get_y()-1) std::cout << a.get_head();
+                if(j == a.get_x() && i == a.get_y() && i < m.get_heigth()-4) std::cout << a.get_lowbody();
+                else if(j == a.get_x() && i == a.get_y()-1 && i < m.get_heigth()-4) std::cout << a.get_head();
                 else std::cout << m.get_map(j, i);
             }
             else{
@@ -56,28 +56,36 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
     while(true){
         if(!in_animation){
             if((key == UP || key == UP2) && a.get_y()-4 >= 0){
-                a.set_y(a.get_y()-1);
-                c.set_y(a.get_y()-6);
-                c.set_x(a.get_x()-26);
                 a.set_dir(1);
+                if(!a.collides(m)){
+                    a.set_y(a.get_y()-1);
+                    c.set_y(a.get_y()-6);
+                    c.set_x(a.get_x()-26);
+                }
             }
             if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
-                a.set_y(a.get_y()+1);
-                c.set_y(a.get_y()-6);
-                c.set_x(a.get_x()-26);
                 a.set_dir(3);
+                if(!a.collides(m)){
+                    a.set_y(a.get_y()+1);
+                    c.set_y(a.get_y()-6);
+                    c.set_x(a.get_x()-26);
+                }
             }
-            if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
-                a.set_x(a.get_x()-1);
-                c.set_y(a.get_y()-6);
-                c.set_x(a.get_x()-26);
+            if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
                 a.set_dir(4);
+                if(!a.collides(m)){
+                    a.set_x(a.get_x()-1);
+                    c.set_y(a.get_y()-6);
+                    c.set_x(a.get_x()-26);
+                }
             }
-            if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){
-                a.set_x(a.get_x()+1);
-                c.set_y(a.get_y()-6);
-                c.set_x(a.get_x()-26);
+            if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
                 a.set_dir(2);
+                if(!a.collides(m)){
+                    a.set_x(a.get_x()+1);
+                    c.set_y(a.get_y()-6);
+                    c.set_x(a.get_x()-26);
+                }
             }
             CLEAR_SCREEN;
             a.print_animation();
@@ -88,28 +96,36 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
     }
 
     if((key == UP || key == UP2) && a.get_y()-4 >= 0){
-        a.set_y(a.get_y()-1);
-        c.set_y(a.get_y()-6);
-        c.set_x(a.get_x()-26);
         a.set_dir(1);
+        if(!a.collides(m)){
+            a.set_y(a.get_y()-1);
+            c.set_y(a.get_y()-6);
+            c.set_x(a.get_x()-26);
+        }
     }
     if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
-        a.set_y(a.get_y()+1);
-        c.set_y(a.get_y()-6);
-        c.set_x(a.get_x()-26);
         a.set_dir(3);
+        if(!a.collides(m)){
+            a.set_y(a.get_y()+1);
+            c.set_y(a.get_y()-6);
+            c.set_x(a.get_x()-26);
+        }
     }
-    if((key == LEFT || key == LEFT2) && a.get_x() >= 0){
-        a.set_x(a.get_x()-1);
-        c.set_y(a.get_y()-6);
-        c.set_x(a.get_x()-26);
+    if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
         a.set_dir(4);
+        if(!a.collides(m)){
+            a.set_x(a.get_x()-1);
+            c.set_y(a.get_y()-6);
+            c.set_x(a.get_x()-26);
+        }
     }
-    if((key == RIGHT || key == RIGHT2) && a.get_x() < m.get_width()){                
-        a.set_x(a.get_x()+1);
-        c.set_y(a.get_y()-6);
-        c.set_x(a.get_x()-26);
+    if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
         a.set_dir(2);
+        if(!a.collides(m)){
+            a.set_x(a.get_x()+1);
+            c.set_y(a.get_y()-6);
+            c.set_x(a.get_x()-26);
+        }
     }
     CLEAR_SCREEN;
     a.print_standar();
@@ -122,7 +138,6 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
 int main(){
 
     MAP* map = new MAP_PRUEBA();
-    map->fill_map();
     AVATAR a = AVATAR(26, 6);
     CAMERA c = CAMERA(0, 0);
     draw_map(c, a, *map);

@@ -1,6 +1,7 @@
 #ifndef AVATAR_H
 #define AVATAR_H
 #include "../include/map.h"
+#include "../include/map_objects.h"
 
 class CAMERA{
     int x, y;
@@ -29,7 +30,7 @@ public:
     void set_dir(int d);
     void print_animation();
     void print_standar();
-    bool colision(MAP &m);
+    bool collides(MAP &m);
 };
 
 

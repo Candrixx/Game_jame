@@ -3,6 +3,7 @@
 #include<list>
 #include<iostream>
 #include<string.h>
+#include "../include/map_objects.h"
 
 class ENTRY_EXITS{
     int entry_x, entry_y;
@@ -20,18 +21,19 @@ public:
 class MAP{
     char ** map;
     int width, heigth;
-    std::string nombre; 
-    std::list<int> map_objects;
+    std::string name; 
+    std::list<MAP_OBJECT*> map_objects;
     std::list<int> player_objects;
     std::list<ENTRY_EXITS*> entries_exits;
 public:
-    MAP(int width, int heigth, std::string _nombre);
+    MAP(int width, int heigth, std::string _name);
     ~MAP();
+    char ** get_map_matriz();
     char get_map(int _x, int _y);
-    std::string get_nombre();
+    std::string get_name(){ return name; }
     void set_map(int _x, int _y ,char c);
     virtual void fill_map() = 0; 
-    std::list<int>* get_map_objects();
+    std::list<MAP_OBJECT*>* get_map_objects();
     std::list<int>* get_player_objects();
     std::list<ENTRY_EXITS*>* get_entries_exits();
     int get_width();

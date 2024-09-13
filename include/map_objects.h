@@ -13,7 +13,7 @@ class MAP_OBJECT{
     std::list<int> objects;
 public:
     MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name);
-    std::string MAP_OBJECT::get_name();
+    std::string get_name(){ return name;}
     int get_up_left_x();
     int get_up_left_y();
     int get_bot_right_x();
