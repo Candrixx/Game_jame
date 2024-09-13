@@ -4,6 +4,7 @@
 #include<list>
 #include "../include/map.h"
 #include "../include/avatar.h"
+#include "../include/lights_out.h"
 #define CLEAR_SCREEN system("cls")
 #define UP 'w'
 #define DOWN 's'
@@ -145,7 +146,11 @@ int main(){
         
         if(kbhit()){
             char key = getch();
-            move_avatar(key, a, c, *map);
+            if (key == LEFT || key == LEFT2 || key == UP || key == UP2 || key == DOWN || key == DOWN2 || key == RIGHT || key == RIGHT2)
+                move_avatar(key, a, c, *map);
+            else if (key == ACTION || key == ACTION2)
+                run_lights_out();
+
         }
     }
 
