@@ -8,6 +8,8 @@
 #define ESC 27
 #define SPACE 32
 #define CLEAR_SCREEN system("cls")
+#define ACTION 'e'
+#define ACTION2 'E'
 
 
 class LightsOut {
@@ -24,7 +26,10 @@ class LightsOut {
                               {'X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'} };
     
     void print_lights_out() {
+
+        std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl;
         for (int i = 0; i < 5; i++) {
+            std::cout << "\t\t\t\t\t\t";
             for (int j = 0; j < 23; j++) {
                 if (xPos == j && yPos == i) {
                     std::cout << '^';
@@ -33,7 +38,8 @@ class LightsOut {
                     std::cout << lights_mat[i][j];
             }
             std::cout << std::endl;
-        }   
+        }
+        std::cout << std::endl << std::endl << std::endl << "Arriba: W\tAbajo: S\tDerecha: D\tIzquierda: A\tAccion: Espacio\tSalir: E/Esc";
     }
 
     void reset_lights_out() {
@@ -107,28 +113,25 @@ bool lights_out(char key) {
 
 int main() {
 
-    char minigame_key, main_key;
-    bool lights_up_flag = false;
+    char minigame_key;
+    bool lights_out_flag = false;
 
     while (true) {
-        if (lights_up_flag == false)
+        if (lights_out_flag == false)
             lightsOut.print_lights_out();
         while (true) {   
         minigame_key = getch();
+
         CLEAR_SCREEN;
 
-        if (minigame_key == ESC) {
-            lights_up_flag = true;
+        if (minigame_key == ESC || minigame_key == ACTION || minigame_key == ACTION2) {
+            lights_out_flag = true;
             lightsOut.reset_lights_out();
         }
 
-        if (lights_up_flag || lights_out(minigame_key))
-            break;
+        if (lights_out_flag)
+            return 0;
         }
-        std::cout << "Menu" << std::endl;
-        main_key = getch();
-        if (main_key == ESC)
-            break;
     }
     return 0;
 }

@@ -14,6 +14,7 @@ public:
     void include_item(OBJECT &item);
     void delete_item(OBJECT &item);
     void move_marker(char key);
+    void inventory_interaction();
 };
 
 #endif

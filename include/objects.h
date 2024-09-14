@@ -14,7 +14,7 @@ public:
     int get_y();
     void set_x(int _x);
     void set_y(int _y);
-    virtual std::string content() = 0;
+    virtual void content() = 0;
     std::string get_name(){ return name; }
     std::string get_description() { return description; }
     int get_code();
@@ -23,7 +23,7 @@ public:
 class LETTER_PRUEBA: public OBJECT{
 public:
     LETTER_PRUEBA(int _x, int _y);
-    std::string content() override;    
+    void content() override;    
 };
 
 

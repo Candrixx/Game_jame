@@ -8,6 +8,8 @@
 #define DOWN 's'
 #define UP2 'W'
 #define DOWN2 'S'
+#define ACTION 'e'
+#define ACTION2 'E'
 #define ESC 27
 
 INVENTORY::INVENTORY(){
@@ -31,7 +33,7 @@ void INVENTORY::draw_interface(){
     int i = 0;
     std::cout << std::endl << std::endl << std:: endl << std::endl;
     if(objects.empty()){
-        std::cout << "\t\t\t\tINVENTARIO \t\t\t\t DESCRIPCION" << std::endl << std::endl;
+        std::cout << "\t\t\t\tINVENTARIO\t\t\tDESCRIPCION" << std::endl << std::endl;
         std::cout << "\t\t\t\tInventario Vacio";
     }
     else{
@@ -56,7 +58,12 @@ void INVENTORY::inventory_interface(){
         if(kbhit()){
             key = getch();
             if(key == ESC) return;
-            else move_marker(key);
+            else if (key == ACTION || key == ACTION2){
+                inventory_interaction();
+                CLEAR_SCREEN;
+                draw_interface();
+            }
+            else if(key == UP || key == UP2 || key == DOWN || key == DOWN2) move_marker(key);
         }
     }
 }
@@ -72,6 +79,17 @@ void INVENTORY::delete_item(OBJECT &item){
         if((*itO)->get_code() == item.get_code()){
             delete(*itO);
             itO = objects.erase(itO);
+            return;
+        }
+    }
+}
+
+void INVENTORY::inventory_interaction(){
+    std::list<OBJECT*>::iterator itO;
+    int i = 0;
+    for(itO = objects.begin(); itO != objects.end(); itO++, i++){
+        if(i == cord_marker){
+            (*itO)->content();
             return;
         }
     }

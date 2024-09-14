@@ -5,7 +5,8 @@
 #include "../include/map.h"
 #include "../include/avatar.h"
 #include "../include/lights_out.h"
-#define CLEAR_SCREEN system("cls")
+
+
 #define UP 'w'
 #define DOWN 's'
 #define LEFT 'a'
@@ -153,8 +154,14 @@ int main(){
                 CLEAR_SCREEN;
                 draw_map(c, a, *map);
             }
-            else if(key == ACTION || key == ACTION2){}
-            else move_avatar(key , a, c, *map);
+            else if(key == ACTION || key == ACTION2) {
+                CLEAR_SCREEN;
+                run_lights_out();
+                draw_map(c, a, *map);
+            }
+            else if (key == UP || key == UP2 || key == DOWN || key == DOWN2 || key == LEFT || key == LEFT2 || key == RIGHT || key == RIGHT2) 
+                move_avatar(key , a, c, *map);
+
         }
     }
 
