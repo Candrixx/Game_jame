@@ -1,3 +1,6 @@
+#ifndef LIGHTS_OUT_H
+#define LIGHTS_OUT_H
+
 #include <iostream>
 #include <conio.h>
 #define UP 'w'
@@ -15,7 +18,7 @@
 #define ACTION2 'E'
 
 
-class LightsOut {
+inline class LightsOut {
     
     public:
 
@@ -51,7 +54,7 @@ class LightsOut {
 
 } lightsOut;
 
-bool lights_out(char key) {
+inline bool lights_out(char key) {
 
     bool Oflag = true;
     
@@ -110,7 +113,7 @@ bool lights_out(char key) {
             
 }
 
-bool run_lights_out() {
+inline int run_lights_out() {
 
     char minigame_key;
     bool lights_up_flag = false;
@@ -122,16 +125,18 @@ bool run_lights_out() {
         minigame_key = getch();
         CLEAR_SCREEN;
 
-        if (minigame_key == ESC) {
+        if (minigame_key == ESC || minigame_key == ACTION || minigame_key == ACTION2) {
             lights_up_flag = true;
             lightsOut.reset_lights_out();
         }
 
         if (lights_up_flag)
-            return false;
+            return 0;
         else if (lights_out(minigame_key))
-            return true;
+            return 1;
         }
     }
-    return false;
+    return 0;
 }
+
+#endif

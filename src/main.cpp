@@ -4,6 +4,7 @@
 #include<list>
 #include "../include/map.h"
 #include "../include/avatar.h"
+#include "../include/lights_out.h"
 #define CLEAR_SCREEN system("cls")
 #define UP 'w'
 #define DOWN 's'
@@ -147,12 +148,13 @@ int main(){
         
         if(kbhit()){
             char key = getch();
-            if(key == INVENTORY || key == INVENTORY2) {
+            if(key == INVENTORY || key == INVENTORY2){
                 a.open_inventory();
                 CLEAR_SCREEN;
                 draw_map(c, a, *map);
             }
-            else move_avatar(key, a, c, *map);
+            else if(key == ACTION || key == ACTION2){}
+            else move_avatar(key , a, c, *map);
         }
     }
 
