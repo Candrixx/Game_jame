@@ -29,15 +29,15 @@ void INVENTORY::draw_interface(){
     CLEAR_SCREEN;
     std::list<OBJECT*>::iterator itO;
     int i = 0;
+    std::cout << std::endl << std::endl << std:: endl << std::endl;
     if(objects.empty()){
-        std::cout << "INVENTARIO" << std::endl << std::endl;
-        std::cout << "Inventario Vacio";
+        std::cout << "\t\t\t\tINVENTARIO \t\t\t\t DESCRIPCION" << std::endl << std::endl;
+        std::cout << "\t\t\t\tInventario Vacio";
     }
     else{
-        std::cout << "INVENTARIO" << std::endl << std::endl;
+        std::cout << "\t\t\t\tINVENTARIO\t\t\tDESCRIPCION" << std::endl << std::endl;
         for(itO = objects.begin(); itO!=objects.end(); itO++, i++){
-            i == cord_marker ? std::cout << '*' : std::cout << "o"; 
-            std::cout << "  " << (*itO)->get_name() << std::endl;
+            std::cout << "\t\t\t\t"; i == cord_marker ? std::cout << '*' : std::cout << "o"; std::cout << "  " << (*itO)->get_name(); std::cout << "\t\t"; i == cord_marker ? std::cout << (*itO)->get_description() : std::cout << ""; std::cout << std::endl;    
         }
     }
 }
