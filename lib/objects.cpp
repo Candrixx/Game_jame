@@ -27,7 +27,7 @@ void OBJECT::set_y(int _y){
     this->y = _y;
 }
 
-LETTER_PRUEBA::LETTER_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Carta de Prueb", "Carta escrita por una persona anonima", 111){
+LETTER_PRUEBA::LETTER_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Carta de Prueba", "Carta escrita por una persona anonima", 111){
 
 }
 

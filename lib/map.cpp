@@ -74,6 +74,7 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     mo->push_back(new CUPBOARD(34, 3, 37, 4));
     mo->push_back(new CUPBOARD(45, 3, 48, 4));
     mo->push_back(new CUPBOARD(34, 12, 37, 13));
+    mo->push_back(new TABLE(45, 15, 59, 17));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     } 

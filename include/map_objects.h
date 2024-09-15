@@ -10,14 +10,16 @@ class MAP_OBJECT{
     int up_left_y;
     int bot_right_x;
     int bot_right_y;
+    int object_heigth;
     std::list<int> objects;
 public:
-    MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name);
+    MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name, int object_heigth);
     std::string get_name(){ return name;}
     int get_up_left_x();
     int get_up_left_y();
     int get_bot_right_x();
     int get_bot_right_y();
+    int get_object_heigth();
     void set_up_left_x(int _x);
     void set_up_left_y(int _y);
     void set_bot_right_x(int _x);
@@ -29,6 +31,12 @@ public:
 class CUPBOARD:public MAP_OBJECT{
 public:
     CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+};
+
+class TABLE:public MAP_OBJECT{
+public:
+    TABLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
     void print(char** &map) override;
 };
 
