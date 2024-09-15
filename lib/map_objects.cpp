@@ -36,8 +36,13 @@ std::list<OBJECT*>* MAP_OBJECT::get_objects(){
     return &objects;
 }
 
-CUPBOARD::CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
+void MAP_OBJECT::set_text_empty(std::string text){
+    this->text_empty = text;
+}
 
+CUPBOARD::CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
+    std::string text = "Parece un Armario cualquiera de madera";
+    set_text_empty(text);
 }
 
 void CUPBOARD::print(char** &map){
@@ -60,6 +65,8 @@ void CUPBOARD::print(char** &map){
 }
 
 CUPBOARD_ESPECIAL::CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
+    std::string text = "Parece que el Armario esta vacio";
+    set_text_empty(text);
     std::list<OBJECT*>* o = get_objects();
     o->push_back(new LETTER_PRUEBA(0,0));
 }
@@ -84,7 +91,8 @@ void CUPBOARD_ESPECIAL::print(char** &map){
 }
 
 TABLE::TABLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-1){
-
+    std::string text = "Una mesa de madera sin mucho misterio";
+    set_text_empty(text);
 }
 
 void TABLE::print(char** &map){

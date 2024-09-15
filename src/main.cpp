@@ -34,17 +34,17 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> start_time_;
 };
 
-void draw_map(CAMERA &c, AVATAR &a, MAP &m){
+void draw_map(CAMERA &c, AVATAR &a, MAP* &m){
         
    std::cout << std::endl << std::endl << std::endl << std::endl;
-   std::cout << "\t\t\t\t" << m.get_name() << std::endl;
+   std::cout << "\t\t\t\t" << m->get_name() << std::endl;
     for(int i = c.get_y(); i<12 + c.get_y(); i++){
         std::cout << "\t\t\t\t";
         for(int j = c.get_x(); j<52 + c.get_x(); j++){
-            if(i >= 0 && j >= 0 && i < m.get_heigth() && j < m.get_width()){
-                if(j == a.get_x() && i == a.get_y() && i < m.get_heigth()-4 && !a.is_behind(m, 0)) std::cout << a.get_lowbody();
-                else if(j == a.get_x() && i == a.get_y()-1 && i < m.get_heigth()-4 && !a.is_behind(m, 1)) std::cout << a.get_head();
-                else std::cout << m.get_map(j, i);
+            if(i >= 0 && j >= 0 && i < m->get_heigth() && j < m->get_width()){
+                if(j == a.get_x() && i == a.get_y() && i < m->get_heigth()-4 && !a.is_behind(*m, 0)) std::cout << a.get_lowbody();
+                else if(j == a.get_x() && i == a.get_y()-1 && i < m->get_heigth()-4 && !a.is_behind(*m, 1)) std::cout << a.get_head();
+                else std::cout << m->get_map(j, i);
             }
             else{
                 std::cout << " ";
@@ -59,7 +59,7 @@ void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects,
     int i;
     if(objects->empty()){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParace no haber nada importante en este " << map_object->get_name();
+        std::cout << "\t\t\t\t" << map_object->get_text_empty();
     }
     else{
         std::cout << std::endl << std::endl;
@@ -92,12 +92,36 @@ void take_object(std::list<OBJECT*>* &objects, int cmmi, AVATAR &a){
     }
 }
 
-void menu_interact(MAP &m, AVATAR &a, CAMERA &c){
+void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
+    ENTRY_EXITS* entry_exit;
+    std::list<ENTRY_EXITS*>* e;
+    std::list<ENTRY_EXITS*>::iterator itE;
+    std::list<MAP*>::iterator itM;
+    if(!a.interact_entrys_exits(*m, entry_exit)) return;
+    for(itM = maps.begin(); itM != maps.end(); itM++){
+        e = (*itM)->get_entries_exits();
+        for(itE = e->begin(); itE != e->end(); itE++){
+            if(entry_exit->get_code()+1 == (*itE)->get_code() || entry_exit->get_code()-1 == (*itE)->get_code()){
+                if((*itE)->interact_entry()){
+                    m = (*itM);
+                    a.set_x((*itE)->get_entry_exit_x());
+                    a.set_y((*itE)->get_entry_exit_y());
+                    c.set_y(a.get_y()-6);
+                    c.set_x(a.get_x()-26);
+                    return;
+                }
+                else return;
+            }
+        }
+    }
+}
+
+void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
     MAP_OBJECT* map_object;
     std::list<OBJECT*>* o;
     int cmmi = 0;
     char key = ' ';
-    if(!a.interact(m, map_object)) return;
+    if(!a.interact_map_objects(*m, map_object)) return;
     o = map_object->get_objects();
     CLEAR_SCREEN;
     draw_map(c, a, m);
@@ -122,22 +146,22 @@ void menu_interact(MAP &m, AVATAR &a, CAMERA &c){
     }
 }
 
-void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
+void move_avatar(char key, AVATAR &a, CAMERA &c, MAP* &m){
     bool in_animation = false;
     Timer timer;
     while(true){
         if(!in_animation){
             if((key == UP || key == UP2) && a.get_y()-4 >= 0){
                 a.set_dir(1);
-                if(!a.collides(m)){
+                if(!a.collides(*m)){
                     a.set_y(a.get_y()-1);
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
                 }
             }
-            else if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
+            else if((key == DOWN || key == DOWN2) && a.get_y()+1 < m->get_heigth()){
                 a.set_dir(3);
-                if(!a.collides(m)){
+                if(!a.collides(*m)){
                     a.set_y(a.get_y()+1);
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
@@ -145,15 +169,15 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
             }
             else if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
                 a.set_dir(4);
-                if(!a.collides(m)){
+                if(!a.collides(*m)){
                     a.set_x(a.get_x()-1);
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
                 }
             }
-            else if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
+            else if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m->get_width()){
                 a.set_dir(2);
-                if(!a.collides(m)){
+                if(!a.collides(*m)){
                     a.set_x(a.get_x()+1);
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
@@ -169,15 +193,15 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
 
     if((key == UP || key == UP2) && a.get_y()-4 >= 0){
         a.set_dir(1);
-        if(!a.collides(m)){
+        if(!a.collides(*m)){
             a.set_y(a.get_y()-1);
             c.set_y(a.get_y()-6);
             c.set_x(a.get_x()-26);
         }
     }
-    else if((key == DOWN || key == DOWN2) && a.get_y()+1 < m.get_heigth()){
+    else if((key == DOWN || key == DOWN2) && a.get_y()+1 < m->get_heigth()){
         a.set_dir(3);
-        if(!a.collides(m)){
+        if(!a.collides(*m)){
             a.set_y(a.get_y()+1);
             c.set_y(a.get_y()-6);
             c.set_x(a.get_x()-26);
@@ -185,15 +209,15 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
     }
     else if((key == LEFT || key == LEFT2) && a.get_x()-2 >= 0){
         a.set_dir(4);
-        if(!a.collides(m)){
+        if(!a.collides(*m)){
             a.set_x(a.get_x()-1);
             c.set_y(a.get_y()-6);
             c.set_x(a.get_x()-26);
         }
     }
-    else if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m.get_width()){
+    else if((key == RIGHT || key == RIGHT2) && a.get_x()+2 < m->get_width()){
         a.set_dir(2);
-        if(!a.collides(m)){
+        if(!a.collides(*m)){
             a.set_x(a.get_x()+1);
             c.set_y(a.get_y()-6);
             c.set_x(a.get_x()-26);
@@ -208,12 +232,16 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP &m){
 
 
 int main(){
-
-    MAP* map = new MAP_PRUEBA();
+    std::list<MAP*> maps;
+    std::list<MAP*>::iterator itM;
+    maps.push_back(new MAP_PRUEBA());
+    maps.push_back(new MAP_PRUEBA2());
+    itM = maps.begin();
+    MAP* map = (*itM);
     AVATAR a = AVATAR(26, 6);
     char key;
     CAMERA c = CAMERA(0, 0);
-    draw_map(c, a, *map);
+    draw_map(c, a, map);
     while(true){
         
         if(kbhit()){
@@ -221,18 +249,19 @@ int main(){
             if(key == INVENTORY || key == INVENTORY2){
                 a.open_inventory();
                 CLEAR_SCREEN;
-                draw_map(c, a, *map);
+                draw_map(c, a, map);
             }
             else if(key == ACTION || key == ACTION2) {
-                menu_interact(*map, a, c);
+                menu_interact(map, a, c);
+                change_map(maps, map, a, c);
                 CLEAR_SCREEN;
-                draw_map(c, a, *map);
+                draw_map(c, a, map);
                 // CLEAR_SCREEN;
                 // run_lights_out();
                 // draw_map(c, a, *map);
             }
             else if (key == UP || key == UP2 || key == DOWN || key == DOWN2 || key == LEFT || key == LEFT2 || key == RIGHT || key == RIGHT2) 
-                move_avatar(key , a, c, *map);
+                move_avatar(key , a, c, map);
 
         }
     }

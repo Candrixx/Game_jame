@@ -7,6 +7,7 @@
 
 class MAP_OBJECT{
     std::string name;
+    std::string text_empty;
     int up_left_x;
     int up_left_y;
     int bot_right_x;
@@ -21,6 +22,8 @@ public:
     int get_bot_right_x();
     int get_bot_right_y();
     int get_object_heigth();
+    std::string get_text_empty(){ return text_empty; }
+    void set_text_empty(std::string text);
     void set_up_left_x(int _x);
     void set_up_left_y(int _y);
     void set_bot_right_x(int _x);

@@ -6,15 +6,21 @@
 #include "../include/map_objects.h"
 
 class ENTRY_EXITS{
-    int entry_x, entry_y;
-    int exit_x, exit_y;
+    int entry_exit_x, entry_exit_y;
+    int code;
+    int heigth, width;
+    bool acces;
 public:
-    ENTRY_EXITS(int entry_x, int entry_y, int exit_x, int exit_y);
-    int get_entry_x();
-    int get_entry_y();
-    int get_exit_x();
-    int get_exit_y();
-    void print(char **&m);
+    ENTRY_EXITS(int entry_exit_x, int entry_exit_y, int code, int heigth, int width, bool acces);
+    int get_entry_exit_x();
+    int get_entry_exit_y();
+    int get_code();
+    bool get_acces();
+    void set_acces(bool a);
+    int get_heigth();
+    int get_width();
+    virtual void print(char **&m) = 0;
+    virtual bool interact_entry() = 0;
     void delete_(char** map);
 };
 
@@ -40,9 +46,29 @@ public:
     int get_heigth();
 };
 
+class ENTRY_EXITS_MAP_PRUEBA: public ENTRY_EXITS{
+public:
+    ENTRY_EXITS_MAP_PRUEBA(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry() override;
+};
+
+class ENTRY_EXITS_MAP_PRUEBA2: public ENTRY_EXITS{
+public:
+    ENTRY_EXITS_MAP_PRUEBA2(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry() override;
+};
+
 class MAP_PRUEBA:public MAP{
 public:
     MAP_PRUEBA();
+    void fill_map() override;
+};
+
+class MAP_PRUEBA2:public MAP{
+public:
+    MAP_PRUEBA2();
     void fill_map() override;
 };
 

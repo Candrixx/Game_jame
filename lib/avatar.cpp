@@ -108,7 +108,7 @@ void AVATAR::open_inventory(){
     inventory.inventory_interface();
 }
 
-bool AVATAR::interact(MAP &m, MAP_OBJECT* &map_object){
+bool AVATAR::interact_map_objects(MAP &m, MAP_OBJECT* &map_object){
     std::list<MAP_OBJECT*>* mo = m.get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
@@ -126,6 +126,19 @@ bool AVATAR::interact(MAP &m, MAP_OBJECT* &map_object){
         }
         else if(get_x()-1 == (*itMO)->get_bot_right_x() && (*itMO)->get_up_left_y() <= get_y() && get_y() <= (*itMO)->get_bot_right_y()){
             map_object = (*itMO);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool AVATAR::interact_entrys_exits(MAP &m, ENTRY_EXITS* &entry_exit){
+    std::list<ENTRY_EXITS*>* e = m.get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    for(itE = e->begin(); itE != e->end(); itE++){
+        if((*itE)->get_entry_exit_y() <= get_y() && get_y() <= (*itE)->get_entry_exit_y() + (*itE)->get_heigth() && (*itE)->get_entry_exit_x() <= get_x() && get_x() <= (*itE)->get_entry_exit_x() + (*itE)->get_width()){
+            entry_exit = (*itE);
             return true;
         }
     }
