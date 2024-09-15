@@ -5,7 +5,7 @@
 #include "../include/map.h"
 #include "../include/avatar.h"
 #include "../include/lights_out.h"
-
+#include "../include/objects.h"
 
 #define UP 'w'
 #define DOWN 's'
@@ -51,6 +51,74 @@ void draw_map(CAMERA &c, AVATAR &a, MAP &m){
             }
         }
         std::cout << std::endl;
+    }
+}
+
+void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
+    std::list<OBJECT*>::iterator itO;
+    int i;
+    if(objects->empty()){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParace no haber nada importante en este " << map_object->get_name();
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\t" << map_object->get_name() << std::endl;
+        for(i = 0, itO = objects->begin(); itO != objects->end(); i++, itO++){
+            if(i == 5) break;
+           std::cout << "\t\t\t\t"; i == cmmi ? std::cout << "*" : std::cout << "o"; std::cout << " " << (*itO)->get_name() << std::endl;
+        }
+        std::cout << std::endl << "\t\t\t\tTOMAR: E";
+    }
+}
+
+void move_cmmi(char key,int &cmmi, std::list<OBJECT*>* &objects){
+    if((key == UP || key == UP2) && cmmi > 0) cmmi--;
+    else if((key == DOWN || key == DOWN2) && cmmi < 5 && cmmi < objects->size()-1) cmmi++;
+}
+
+void take_object(std::list<OBJECT*>* &objects, int cmmi, AVATAR &a){
+    std::list<OBJECT*>::iterator itO;
+    int i = 0;
+    if(objects->empty()) return;
+    else{
+        for(itO = objects->begin(); itO != objects->end(); itO++, i++){
+            if(i == cmmi){
+                a.take_object((*itO));
+                itO = objects->erase(itO);
+                return;
+            }
+        }
+    }
+}
+
+void menu_interact(MAP &m, AVATAR &a, CAMERA &c){
+    MAP_OBJECT* map_object;
+    std::list<OBJECT*>* o;
+    int cmmi = 0;
+    char key = ' ';
+    if(!a.interact(m, map_object)) return;
+    o = map_object->get_objects();
+    CLEAR_SCREEN;
+    draw_map(c, a, m);
+    draw_menu_interaction(map_object, o, cmmi);
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2){
+                take_object(o, cmmi, a);
+                CLEAR_SCREEN;
+                draw_map(c, a, m);
+                draw_menu_interaction(map_object, o, cmmi);
+            }
+            else if(key == UP || key == UP2 || key == DOWN || key == DOWN2){
+                move_cmmi(key, cmmi, o);
+                CLEAR_SCREEN;
+                draw_map(c, a, m);
+                draw_menu_interaction(map_object, o, cmmi);
+            }
+            else return;
+        }
     }
 }
 
@@ -143,21 +211,25 @@ int main(){
 
     MAP* map = new MAP_PRUEBA();
     AVATAR a = AVATAR(26, 6);
+    char key;
     CAMERA c = CAMERA(0, 0);
     draw_map(c, a, *map);
     while(true){
         
         if(kbhit()){
-            char key = getch();
+            key = getch();
             if(key == INVENTORY || key == INVENTORY2){
                 a.open_inventory();
                 CLEAR_SCREEN;
                 draw_map(c, a, *map);
             }
             else if(key == ACTION || key == ACTION2) {
+                menu_interact(*map, a, c);
                 CLEAR_SCREEN;
-                run_lights_out();
                 draw_map(c, a, *map);
+                // CLEAR_SCREEN;
+                // run_lights_out();
+                // draw_map(c, a, *map);
             }
             else if (key == UP || key == UP2 || key == DOWN || key == DOWN2 || key == LEFT || key == LEFT2 || key == RIGHT || key == RIGHT2) 
                 move_avatar(key , a, c, *map);

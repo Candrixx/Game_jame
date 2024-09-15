@@ -14,17 +14,6 @@
 
 INVENTORY::INVENTORY(){
     this->cord_marker = 0;
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
-    objects.push_back(new LETTER_PRUEBA(0,0));
 }
 
 void INVENTORY::draw_interface(){
@@ -68,9 +57,8 @@ void INVENTORY::inventory_interface(){
     }
 }
 
-void INVENTORY::include_item(OBJECT &item){
-    OBJECT* newItem = &item;
-    objects.push_back(newItem);
+void INVENTORY::include_item(OBJECT* &item){
+    objects.push_back(item);
 }
 
 void INVENTORY::delete_item(OBJECT &item){

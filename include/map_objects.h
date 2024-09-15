@@ -3,6 +3,7 @@
 #include<iostream>
 #include<string.h>
 #include<list>
+#include "../include/objects.h"
 
 class MAP_OBJECT{
     std::string name;
@@ -11,7 +12,7 @@ class MAP_OBJECT{
     int bot_right_x;
     int bot_right_y;
     int object_heigth;
-    std::list<int> objects;
+    std::list<OBJECT*> objects;
 public:
     MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name, int object_heigth);
     std::string get_name(){ return name;}
@@ -25,12 +26,18 @@ public:
     void set_bot_right_x(int _x);
     void set_bot_right_y(int _y);
     virtual void print(char** &map) = 0;
-    std::list<int>* get_objects();
+    std::list<OBJECT*>* get_objects();
 };
 
 class CUPBOARD:public MAP_OBJECT{
 public:
     CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+};
+
+class CUPBOARD_ESPECIAL:public MAP_OBJECT{
+public:
+    CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
     void print(char** &map) override;
 };
 

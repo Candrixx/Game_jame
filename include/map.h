@@ -23,7 +23,7 @@ class MAP{
     int width, heigth;
     std::string name; 
     std::list<MAP_OBJECT*> map_objects;
-    std::list<int> player_objects;
+    std::list<OBJECT*> player_objects;
     std::list<ENTRY_EXITS*> entries_exits;
 public:
     MAP(int width, int heigth, std::string _name);
@@ -34,7 +34,7 @@ public:
     void set_map(int _x, int _y ,char c);
     virtual void fill_map() = 0; 
     std::list<MAP_OBJECT*>* get_map_objects();
-    std::list<int>* get_player_objects();
+    std::list<OBJECT*>* get_player_objects();
     std::list<ENTRY_EXITS*>* get_entries_exits();
     int get_width();
     int get_heigth();

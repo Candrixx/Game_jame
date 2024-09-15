@@ -57,6 +57,10 @@ void AVATAR::print_standar(){
     low_body = 'A';
 }
 
+void AVATAR::take_object(OBJECT* &item){
+    inventory.include_item(item);
+}
+
 bool AVATAR::collides(MAP &m){
     std::list<MAP_OBJECT*>* mo = m.get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
@@ -104,3 +108,27 @@ void AVATAR::open_inventory(){
     inventory.inventory_interface();
 }
 
+bool AVATAR::interact(MAP &m, MAP_OBJECT* &map_object){
+    std::list<MAP_OBJECT*>* mo = m.get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        if(get_y()-1 == (*itMO)->get_bot_right_y() && (*itMO)->get_up_left_x() <= get_x() && get_x() <= (*itMO)->get_bot_right_x()){
+            map_object = (*itMO);
+            return true;
+        }
+        else if(get_x()+1 == (*itMO)->get_up_left_x() && (*itMO)->get_up_left_y() <= get_y() && get_y() <= (*itMO)->get_bot_right_y()){
+            map_object = (*itMO);
+            return true;
+        }
+        else if(get_y()+1 == (*itMO)->get_up_left_y() && (*itMO)->get_up_left_x() <= get_x() && get_x() <= (*itMO)->get_bot_right_x()){
+            map_object = (*itMO);
+            return true;
+        }
+        else if(get_x()-1 == (*itMO)->get_bot_right_x() && (*itMO)->get_up_left_y() <= get_y() && get_y() <= (*itMO)->get_bot_right_y()){
+            map_object = (*itMO);
+            return true;
+        }
+    }
+
+    return false;
+}

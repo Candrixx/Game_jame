@@ -2,6 +2,7 @@
 #include<string.h>
 #include<list>
 #include "../include/map_objects.h"
+#include "../include/objects.h"
 
 MAP_OBJECT::MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name, int object_heigth){
     this->up_left_x = left_up_x;
@@ -9,6 +10,7 @@ MAP_OBJECT::MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_ri
     this->bot_right_x = bot_right_x;
     this->bot_right_y = bot_right_y;
     this->object_heigth = object_heigth;
+    this->name = name;
 }
 
 int MAP_OBJECT::get_up_left_x(){ return up_left_x; }
@@ -30,15 +32,39 @@ void MAP_OBJECT::set_bot_right_y(int _y){
     this->bot_right_y = _y;
 }
 
-std::list<int>* MAP_OBJECT::get_objects(){
+std::list<OBJECT*>* MAP_OBJECT::get_objects(){
     return &objects;
 }
 
-CUPBOARD::CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-2){
+CUPBOARD::CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
 
 }
 
 void CUPBOARD::print(char** &map){
+    map[get_up_left_y()][get_up_left_x()] = 124;
+    map[get_up_left_y()][get_up_left_x()+1] = 32;
+    map[get_up_left_y()][get_up_left_x()+2] = 32;
+    map[get_up_left_y()][get_up_left_x()+3] = 124;
+    map[get_bot_right_y()][get_bot_right_x()] = 217;
+    map[get_bot_right_y()][get_bot_right_x()-1] = 196;
+    map[get_bot_right_y()][get_bot_right_x()-2] = 196;
+    map[get_bot_right_y()][get_bot_right_x()-3] = 192;
+    map[get_up_left_y()-1][get_up_left_x()] = 124;
+    map[get_up_left_y()-1][get_up_left_x()+1] = 46;
+    map[get_up_left_y()-1][get_up_left_x()+2] = 46;
+    map[get_up_left_y()-1][get_up_left_x()+3] = 124;
+    map[get_up_left_y()-2][get_up_left_x()] = 218;
+    map[get_up_left_y()-2][get_up_left_x()+1] = 196;
+    map[get_up_left_y()-2][get_up_left_x()+2] = 196;
+    map[get_up_left_y()-2][get_up_left_x()+3] = 191;
+}
+
+CUPBOARD_ESPECIAL::CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
+    std::list<OBJECT*>* o = get_objects();
+    o->push_back(new LETTER_PRUEBA(0,0));
+}
+
+void CUPBOARD_ESPECIAL::print(char** &map){
     map[get_up_left_y()][get_up_left_x()] = 124;
     map[get_up_left_y()][get_up_left_x()+1] = 32;
     map[get_up_left_y()][get_up_left_x()+2] = 32;

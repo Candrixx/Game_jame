@@ -11,7 +11,7 @@ public:
     INVENTORY();
     void inventory_interface();
     void draw_interface();
-    void include_item(OBJECT &item);
+    void include_item(OBJECT* &item);
     void delete_item(OBJECT &item);
     void move_marker(char key);
     void inventory_interaction();

@@ -1,5 +1,6 @@
 #include "../include/map.h"
 #include "../include/map_objects.h"
+#include "../include/objects.h"
 
 ENTRY_EXITS::ENTRY_EXITS(int entry_x, int entry_y, int exit_x, int exit_y){
     this->entry_x = entry_x;
@@ -41,7 +42,7 @@ MAP::~MAP(){
 }
 
 std::list<MAP_OBJECT*>* MAP::get_map_objects(){ return &map_objects; }
-std::list<int>* MAP::get_player_objects(){ return &player_objects; }
+std::list<OBJECT*>* MAP::get_player_objects(){ return &player_objects; }
 std::list<ENTRY_EXITS*>* MAP::get_entries_exits(){ return &entries_exits; }
 
 int MAP::get_width(){ return width; }
@@ -72,7 +73,7 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     std::list<MAP_OBJECT*>::iterator itMO;
     mo->push_back(new CUPBOARD(12, 3, 15, 4));
     mo->push_back(new CUPBOARD(34, 3, 37, 4));
-    mo->push_back(new CUPBOARD(45, 3, 48, 4));
+    mo->push_back(new CUPBOARD_ESPECIAL(45, 3, 48, 4));
     mo->push_back(new CUPBOARD(34, 12, 37, 13));
     mo->push_back(new TABLE(45, 15, 59, 17));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){

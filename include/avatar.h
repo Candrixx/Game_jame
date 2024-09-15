@@ -3,7 +3,6 @@
 #include "../include/map.h"
 #include "../include/map_objects.h"
 #include "../include/inventory.h"
-
 class CAMERA{
     int x, y;
 public:
@@ -30,9 +29,11 @@ public:
     void set_y(int y);
     int get_dir();
     void set_dir(int d);
+    void take_object(OBJECT* &item);
     void print_animation();
     void print_standar();
     bool collides(MAP &m);
+    bool interact(MAP &m, MAP_OBJECT* &map_object);
     bool is_behind(MAP &m, int c);
     void open_inventory();
 };
