@@ -35,6 +35,7 @@ public:
     bool collides(MAP &m);
     bool interact_map_objects(MAP &m, MAP_OBJECT* &map_object);
     bool interact_entrys_exits(MAP &m, ENTRY_EXITS* &e);
+    bool interact_objects(MAP &m, OBJECT* &o);
     bool is_behind(MAP &m, int c);
     void open_inventory();
 };

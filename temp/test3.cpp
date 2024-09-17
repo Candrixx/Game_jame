@@ -16,6 +16,8 @@
 
 char game_mat[21][53];
 
+
+
 void draw_mat(char game_mat[][53]) {
     for (int i = 0; i < 21; i++) {
         for (int j = 0; j < 53; j++) {

@@ -145,3 +145,16 @@ bool AVATAR::interact_entrys_exits(MAP &m, ENTRY_EXITS* &entry_exit){
 
     return false;
 }
+
+bool AVATAR::interact_objects(MAP &m, OBJECT* &o){
+    std::list<OBJECT*>* ob = m.get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    for(itO = ob->begin(); itO != ob->end(); itO++){
+        if((get_y()+1 == (*itO)->get_y() && get_x() == (*itO)->get_x()) || (get_y()-1 == (*itO)->get_y() && get_x() == (*itO)->get_x()) || (get_y() == (*itO)->get_y() && get_x()+1 == (*itO)->get_x()) || (get_y() == (*itO)->get_y() && get_x()-1 == (*itO)->get_x()) || (get_y() == (*itO)->get_y() && get_x() == (*itO)->get_x())){
+            o = (*itO);
+            return true;
+        }
+    }
+
+    return false;
+}

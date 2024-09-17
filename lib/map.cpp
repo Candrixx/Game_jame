@@ -214,6 +214,12 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     for(itE = e->begin(); itE != e->end(); itE++){
         (*itE)->print(m);
     }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    o->push_back(new LETTER_PRUEBA(58, 12));
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
 }
 
 void MAP_PRUEBA2::fill_map(){

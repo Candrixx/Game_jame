@@ -69,6 +69,8 @@ CUPBOARD_ESPECIAL::CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right
     set_text_empty(text);
     std::list<OBJECT*>* o = get_objects();
     o->push_back(new LETTER_PRUEBA(0,0));
+    o->push_back(new LETTER_PRUEBA(0,0));
+    o->push_back(new LETTER_PRUEBA(0,0));
 }
 
 void CUPBOARD_ESPECIAL::print(char** &map){

@@ -74,10 +74,10 @@ void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects,
 
 void move_cmmi(char key,int &cmmi, std::list<OBJECT*>* &objects){
     if((key == UP || key == UP2) && cmmi > 0) cmmi--;
-    else if((key == DOWN || key == DOWN2) && cmmi < 5 && cmmi < objects->size()-1) cmmi++;
+    else if((key == DOWN || key == DOWN) && cmmi < 5 && cmmi < objects->size()-1) cmmi++;
 }
 
-void take_object(std::list<OBJECT*>* &objects, int cmmi, AVATAR &a){
+void take_object(std::list<OBJECT*>* &objects, int &cmmi, AVATAR &a){
     std::list<OBJECT*>::iterator itO;
     int i = 0;
     if(objects->empty()) return;
@@ -86,6 +86,7 @@ void take_object(std::list<OBJECT*>* &objects, int cmmi, AVATAR &a){
             if(i == cmmi){
                 a.take_object((*itO));
                 itO = objects->erase(itO);
+                cmmi = 0;
                 return;
             }
         }
@@ -112,6 +113,24 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
                 }
                 else return;
             }
+        }
+    }
+}
+
+void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
+    char key;
+    OBJECT* item;
+    char** map = m->get_map_matriz();
+    if(!a.interact_objects(*m, item)) return;
+    a.take_object(item);
+    item->delete_(map);
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t" << item->get_interact_text();
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(false);
+            else return;
         }
     }
 }
@@ -254,6 +273,7 @@ int main(){
             else if(key == ACTION || key == ACTION2) {
                 menu_interact(map, a, c);
                 change_map(maps, map, a, c);
+                pick_up_item(map, a, c);
                 CLEAR_SCREEN;
                 draw_map(c, a, map);
                 // CLEAR_SCREEN;
