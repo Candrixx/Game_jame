@@ -71,6 +71,8 @@ void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     }
     else if(!map_object->get_moved()){
         map_object->move(matriz, a.get_dir(), m->get_heigth(), m->get_width());
+        m->fill_map();
+        m->print_map_object();
         return;
     }
 }
@@ -130,10 +132,7 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
                     a.set_y((*itE)->get_entry_exit_y());
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
-                    Timer timer;
-                    while(true){
-                        if(timer.get_elapsed_time() >= 0.15) return;
-                    }
+                    return;
                 }
                 else return;
             }

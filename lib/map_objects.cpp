@@ -44,7 +44,7 @@ std::list<OBJECT*>* MAP_OBJECT::get_objects(){
 
 CUPBOARD::CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){}
 
-void CUPBOARD::print_front(char** &map){
+void CUPBOARD::print(char** &map){
 
     map[get_up_left_y()][get_up_left_x()] = 124;
     map[get_up_left_y()][get_up_left_x()+1] = 32;
@@ -63,8 +63,6 @@ void CUPBOARD::print_front(char** &map){
     map[get_up_left_y()-2][get_up_left_x()+2] = 196;
     map[get_up_left_y()-2][get_up_left_x()+3] = 191;
 }
-
-void CUPBOARD::print_side(char** &m){}
 
 void CUPBOARD::delete_(char** &m){}
 
@@ -82,7 +80,7 @@ CUPBOARD_ESPECIAL::CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right
     o->push_back(new LETTER_PRUEBA(0,0));
 }
 
-void CUPBOARD_ESPECIAL::print_front(char** &map){
+void CUPBOARD_ESPECIAL::print(char** &map){
     map[get_up_left_y()][get_up_left_x()] = 124;
     map[get_up_left_y()][get_up_left_x()+1] = 32;
     map[get_up_left_y()][get_up_left_x()+2] = 32;
@@ -101,8 +99,6 @@ void CUPBOARD_ESPECIAL::print_front(char** &map){
     map[get_up_left_y()-2][get_up_left_x()+3] = 191;
 }
 
-void CUPBOARD_ESPECIAL::print_side(char** &m){}
-
 void CUPBOARD_ESPECIAL::delete_(char** &m){}
 
 void CUPBOARD_ESPECIAL::move(char** &m, int const &dir, int const &higth, int const &width){}
@@ -114,14 +110,12 @@ void CUPBOARD_ESPECIAL::get_interact_empty(){
 
 TABLE::TABLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-1){}
 
-void TABLE::print_front(char** &map){
+void TABLE::print(char** &map){
     map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 47; map[get_up_left_y()-1][get_up_left_x()+3] = 238; map[get_up_left_y()-1][get_up_left_x()+4] = 238; map[get_up_left_y()-1][get_up_left_x()+5] = 238; map[get_up_left_y()-1][get_up_left_x()+6] = 238; map[get_up_left_y()-1][get_up_left_x()+7] = 238; map[get_up_left_y()-1][get_up_left_x()+8] = 238; map[get_up_left_y()-1][get_up_left_x()+9] = 238; map[get_up_left_y()-1][get_up_left_x()+10] = 238; map[get_up_left_y()-1][get_up_left_x()+11] = 238; map[get_up_left_y()-1][get_up_left_x()+12] = 92; map[get_up_left_y()-1][get_up_left_x()+13] = 32; map[get_up_left_y()-1][get_up_left_x()+14] = 32;
     map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 47; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32; map[get_up_left_y()][get_up_left_x()+5] = 32; map[get_up_left_y()][get_up_left_x()+6] = 32; map[get_up_left_y()][get_up_left_x()+7] = 32; map[get_up_left_y()][get_up_left_x()+8] = 32; map[get_up_left_y()][get_up_left_x()+9] = 32; map[get_up_left_y()][get_up_left_x()+10] = 32; map[get_up_left_y()][get_up_left_x()+11] = 32; map[get_up_left_y()][get_up_left_x()+12] = 32; map[get_up_left_y()][get_up_left_x()+13] = 92; map[get_up_left_y()][get_up_left_x()+14] = 32;
     map[get_up_left_y()+1][get_up_left_x()] = 47; map[get_up_left_y()+1][get_up_left_x()+1] = 95; map[get_up_left_y()+1][get_up_left_x()+2] = 95; map[get_up_left_y()+1][get_up_left_x()+3] = 95; map[get_up_left_y()+1][get_up_left_x()+4] = 95; map[get_up_left_y()+1][get_up_left_x()+5] = 95; map[get_up_left_y()+1][get_up_left_x()+6] = 95; map[get_up_left_y()+1][get_up_left_x()+7] = 95; map[get_up_left_y()+1][get_up_left_x()+8] = 95; map[get_up_left_y()+1][get_up_left_x()+9] = 95; map[get_up_left_y()+1][get_up_left_x()+10] = 95; map[get_up_left_y()+1][get_up_left_x()+11] = 95; map[get_up_left_y()+1][get_up_left_x()+12] = 95; map[get_up_left_y()+1][get_up_left_x()+13] = 95; map[get_up_left_y()+1][get_up_left_x()+14] = 92;
     map[get_up_left_y()+2][get_up_left_x()] = 32; map[get_up_left_y()+2][get_up_left_x()+1] = 124; map[get_up_left_y()+2][get_up_left_x()+2] = 32; map[get_up_left_y()+2][get_up_left_x()+3] = 32; map[get_up_left_y()+2][get_up_left_x()+4] = 32; map[get_up_left_y()+2][get_up_left_x()+5] = 32; map[get_up_left_y()+2][get_up_left_x()+6] = 32; map[get_up_left_y()+2][get_up_left_x()+7] = 32; map[get_up_left_y()+2][get_up_left_x()+8] = 32; map[get_up_left_y()+2][get_up_left_x()+9] = 32; map[get_up_left_y()+2][get_up_left_x()+10] = 32; map[get_up_left_y()+2][get_up_left_x()+11] = 32; map[get_up_left_y()+2][get_up_left_x()+12] = 32; map[get_up_left_y()+2][get_up_left_x()+13] = 124; map[get_up_left_y()+2][get_up_left_x()+14] = 32;
 }
-
-void TABLE::print_side(char** &m){}
 
 void TABLE::delete_(char** &m){}
 
@@ -134,14 +128,12 @@ void TABLE::get_interact_empty(){
 
 BOX::BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "CAJA", left_up_y-1){}
 
-void BOX::print_front(char** &m){
+void BOX::print(char** &m){
     m[get_up_left_y()-1][get_up_left_x()] = 218; m[get_up_left_y()-1][get_up_left_x()+1] = 196; m[get_up_left_y()-1][get_up_left_x()+2] = 196; m[get_up_left_y()-1][get_up_left_x()+3] = 196; m[get_up_left_y()-1][get_up_left_x()+4] = 196; m[get_up_left_y()-1][get_up_left_x()+5] = 191;
     m[get_up_left_y()][get_up_left_x()] = 195; m[get_up_left_y()][get_up_left_x()+1] = 196; m[get_up_left_y()][get_up_left_x()+2] = 196; m[get_up_left_y()][get_up_left_x()+3] = 196; m[get_up_left_y()][get_up_left_x()+4] = 196; m[get_up_left_y()][get_up_left_x()+5] = 180;
     m[get_up_left_y()+1][get_up_left_x()] = 124; m[get_up_left_y()+1][get_up_left_x()+1] = 42; m[get_up_left_y()+1][get_up_left_x()+2] = 46; m[get_up_left_y()+1][get_up_left_x()+3] = 42; m[get_up_left_y()+1][get_up_left_x()+4] = 46; m[get_up_left_y()+1][get_up_left_x()+5] = 124;
     m[get_up_left_y()+2][get_up_left_x()] = 192; m[get_up_left_y()+2][get_up_left_x()+1] = 196; m[get_up_left_y()+2][get_up_left_x()+2] = 196; m[get_up_left_y()+2][get_up_left_x()+3] = 196; m[get_up_left_y()+2][get_up_left_x()+4] = 196; m[get_up_left_y()+2][get_up_left_x()+5] = 217;
 }
-
-void BOX::print_side(char** &m){}
 
 void BOX::delete_(char** &m){
     m[get_up_left_y()-1][get_up_left_x()] = 32; m[get_up_left_y()-1][get_up_left_x()+1] = 32; m[get_up_left_y()-1][get_up_left_x()+2] = 32; m[get_up_left_y()-1][get_up_left_x()+3] = 32; m[get_up_left_y()-1][get_up_left_x()+4] = 32; m[get_up_left_y()-1][get_up_left_x()+5] = 32;
@@ -161,20 +153,22 @@ void BOX::move(char** &m, int const &dir, int const &higth, int const &width){
     if(dir == 1 && get_up_left_y()-2 > 3){
         set_up_left_y(get_up_left_y()-2);
         set_bot_right_y(get_bot_right_y()-2);
+        set_moved(true);
     }
     else if(dir == 2 && get_bot_right_x()+2 < width){
         set_up_left_x(get_up_left_x()+2);
         set_bot_right_x(get_bot_right_x()+2);
+        set_moved(true);
     }
     else if(dir == 3 && get_bot_right_y()+2 < higth){
         set_up_left_y(get_up_left_y()+2);
         set_bot_right_y(get_bot_right_y()+2);
+        set_moved(true);
     }
     else if(dir == 4 && get_up_left_x()-2 > 0){
         set_up_left_x(get_up_left_x()-2);
         set_bot_right_x(get_bot_right_x()-2);
+        set_moved(true);
     }
-    print_front(m);
-    set_moved(true);
 }
 

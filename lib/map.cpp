@@ -53,6 +53,14 @@ std::list<MAP_OBJECT*>* MAP::get_map_objects(){ return &map_objects; }
 std::list<OBJECT*>* MAP::get_player_objects(){ return &player_objects; }
 std::list<ENTRY_EXITS*>* MAP::get_entries_exits(){ return &entries_exits; }
 
+void MAP::print_map_object(){
+    char** m = get_map_matriz();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    for(itMO = map_objects.begin(); itMO != map_objects.end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
 int MAP::get_width(){ return width; }
 int MAP::get_heigth(){ return heigth; }
 char MAP::get_map(int _x, int _y){
@@ -107,7 +115,7 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     mo->push_back(new CUPBOARD(34, 12, 37, 13));
     mo->push_back(new TABLE(45, 15, 59, 17));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
-        (*itMO)->print_front(m);
+        (*itMO)->print(m);
     } 
 }
 
@@ -222,9 +230,9 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     }
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
-    mo->push_back(new BOX(12, 7, 17, 9));
+    mo->push_back(new BOX(12, 2, 17, 4));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
-        (*itMO)->print_front(m);
+        (*itMO)->print(m);
     }
 }
 

@@ -30,8 +30,7 @@ public:
     void set_bot_right_x(int _x);
     void set_bot_right_y(int _y);
     void set_moved(bool m);
-    virtual void print_front(char** &map) = 0;
-    virtual void print_side(char** &map) = 0;
+    virtual void print(char** &map) = 0;
     virtual void delete_(char** &m) = 0;
     virtual void move(char** &m, int const &dir, int const &higth, int const &width) = 0;
     std::list<OBJECT*>* get_objects();
@@ -40,8 +39,7 @@ public:
 class CUPBOARD:public MAP_OBJECT{
 public:
     CUPBOARD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
-    void print_front(char** &map) override;
-    void print_side(char** &map) override;
+    void print(char** &map) override;
     void delete_(char** &m) override;
     void get_interact_empty() override;
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
@@ -50,8 +48,7 @@ public:
 class CUPBOARD_ESPECIAL:public MAP_OBJECT{
 public:
     CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
-    void print_front(char** &map) override;
-    void print_side(char** &map) override;
+    void print(char** &map) override;
     void delete_(char** &m) override;
     void get_interact_empty() override;
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
@@ -60,8 +57,7 @@ public:
 class TABLE:public MAP_OBJECT{
 public:
     TABLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
-    void print_front(char** &map) override;
-    void print_side(char** &map) override;
+    void print(char** &map) override;
     void delete_(char** &m) override;
     void get_interact_empty() override;
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
@@ -70,8 +66,7 @@ public:
 class BOX:public MAP_OBJECT{
 public:
     BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
-    void print_front(char** &map) override;
-    void print_side(char** &map) override;
+    void print(char** &map) override;
     void delete_(char** &m) override;
     void get_interact_empty() override;
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
