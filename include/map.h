@@ -38,7 +38,7 @@ public:
     char get_map(int _x, int _y);
     std::string get_name(){ return name; }
     void set_map(int _x, int _y ,char c);
-    void print_map_object();
+    void print_elements_map();
     virtual void fill_map() = 0; 
     std::list<MAP_OBJECT*>* get_map_objects();
     std::list<OBJECT*>* get_player_objects();

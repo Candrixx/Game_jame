@@ -113,6 +113,10 @@ void INVENTORY::inventory_interface(){
 }
 
 void INVENTORY::include_item(OBJECT* &item){
+    std::list<OBJECT*>::iterator itO;
+    for(itO = objects.begin(); itO!=objects.end(); itO++){
+        if(item->get_code() == (*itO)->get_code()) return;
+    }
     if(item->get_code() / 100 == 1) cant_letters+=1;
     else cant_others+=1;
     objects.push_back(item);

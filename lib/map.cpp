@@ -53,11 +53,19 @@ std::list<MAP_OBJECT*>* MAP::get_map_objects(){ return &map_objects; }
 std::list<OBJECT*>* MAP::get_player_objects(){ return &player_objects; }
 std::list<ENTRY_EXITS*>* MAP::get_entries_exits(){ return &entries_exits; }
 
-void MAP::print_map_object(){
+void MAP::print_elements_map(){
     char** m = get_map_matriz();
     std::list<MAP_OBJECT*>::iterator itMO;
     for(itMO = map_objects.begin(); itMO != map_objects.end(); itMO++){
         (*itMO)->print(m);
+    }
+    std::list<ENTRY_EXITS*>::iterator itE;
+    for(itE = entries_exits.begin(); itE!= entries_exits.end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>::iterator itO;
+    for(itO = player_objects.begin(); itO!= player_objects.end(); itO++){
+        (*itO)->print(m);
     }
 }
 

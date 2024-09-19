@@ -72,9 +72,15 @@ void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     else if(!map_object->get_moved()){
         map_object->move(matriz, a.get_dir(), m->get_heigth(), m->get_width());
         m->fill_map();
-        m->print_map_object();
+        m->print_elements_map();
         return;
     }
+}
+
+void draw_pause_menu() {
+
+    std::cout << "\t\t\t\t\tPAUSA" << std::endl << std::endl << std::endl << std::endl;
+    std::cout << "\t\t\t\tReanudar" << std::endl;
 }
 
 void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
@@ -147,6 +153,8 @@ void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
     if(!a.interact_objects(*m, item)) return;
     a.take_object(item);
     item->delete_(map);
+    item->set_x(0);
+    item->set_y(0);
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\t" << item->get_interact_text();
     while(true){
