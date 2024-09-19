@@ -180,7 +180,7 @@ bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(std::list<OBJECT*>* &o){
     else{
         std::string code; 
         std::cout << std::endl << std::endl;
-        std:: cout << "\t\t\t\tLa puerta parece nececitar un codigo." << std::endl << std::endl;
+        std:: cout << "\t\t\t\tLa puerta parece necesitar un codigo." << std::endl << std::endl;
         std:: cout << "\t\t\t\tQuieres intentar"<< std::endl << std::endl;
         std:: cout << "\t\t\t\tSI: E      NO: ESC";
         for(int i=0; i < 52; i++){
@@ -268,3 +268,4 @@ void MAP_PRUEBA2::fill_map(){
         }
     }
 }
+
