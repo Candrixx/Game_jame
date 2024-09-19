@@ -74,7 +74,7 @@ void ENTRY_EXITS_MAP_PRUEBA::print(char** &m){
     m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
 }
 
-bool ENTRY_EXITS_MAP_PRUEBA::interact_entry(){
+bool ENTRY_EXITS_MAP_PRUEBA::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
@@ -107,7 +107,7 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     mo->push_back(new CUPBOARD(34, 12, 37, 13));
     mo->push_back(new TABLE(45, 15, 59, 17));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
-        (*itMO)->print(m);
+        (*itMO)->print_front(m);
     } 
 }
 
@@ -144,7 +144,7 @@ void ENTRY_EXITS_MAP_PRUEBA2::print(char** &m){
     m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
 }
 
-bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(){
+bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(std::list<OBJECT*>* &o){
     char key;
     char edges[52];
     char ed = 186;
@@ -219,6 +219,12 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     o->push_back(new LETTER_PRUEBA(58, 12));
     for(itO = o->begin(); itO != o->end(); itO++){
         (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new BOX(12, 7, 17, 9));
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print_front(m);
     }
 }
 

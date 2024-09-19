@@ -46,7 +46,7 @@ void INVENTORY::draw_interface(){
                     i++;
                 }    
             }
-            std::cout << std::endl << "\t\t\t\t\t\t" << l << " " << j ;
+            std::cout << std::endl << "\t\t\t\t\t\t\t" << l << " " << j ;
         }
         else if(!page){
             for(itO = objects.begin(); itO!=objects.end(); itO++){

@@ -12,6 +12,7 @@ class INVENTORY{
     bool page;
 public:
     INVENTORY();
+    std::list<OBJECT*>* get_objects(){ return &objects; }
     void inventory_interface();
     void draw_interface();
     void count_cant_letters();

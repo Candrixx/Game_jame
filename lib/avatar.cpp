@@ -35,6 +35,7 @@ int AVATAR::get_x(){ return x; }
 int AVATAR::get_y(){ return y; }
 char AVATAR::get_head(){ return head; }
 char AVATAR::get_lowbody(){ return low_body; }
+INVENTORY* AVATAR::get_inventory(){ return &inventory; }
 
 void AVATAR::set_x(int x){
     this->x = x;

@@ -20,7 +20,7 @@ public:
     int get_heigth();
     int get_width();
     virtual void print(char **&m) = 0;
-    virtual bool interact_entry() = 0;
+    virtual bool interact_entry(std::list<OBJECT*>* &o) = 0;
     void delete_(char** map);
 };
 
@@ -50,14 +50,14 @@ class ENTRY_EXITS_MAP_PRUEBA: public ENTRY_EXITS{
 public:
     ENTRY_EXITS_MAP_PRUEBA(int entry_exit_x, int entry_exit_y);
     void print(char** &m) override;
-    bool interact_entry() override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
 };
 
 class ENTRY_EXITS_MAP_PRUEBA2: public ENTRY_EXITS{
 public:
     ENTRY_EXITS_MAP_PRUEBA2(int entry_exit_x, int entry_exit_y);
     void print(char** &m) override;
-    bool interact_entry() override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
 };
 
 class MAP_PRUEBA:public MAP{

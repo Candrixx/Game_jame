@@ -25,6 +25,7 @@ public:
     int get_y();
     char get_head();
     char get_lowbody();
+    INVENTORY* get_inventory();
     void set_x(int x);
     void set_y(int y);
     int get_dir();
