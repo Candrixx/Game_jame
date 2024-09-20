@@ -65,13 +65,13 @@ KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Lave de Prueba", "Llave 
 void KEY_PRUEBA::content(){
 }
 
-LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Una carta dirijida a nosotros?, pero se desconoce quien la escribio", 222){
+LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Una carta dirijida a nosotros?", 222){
     std::string text = "Has recogido una Una carta sin remitente";
     set_interact_text(text);
 }
 
 void LETTER_TUTORIAL::content(){
-    std::string text = "-Hola de nuevo XXXXX o como sea que te llames ahora,\n\t\t\t\tdiria que ya te sabes las reglas pero ese no es el\n\t\t\t\tcaso, en fin empezemos desde el principio,en este\n\t\t\t\tmomento estas ATRAPADO (vaya novedad), salir? depen-\n\t\t\t\tdera de tus habilidades";
+    std::string text = "-Hola de nuevo XXXXX o como sea que te llames ahora,\n\t\t\t\tdiria que ya te sabes las reglas pero ese no es el\n\t\t\t\tcaso, en fin empezemos desde el principio,en este\n\t\t\t\tmomento estas ATRAPADO (vaya novedad), salir? depen-\n\t\t\t\tdera de tus habilidades, en este lugar encontraras\n\t\t\t\t";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;

@@ -176,7 +176,10 @@ void BOX::move(char** &m, int const &dir, int const &higth, int const &width){
     }
 }
 
-TABLE_TUTORIAL::TABLE_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-1){}
+TABLE_TUTORIAL::TABLE_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Mesa", left_up_y-1){
+    std::list<OBJECT*>* o = get_objects();
+    o->push_back(new LETTER_TUTORIAL(0,0));
+}
 
 void TABLE_TUTORIAL::print(char** &map){
     map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 47; map[get_up_left_y()-1][get_up_left_x()+3] = 238; map[get_up_left_y()-1][get_up_left_x()+4] = 238; map[get_up_left_y()-1][get_up_left_x()+5] = 238; map[get_up_left_y()-1][get_up_left_x()+6] = 238; map[get_up_left_y()-1][get_up_left_x()+7] = 238; map[get_up_left_y()-1][get_up_left_x()+8] = 238; map[get_up_left_y()-1][get_up_left_x()+9] = 92; map[get_up_left_y()-1][get_up_left_x()+10] = 32; map[get_up_left_y()-1][get_up_left_x()+11] = 32;

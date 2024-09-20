@@ -344,8 +344,8 @@ int main(){
                 draw_map(c, a, map);
             }
             else if(key == ACTION || key == ACTION2) {
-                menu_interact(map, a, c);
                 change_map(maps, map, a, c);
+                menu_interact(map, a, c);
                 pick_up_item(map, a, c);
                 CLEAR_SCREEN;
                 draw_map(c, a, map);
