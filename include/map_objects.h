@@ -29,9 +29,10 @@ public:
     void set_up_left_y(int _y);
     void set_bot_right_x(int _x);
     void set_bot_right_y(int _y);
+    void set_object_heigth(int _higth);
     void set_moved(bool m);
     virtual void print(char** &map) = 0;
-    virtual void delete_(char** &m) = 0;
+    virtual void delete_(char** &map) = 0;
     virtual void move(char** &m, int const &dir, int const &higth, int const &width) = 0;
     std::list<OBJECT*>* get_objects();
 };
@@ -68,6 +69,33 @@ public:
     BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
     void print(char** &map) override;
     void delete_(char** &m) override;
+    void get_interact_empty() override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class TABLE_TUTORIAL:public MAP_OBJECT{
+public:
+    TABLE_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &m) override;
+    void get_interact_empty() override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class WINDOW:public MAP_OBJECT{
+public:
+    WINDOW(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &m) override;
+    void get_interact_empty() override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class BOX_TUTORIAL:public MAP_OBJECT{
+public:
+    BOX_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
     void get_interact_empty() override;
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
 };

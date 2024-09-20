@@ -37,6 +37,12 @@ public:
     void content() override;
 };
 
+class LETTER_TUTORIAL: public OBJECT{
+public:
+    LETTER_TUTORIAL(int _x, int _y);
+    void content() override;
+};
+
 
 
 

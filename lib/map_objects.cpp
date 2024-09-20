@@ -34,6 +34,10 @@ void MAP_OBJECT::set_bot_right_y(int _y){
     this->bot_right_y = _y;
 }
 
+void MAP_OBJECT::set_object_heigth(int _heigth){
+    this->object_heigth = _heigth;
+}
+
 void MAP_OBJECT::set_moved(bool m){
     this->moved = m;
 }
@@ -172,3 +176,84 @@ void BOX::move(char** &m, int const &dir, int const &higth, int const &width){
     }
 }
 
+TABLE_TUTORIAL::TABLE_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-1){}
+
+void TABLE_TUTORIAL::print(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 47; map[get_up_left_y()-1][get_up_left_x()+3] = 238; map[get_up_left_y()-1][get_up_left_x()+4] = 238; map[get_up_left_y()-1][get_up_left_x()+5] = 238; map[get_up_left_y()-1][get_up_left_x()+6] = 238; map[get_up_left_y()-1][get_up_left_x()+7] = 238; map[get_up_left_y()-1][get_up_left_x()+8] = 238; map[get_up_left_y()-1][get_up_left_x()+9] = 92; map[get_up_left_y()-1][get_up_left_x()+10] = 32; map[get_up_left_y()-1][get_up_left_x()+11] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 47; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32; map[get_up_left_y()][get_up_left_x()+5] = 32; map[get_up_left_y()][get_up_left_x()+6] = 32; map[get_up_left_y()][get_up_left_x()+7] = 32; map[get_up_left_y()][get_up_left_x()+8] = 32; map[get_up_left_y()][get_up_left_x()+9] = 32; map[get_up_left_y()][get_up_left_x()+10] = 92; map[get_up_left_y()][get_up_left_x()+11] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 47; map[get_up_left_y()+1][get_up_left_x()+1] = 95; map[get_up_left_y()+1][get_up_left_x()+2] = 95; map[get_up_left_y()+1][get_up_left_x()+3] = 95; map[get_up_left_y()+1][get_up_left_x()+4] = 95; map[get_up_left_y()+1][get_up_left_x()+5] = 95; map[get_up_left_y()+1][get_up_left_x()+6] = 95; map[get_up_left_y()+1][get_up_left_x()+7] = 95; map[get_up_left_y()+1][get_up_left_x()+8] = 95; map[get_up_left_y()+1][get_up_left_x()+9] = 95; map[get_up_left_y()+1][get_up_left_x()+10] = 95; map[get_up_left_y()+1][get_up_left_x()+11] = 92; 
+    map[get_up_left_y()+2][get_up_left_x()] = 32; map[get_up_left_y()+2][get_up_left_x()+1] = 124; map[get_up_left_y()+2][get_up_left_x()+2] = 32; map[get_up_left_y()+2][get_up_left_x()+3] = 32; map[get_up_left_y()+2][get_up_left_x()+4] = 32; map[get_up_left_y()+2][get_up_left_x()+5] = 32; map[get_up_left_y()+2][get_up_left_x()+6] = 32; map[get_up_left_y()+2][get_up_left_x()+7] = 32; map[get_up_left_y()+2][get_up_left_x()+8] = 32; map[get_up_left_y()+2][get_up_left_x()+9] = 32; map[get_up_left_y()+2][get_up_left_x()+10] = 124; map[get_up_left_y()+2][get_up_left_x()+11] = 32;
+}
+
+void TABLE_TUTORIAL::delete_(char** &m){}
+
+void TABLE_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void TABLE_TUTORIAL::get_interact_empty(){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tParece una Mesa de madera normal, tiene algunas marcas pero sin sentido";
+}
+
+WINDOW::WINDOW(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-1){}
+
+void WINDOW::print(char** &map){
+    map[get_up_left_y()][get_up_left_x()] = 201; map[get_up_left_y()][get_up_left_x()+1] = 205; map[get_up_left_y()][get_up_left_x()+2] = 205; map[get_up_left_y()][get_up_left_x()+3] = 205; map[get_up_left_y()][get_up_left_x()+4] = 205; map[get_up_left_y()][get_up_left_x()+5] = 187;
+    map[get_up_left_y()+1][get_up_left_x()] = 200; map[get_up_left_y()+1][get_up_left_x()+1] = 205; map[get_up_left_y()+1][get_up_left_x()+2] = 205; map[get_up_left_y()+1][get_up_left_x()+3] = 205; map[get_up_left_y()+1][get_up_left_x()+4] = 205; map[get_up_left_y()+1][get_up_left_x()+5] = 188;
+}
+
+void WINDOW::delete_(char** &m){}
+
+void WINDOW::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void WINDOW::get_interact_empty(){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tHay una neblina que no deja ver mas alla";
+}
+
+BOX_TUTORIAL::BOX_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "CAJA", left_up_y-1){}
+
+void BOX_TUTORIAL::print(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 191;
+    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 180;
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 217;
+}
+
+void BOX_TUTORIAL::delete_(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = ' '; map[get_up_left_y()-1][get_up_left_x()+1] = ' '; map[get_up_left_y()-1][get_up_left_x()+2] = ' ';
+    map[get_up_left_y()][get_up_left_x()] = ' '; map[get_up_left_y()][get_up_left_x()+1] = ' '; map[get_up_left_y()][get_up_left_x()+2] = ' ';
+    map[get_up_left_y()+1][get_up_left_x()] = ' '; map[get_up_left_y()+1][get_up_left_x()+1] = ' '; map[get_up_left_y()+1][get_up_left_x()+2] = ' ';
+}
+
+void BOX_TUTORIAL::get_interact_empty(){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tUna caja de carton, parece ligera";
+}
+
+void BOX_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const &width){
+    delete_(m);
+    if(get_moved()) return;
+    if(dir == 1 && get_up_left_y()-3 > 3){
+        set_up_left_y(get_up_left_y()-3);
+        set_bot_right_y(get_bot_right_y()-3);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
+    else if(dir == 2 && get_bot_right_x()+2 < width){
+        set_up_left_x(get_up_left_x()+2);
+        set_bot_right_x(get_bot_right_x()+2);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
+    else if(dir == 3 && get_bot_right_y()+2 < higth){
+        set_up_left_y(get_up_left_y()+2);
+        set_bot_right_y(get_bot_right_y()+2);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
+    else if(dir == 4 && get_up_left_x()-2 > 0){
+        set_up_left_x(get_up_left_x()-2);
+        set_bot_right_x(get_bot_right_x()-2);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
+}

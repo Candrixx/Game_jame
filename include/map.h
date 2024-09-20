@@ -73,4 +73,30 @@ public:
     void fill_map() override;
 };
 
+class EXIT_TUTORIAL_ENTRY_ROOM1: public ENTRY_EXITS{
+public:
+    EXIT_TUTORIAL_ENTRY_ROOM1(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+};
+
+class EXIT_ROOM1_ENTRY_TUTORIAL: public ENTRY_EXITS{
+public:
+    EXIT_ROOM1_ENTRY_TUTORIAL(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+};
+
+class TUTORIAL:public MAP{
+public:
+    TUTORIAL();
+    void fill_map() override;
+};
+
+class ROOM1:public MAP{
+public:
+    ROOM1();
+    void fill_map() override;
+};
+
 #endif

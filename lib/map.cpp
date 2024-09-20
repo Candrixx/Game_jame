@@ -25,7 +25,8 @@ int ENTRY_EXITS::get_heigth(){ return heigth; }
 int ENTRY_EXITS::get_width(){ return width; }
 
 void ENTRY_EXITS::delete_(char** map){
-    map[entry_exit_x][entry_exit_y] = ' ';
+    map[entry_exit_y][entry_exit_x] = ' '; map[entry_exit_y][entry_exit_x+1] = ' '; 
+    map[entry_exit_y+1][entry_exit_x] = ' '; map[entry_exit_y+1][entry_exit_x+1] = ' '; 
 }
 
 void ENTRY_EXITS::set_acces(bool a){
@@ -55,10 +56,6 @@ std::list<ENTRY_EXITS*>* MAP::get_entries_exits(){ return &entries_exits; }
 
 void MAP::print_elements_map(){
     char** m = get_map_matriz();
-    std::list<MAP_OBJECT*>::iterator itMO;
-    for(itMO = map_objects.begin(); itMO != map_objects.end(); itMO++){
-        (*itMO)->print(m);
-    }
     std::list<ENTRY_EXITS*>::iterator itE;
     for(itE = entries_exits.begin(); itE!= entries_exits.end(); itE++){
         (*itE)->print(m);
@@ -66,6 +63,10 @@ void MAP::print_elements_map(){
     std::list<OBJECT*>::iterator itO;
     for(itO = player_objects.begin(); itO!= player_objects.end(); itO++){
         (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>::iterator itMO;
+    for(itMO = map_objects.begin(); itMO != map_objects.end(); itMO++){
+        (*itMO)->print(m);
     }
 }
 
@@ -269,3 +270,90 @@ void MAP_PRUEBA2::fill_map(){
     }
 }
 
+EXIT_TUTORIAL_ENTRY_ROOM1::EXIT_TUTORIAL_ENTRY_ROOM1(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 1, 2, 2, true){}
+
+void EXIT_TUTORIAL_ENTRY_ROOM1::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
+}
+
+bool EXIT_TUTORIAL_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres entrar a ..."<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+EXIT_ROOM1_ENTRY_TUTORIAL::EXIT_ROOM1_ENTRY_TUTORIAL(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 0, 2, 2, true){}
+
+void EXIT_ROOM1_ENTRY_TUTORIAL::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
+}
+
+bool EXIT_ROOM1_ENTRY_TUTORIAL::interact_entry(std::list<OBJECT*>* &o){ return false; }
+
+TUTORIAL::TUTORIAL():MAP(50, 16, "Tutorial"){
+    fill_map();
+    std::list<ENTRY_EXITS*>* e = get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    e->push_back(new EXIT_TUTORIAL_ENTRY_ROOM1(47,6));
+    char ** m = get_map_matriz();
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new TABLE_TUTORIAL(17, 7, 28, 9));
+    mo->push_back(new WINDOW(19, 1, 24, 2));
+    mo->push_back(new BOX_TUTORIAL(46, 7, 48, 8));
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
+void TUTORIAL::fill_map(){
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 1, char(32));
+        set_map(j, 2, char(32));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-2, char(32));
+        set_map(j, get_heigth()-3, char(32));
+        set_map(j, get_heigth()-4, char(238));
+    }
+
+    for(int i = 0; i < get_heigth(); i++){
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-1; j++){
+            set_map(j, i, char(32));
+        }
+    }
+    set_map(3, 1, char(254)); set_map(4, 1, char(254)); set_map(2, 2, char(254)); set_map(11, 1, char(254)); set_map(12, 2, char(254));
+    set_map(16, 2, char(254)); set_map(17, 2, char(254)); set_map(28, 1, char(254)); set_map(29, 1, char(254)); set_map(30, 2, char(254));
+    set_map(31, 2, char(254)); set_map(35, 1, char(220)); set_map(40, 2, char(254)); set_map(45, 1, char(254)); set_map(46, 1, char(254));
+    set_map(2, get_heigth()-2, char(254)); set_map(8, get_heigth()-3, char(254)); set_map(9, get_heigth()-3, char(254)); set_map(11, get_heigth()-2, char(254)); set_map(12, get_heigth()-2, char(254));
+    set_map(18, get_heigth()-3, char(254)); set_map(19, get_heigth()-3, char(254)); set_map(24, get_heigth()-2, char(254)); set_map(25, get_heigth()-2, char(254)); set_map(27, get_heigth()-3, char(254));
+    set_map(32, get_heigth()-3, char(254)); set_map(33, get_heigth()-3, char(254)); set_map(35, get_heigth()-2, char(254)); set_map(36, get_heigth()-2, char(254)); set_map(42, get_heigth()-2, char(254));
+    set_map(44, get_heigth()-3, char(254)); set_map(45, get_heigth()-3, char(254)); 
+}

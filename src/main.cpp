@@ -324,13 +324,14 @@ void intro(std::list<MAP*> &maps, MAP* &map){
 int main(){
     std::list<MAP*> maps;
     std::list<MAP*>::iterator itM;
+    maps.push_back(new TUTORIAL());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     itM = maps.begin();
     MAP* map = (*itM);
-    AVATAR a = AVATAR(26, 6);
+    AVATAR a = AVATAR(10, 8);
     char key;
-    CAMERA c = CAMERA(0, 0);
+    CAMERA c = CAMERA(a.get_x()-26, a.get_y()-6);
     intro(maps, map);
     draw_map(c, a, map);
     while(true){
