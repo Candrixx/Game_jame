@@ -240,6 +240,7 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
     mo->push_back(new BOX(12, 2, 17, 4));
+    mo->push_back(new CUPBOARD_PUZLE(18, 3, 24, 4));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     }
@@ -358,7 +359,7 @@ void TUTORIAL::fill_map(){
     set_map(44, get_heigth()-3, char(254)); set_map(45, get_heigth()-3, char(254)); 
 }
 
-ROOM1::ROOM1():MAP(80, 16, "Tutorial"){
+ROOM1::ROOM1():MAP(60, 16, "Tutorial"){
     fill_map();
     std::list<ENTRY_EXITS*>* e = get_entries_exits();
     std::list<ENTRY_EXITS*>::iterator itE;

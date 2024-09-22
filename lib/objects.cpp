@@ -57,7 +57,7 @@ void LETTER_PRUEBA::content(){
     }    
 }
 
-KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Lave de Prueba", "Llave que habre una cerradura", 211){
+KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Lave de Prueba", "Llave que abre una cerradura", 211){
     std::string text = "Has recogido una Llave de Prueba";
     set_interact_text(text);
 }
@@ -65,9 +65,7 @@ KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Lave de Prueba", "Llave 
 void KEY_PRUEBA::content(){
 }
 
-LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Una carta dirijida a nosotros?", 222){
-    std::string text = "Has recogido una Una carta sin remitente";
-    set_interact_text(text);
+LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Una carta dirigida a nosotros?", 222){
 }
 
 void LETTER_TUTORIAL::content(){

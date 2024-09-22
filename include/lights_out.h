@@ -119,10 +119,10 @@ inline bool lights_out(char key) {
 }
 
 inline int run_lights_out() {
-
+    
     char minigame_key;
     bool lights_out_flag = false;
-
+    CLEAR_SCREEN;
     while (true) {
         if (lights_out_flag == false)
             lightsOut.print_lights_out();

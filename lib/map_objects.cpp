@@ -3,6 +3,13 @@
 #include<list>
 #include "../include/map_objects.h"
 #include "../include/objects.h"
+#include "../include/lights_out.h"
+#include "../include/timer.h"
+#define ACTION 'e'
+#define ACTION2 'E'
+
+bool lights_out_flag = false;
+
 
 MAP_OBJECT::MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name, int object_heigth){
     this->up_left_x = left_up_x;
@@ -72,7 +79,7 @@ void CUPBOARD::delete_(char** &m){}
 
 void CUPBOARD::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void CUPBOARD::get_interact_empty(){
+void CUPBOARD::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
 }
@@ -107,7 +114,7 @@ void CUPBOARD_ESPECIAL::delete_(char** &m){}
 
 void CUPBOARD_ESPECIAL::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void CUPBOARD_ESPECIAL::get_interact_empty(){
+void CUPBOARD_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tParece que el Armario esta vacio";
 }
@@ -125,7 +132,7 @@ void TABLE::delete_(char** &m){}
 
 void TABLE::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void TABLE::get_interact_empty(){
+void TABLE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tParece una Mesa de madera sin nada especial";
 }
@@ -146,7 +153,7 @@ void BOX::delete_(char** &m){
     m[get_up_left_y()+2][get_up_left_x()] = 32; m[get_up_left_y()+2][get_up_left_x()+1] = 32; m[get_up_left_y()+2][get_up_left_x()+2] = 32; m[get_up_left_y()+2][get_up_left_x()+3] = 32; m[get_up_left_y()+2][get_up_left_x()+4] = 32; m[get_up_left_y()+2][get_up_left_x()+5] = 32;
 }
 
-void BOX::get_interact_empty(){
+void BOX::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tUna caja con un decorado en el frente, parece ligera";
 }
@@ -192,7 +199,7 @@ void TABLE_TUTORIAL::delete_(char** &m){}
 
 void TABLE_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void TABLE_TUTORIAL::get_interact_empty(){
+void TABLE_TUTORIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tParece una Mesa de madera normal, tiene algunas marcas pero sin sentido";
 }
@@ -208,7 +215,7 @@ void WINDOW::delete_(char** &m){}
 
 void WINDOW::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void WINDOW::get_interact_empty(){
+void WINDOW::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tHay una neblina que no deja ver mas alla";
 }
@@ -227,7 +234,7 @@ void BOX_TUTORIAL::delete_(char** &map){
     map[get_up_left_y()+1][get_up_left_x()] = ' '; map[get_up_left_y()+1][get_up_left_x()+1] = ' '; map[get_up_left_y()+1][get_up_left_x()+2] = ' ';
 }
 
-void BOX_TUTORIAL::get_interact_empty(){
+void BOX_TUTORIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tUna caja de carton, parece ligera";
 }
@@ -258,5 +265,81 @@ void BOX_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const &
         set_bot_right_x(get_bot_right_x()-2);
         set_object_heigth(get_up_left_y()-1);
         set_moved(true);
+    }
+}
+
+CUPBOARD_PUZLE::CUPBOARD_PUZLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario con Mecanismo", left_up_y-2){}
+
+void CUPBOARD_PUZLE::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 218; map[get_up_left_y()-2][get_up_left_x()+1] = 196; map[get_up_left_y()-2][get_up_left_x()+2] = 196; map[get_up_left_y()-2][get_up_left_x()+3] = 196; map[get_up_left_y()-2][get_up_left_x()+4] = 196; map[get_up_left_y()-2][get_up_left_x()+5] = 196; map[get_up_left_y()-2][get_up_left_x()+6] = 191;
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 218; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 191; map[get_up_left_y()-1][get_up_left_x()+5] = 32; map[get_up_left_y()-1][get_up_left_x()+6] = 124;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 192; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 217; map[get_up_left_y()][get_up_left_x()+5] = 32; map[get_up_left_y()][get_up_left_x()+6] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 124; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 111; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 111; map[get_up_left_y()+1][get_up_left_x()+5] = 32; map[get_up_left_y()+1][get_up_left_x()+6] = 124;
+    map[get_up_left_y()+2][get_up_left_x()] = 192; map[get_up_left_y()+2][get_up_left_x()+1] = 196; map[get_up_left_y()+2][get_up_left_x()+2] = 196; map[get_up_left_y()+2][get_up_left_x()+3] = 196; map[get_up_left_y()+2][get_up_left_x()+4] = 196; map[get_up_left_y()+2][get_up_left_x()+5] = 196; map[get_up_left_y()+2][get_up_left_x()+6] = 217;
+}
+
+void CUPBOARD_PUZLE::delete_(char** &m){}
+
+void CUPBOARD_PUZLE::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CUPBOARD_PUZLE::get_interact_empty(char** &map){
+    std::list<OBJECT*>* o = get_objects();
+    char key;
+    if(!lights_out_flag){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParece haber un mecanismo que no deja abrir el armario.";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tQuieres intentar desbloquearlo?";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tSI: E         NO: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    if(run_lights_out()){
+                        o->push_back(new LETTER_PRUEBA(0,0));
+                        o->push_back(new KEY_PRUEBA(0,0));
+                        std::cout << std::endl << std::endl << std::endl << std::endl;
+                        std::cout << "\t\t\t\t";
+                        std::string text = "*Se escucha algo desbloqueandose*";
+                        std::string text2 = "El Armario parece estar abierto";
+                        std::string text3 = "Pero...";
+                        std::string text4 = "Porque siento que esto ya lo he hecho antes";
+                        std::string* t_pointer = &text;
+                        int count = 0;
+                        while(true){
+                            for(int i=0; i< t_pointer->length(); i++){
+                                std::cout << (*t_pointer)[i];
+                                Timer t;
+                                while(true){
+                                    if(t.get_elapsed_time() >= 0.05) break;
+                                }
+                            }
+                            std::cout << std::endl << std::endl;
+                            std::cout << "\t\t\t\t";
+                            Timer t;
+                            while(true){
+                                if(t.get_elapsed_time() >= 1) break;
+                            }
+                            count++;
+                            if(count == 1) t_pointer = &text2;
+                            else if(count == 2) t_pointer = &text3;
+                            else if(count == 3) t_pointer = &text4;
+                            else break;
+                        }
+                        lights_out_flag = true;
+                        map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32;
+                        map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32;
+                        return;
+                    }
+                    else return;
+                }
+                else if(key == ESC) return;
+            }
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tEl Armario ya esta abierto pero vacio";
     }
 }

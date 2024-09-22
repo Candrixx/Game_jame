@@ -2,11 +2,12 @@
 #include<conio.h>
 #include<chrono>
 #include<list>
+#include<windows.h>
 #include "../include/map.h"
 #include "../include/avatar.h"
-#include "../include/lights_out.h"
 #include "../include/objects.h"
 #include "../include/re_door.h"
+#include "../include/timer.h"
 
 #define UP 'w'
 #define DOWN 's'
@@ -25,19 +26,17 @@
 
 bool cinematic_1_flag = false;
 
-class Timer {
-public:
-    Timer() : start_time_(std::chrono::steady_clock::now()) {}
+void remove_cursor(){
+    HANDLE encabezado;
+    encabezado = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    float get_elapsed_time() const {
-        auto end_time = std::chrono::steady_clock::now();
-        auto elapsed = end_time - start_time_;
-        return static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count()) / 1000.0f;
-    }
+    CONSOLE_CURSOR_INFO f_cursor;
+    f_cursor.dwSize = 1;
+    f_cursor.bVisible = FALSE;
 
-private:
-    std::chrono::time_point<std::chrono::steady_clock> start_time_;
-};
+    SetConsoleCursorInfo(encabezado, &f_cursor);
+}
+
 
 void draw_map(CAMERA &c, AVATAR &a, MAP* &m){
         
@@ -192,8 +191,11 @@ void cinematic_1(MAP* &m, CAMERA &c, AVATAR &a){
             if(ti.get_elapsed_time() >= 0.02) break;
         }
     }
-    std::cin.get();
-
+    Timer time;
+    while(true){
+        if(time.get_elapsed_time() >= 2) break;
+    }
+    return;
 }
 
 void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
@@ -223,11 +225,19 @@ void draw_pause_menu() {
     std::cout << "\t\t\t\tReanudar" << std::endl;
 }
 
-void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
+void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
+    char** map = m->get_map_matriz();
     std::list<OBJECT*>::iterator itO;
     int i;
     if(objects->empty()){
-        map_object->get_interact_empty();
+        map_object->get_interact_empty(map);
+        if(map_object->get_name() == "Armario con Mecanismo" && !lights_out_flag){
+            CLEAR_SCREEN;
+            draw_map(c, a, m);
+            return;
+        }
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tCERRAR: ESC";
     }
     else{
         std::cout << std::endl << std::endl;
@@ -236,7 +246,7 @@ void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects,
             if(i == 5) break;
            std::cout << "\t\t\t\t"; i == cmmi ? std::cout << "*" : std::cout << "o"; std::cout << " " << (*itO)->get_name() << std::endl;
         }
-        std::cout << std::endl << "\t\t\t\tTOMAR: E";
+        std::cout << std::endl << "\t\t\t\tTOMAR: E           CERRAR: ESC";
     }
 }
 
@@ -278,7 +288,7 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
                     a.set_y((*itE)->get_entry_exit_y());
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
-                    if(!cinematic_1_flag) cinematic_1(m, c, a);
+                    if(!cinematic_1_flag && (*itE)->get_code() == 2) cinematic_1(m, c, a);
                     return;
                 }
                 else return;
@@ -316,7 +326,8 @@ void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
     o = map_object->get_objects();
     CLEAR_SCREEN;
     draw_map(c, a, m);
-    draw_menu_interaction(map_object, o, cmmi);
+    draw_menu_interaction(m, a, c, map_object, o, cmmi);
+    if(map_object->get_name() == "Armario con Mecanismo" && !lights_out_flag) return;
     while(true){
         if(kbhit()){
             key = getch();
@@ -324,15 +335,15 @@ void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
                 take_object(o, cmmi, a);
                 CLEAR_SCREEN;
                 draw_map(c, a, m);
-                draw_menu_interaction(map_object, o, cmmi);
+                draw_menu_interaction(m, a, c, map_object, o, cmmi);
             }
             else if(key == UP || key == UP2 || key == DOWN || key == DOWN2){
                 move_cmmi(key, cmmi, o);
                 CLEAR_SCREEN;
                 draw_map(c, a, m);
-                draw_menu_interaction(map_object, o, cmmi);
+                draw_menu_interaction(m, a, c, map_object, o, cmmi);
             }
-            else return;
+            else if(key == ESC) return;
         }
     }
 }
@@ -381,14 +392,13 @@ void intro(std::list<MAP*> &maps, MAP* &map){
 
 
 int main(){
+    remove_cursor();
     std::list<MAP*> maps;
-    std::list<MAP*>::iterator itM;
     maps.push_back(new TUTORIAL());
     maps.push_back(new ROOM1());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
-    itM = maps.begin();
-    MAP* map = (*itM);
+    MAP* map = (*maps.begin());
     AVATAR a = AVATAR(10, 8);
     char key;
     CAMERA c = CAMERA(a.get_x()-26, a.get_y()-6);
