@@ -277,11 +277,20 @@ void EXIT_TUTORIAL_ENTRY_ROOM1::print(char** &m){
     m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
 }
 
-bool EXIT_TUTORIAL_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
+bool EXIT_TUTORIAL_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){ return false; }
+
+EXIT_ROOM1_ENTRY_TUTORIAL::EXIT_ROOM1_ENTRY_TUTORIAL(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 2, 2, 2, true){}
+
+void EXIT_ROOM1_ENTRY_TUTORIAL::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
+}
+
+bool EXIT_ROOM1_ENTRY_TUTORIAL::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a ..."<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -291,16 +300,7 @@ bool EXIT_TUTORIAL_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
         }
     }
     return false;
-}
-
-EXIT_ROOM1_ENTRY_TUTORIAL::EXIT_ROOM1_ENTRY_TUTORIAL(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 0, 2, 2, true){}
-
-void EXIT_ROOM1_ENTRY_TUTORIAL::print(char** &m){
-    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
-    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
-}
-
-bool EXIT_ROOM1_ENTRY_TUTORIAL::interact_entry(std::list<OBJECT*>* &o){ return false; }
+ }
 
 TUTORIAL::TUTORIAL():MAP(50, 16, "Tutorial"){
     fill_map();
@@ -357,3 +357,52 @@ void TUTORIAL::fill_map(){
     set_map(32, get_heigth()-3, char(254)); set_map(33, get_heigth()-3, char(254)); set_map(35, get_heigth()-2, char(254)); set_map(36, get_heigth()-2, char(254)); set_map(42, get_heigth()-2, char(254));
     set_map(44, get_heigth()-3, char(254)); set_map(45, get_heigth()-3, char(254)); 
 }
+
+ROOM1::ROOM1():MAP(80, 16, "Tutorial"){
+    fill_map();
+    std::list<ENTRY_EXITS*>* e = get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    e->push_back(new EXIT_ROOM1_ENTRY_TUTORIAL(1,6));
+    char ** m = get_map_matriz();
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
+void ROOM1::fill_map(){
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 1, char(32));
+        set_map(j, 2, char(32));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-2, char(32));
+        set_map(j, get_heigth()-3, char(32));
+        set_map(j, get_heigth()-4, char(238));
+    }
+
+    for(int i = 0; i < get_heigth(); i++){
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-1; j++){
+            set_map(j, i, char(32));
+        }
+    }
+}
+
+
+

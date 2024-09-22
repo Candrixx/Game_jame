@@ -6,6 +6,7 @@
 #include "../include/avatar.h"
 #include "../include/lights_out.h"
 #include "../include/objects.h"
+#include "../include/re_door.h"
 
 #define UP 'w'
 #define DOWN 's'
@@ -21,6 +22,8 @@
 #define INVENTORY2 'I'
 #define MOVE_OBJECT 'r'
 #define MOVE_OBJECT2 'R'
+
+bool cinematic_1_flag = false;
 
 class Timer {
 public:
@@ -53,146 +56,6 @@ void draw_map(CAMERA &c, AVATAR &a, MAP* &m){
             }
         }
         std::cout << std::endl;
-    }
-}
-
-void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
-    char ** matriz = m->get_map_matriz(); 
-    MAP_OBJECT* map_object;
-    if(!a.interact_map_objects(*m, map_object)) return;
-    if(map_object->get_moved()){
-        std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tNo parece que se pueda mover mas";
-        while(true){
-            if(kbhit()){
-                if(true) return;
-            }
-        }
-    }
-    else if(!map_object->get_moved()){
-        map_object->move(matriz, a.get_dir(), m->get_heigth(), m->get_width());
-        m->fill_map();
-        m->print_elements_map();
-        return;
-    }
-}
-
-void draw_pause_menu() {
-
-    std::cout << "\t\t\t\t\tPAUSA" << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\tReanudar" << std::endl;
-}
-
-void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
-    std::list<OBJECT*>::iterator itO;
-    int i;
-    if(objects->empty()){
-        map_object->get_interact_empty();
-    }
-    else{
-        std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\t" << map_object->get_name() << std::endl;
-        for(i = 0, itO = objects->begin(); itO != objects->end(); i++, itO++){
-            if(i == 5) break;
-           std::cout << "\t\t\t\t"; i == cmmi ? std::cout << "*" : std::cout << "o"; std::cout << " " << (*itO)->get_name() << std::endl;
-        }
-        std::cout << std::endl << "\t\t\t\tTOMAR: E";
-    }
-}
-
-void move_cmmi(char key,int &cmmi, std::list<OBJECT*>* &objects){
-    if((key == UP || key == UP2) && cmmi > 0) cmmi--;
-    else if((key == DOWN || key == DOWN) && cmmi < 5 && cmmi < objects->size()-1) cmmi++;
-}
-
-void take_object(std::list<OBJECT*>* &objects, int &cmmi, AVATAR &a){
-    std::list<OBJECT*>::iterator itO;
-    int i = 0;
-    if(objects->empty()) return;
-    else{
-        for(itO = objects->begin(); itO != objects->end(); itO++, i++){
-            if(i == cmmi){
-                a.take_object((*itO));
-                itO = objects->erase(itO);
-                cmmi = 0;
-                return;
-            }
-        }
-    }
-}
-
-void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
-    ENTRY_EXITS* entry_exit;
-    std::list<ENTRY_EXITS*>* e;
-    std::list<ENTRY_EXITS*>::iterator itE;
-    std::list<MAP*>::iterator itM;
-    std::list<OBJECT*>* o = a.get_inventory()->get_objects() ;
-    if(!a.interact_entrys_exits(*m, entry_exit)) return;
-    for(itM = maps.begin(); itM != maps.end(); itM++){
-        e = (*itM)->get_entries_exits();
-        for(itE = e->begin(); itE != e->end(); itE++){
-            if(entry_exit->get_code()+1 == (*itE)->get_code() || entry_exit->get_code()-1 == (*itE)->get_code()){
-                if((*itE)->interact_entry(o)){
-                    m = (*itM);
-                    a.set_x((*itE)->get_entry_exit_x());
-                    a.set_y((*itE)->get_entry_exit_y());
-                    c.set_y(a.get_y()-6);
-                    c.set_x(a.get_x()-26);
-                    return;
-                }
-                else return;
-            }
-        }
-    }
-}
-
-void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
-    char key;
-    OBJECT* item;
-    char** map = m->get_map_matriz();
-    if(!a.interact_objects(*m, item)) return;
-    a.take_object(item);
-    item->delete_(map);
-    item->set_x(0);
-    item->set_y(0);
-    std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\t" << item->get_interact_text();
-    while(true){
-        if(kbhit()){
-            key = getch();
-            if(false);
-            else return;
-        }
-    }
-}
-
-void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
-    MAP_OBJECT* map_object;
-    std::list<OBJECT*>* o;
-    int cmmi = 0;
-    char key = ' ';
-    if(!a.interact_map_objects(*m, map_object)) return;
-    o = map_object->get_objects();
-    CLEAR_SCREEN;
-    draw_map(c, a, m);
-    draw_menu_interaction(map_object, o, cmmi);
-    while(true){
-        if(kbhit()){
-            key = getch();
-            if(key == ACTION || key == ACTION2){
-                take_object(o, cmmi, a);
-                CLEAR_SCREEN;
-                draw_map(c, a, m);
-                draw_menu_interaction(map_object, o, cmmi);
-            }
-            else if(key == UP || key == UP2 || key == DOWN || key == DOWN2){
-                move_cmmi(key, cmmi, o);
-                CLEAR_SCREEN;
-                draw_map(c, a, m);
-                draw_menu_interaction(map_object, o, cmmi);
-            }
-            else return;
-        }
     }
 }
 
@@ -278,6 +141,202 @@ void move_avatar(char key, AVATAR &a, CAMERA &c, MAP* &m){
     draw_map(c, a, m);
 }
 
+void cinematic_1(MAP* &m, CAMERA &c, AVATAR &a){
+    cinematic_1_flag = true;
+    std::list<ENTRY_EXITS*>* e = m->get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    char** map = m->get_map_matriz();
+    for(int i=0; i<3; i++){
+        move_avatar('d', a, c, m);
+        Timer t;
+        while(true){
+            if(t.get_elapsed_time() >= 0.8) break;
+        }
+    }
+    for(itE = e->begin(); itE!=e->end(); itE++){
+        if((*itE)->get_code() == 2){
+            (*itE)->delete_(map);
+        }
+    }
+    CLEAR_SCREEN;
+    draw_map(c, a, m);
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t*BAM*";
+    Timer t;
+    while(true){
+        if(t.get_elapsed_time() >= 2) break;
+    }
+    move_avatar('a', a, c, m);
+    Timer tim;
+    while(true){
+        if(tim.get_elapsed_time() >= 1.5) break;
+    }
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t";
+    for(int i=0; i<3; i++){
+        std::cout << ".";
+        Timer ti;
+        while(true){
+            if(ti.get_elapsed_time() >= 1) break;
+        }
+    }
+    CLEAR_SCREEN;
+    draw_map(c, a, m);
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t";
+    std::string text = "La puerta acaba de desaparecer?????????";
+    for(int i = 0; i < text.length(); i++){
+        std::cout << text[i];
+        Timer ti;
+        while(true){
+            if(ti.get_elapsed_time() >= 0.02) break;
+        }
+    }
+    std::cin.get();
+
+}
+
+void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
+    char ** matriz = m->get_map_matriz(); 
+    MAP_OBJECT* map_object;
+    if(!a.interact_map_objects(*m, map_object)) return;
+    if(map_object->get_moved()){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tNo parece que se pueda mover mas";
+        while(true){
+            if(kbhit()){
+                if(true) return;
+            }
+        }
+    }
+    else if(!map_object->get_moved()){
+        map_object->move(matriz, a.get_dir(), m->get_heigth(), m->get_width());
+        m->fill_map();
+        m->print_elements_map();
+        return;
+    }
+}
+
+void draw_pause_menu() {
+
+    std::cout << "\t\t\t\t\tPAUSA" << std::endl << std::endl << std::endl << std::endl;
+    std::cout << "\t\t\t\tReanudar" << std::endl;
+}
+
+void draw_menu_interaction(MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
+    std::list<OBJECT*>::iterator itO;
+    int i;
+    if(objects->empty()){
+        map_object->get_interact_empty();
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\t" << map_object->get_name() << std::endl;
+        for(i = 0, itO = objects->begin(); itO != objects->end(); i++, itO++){
+            if(i == 5) break;
+           std::cout << "\t\t\t\t"; i == cmmi ? std::cout << "*" : std::cout << "o"; std::cout << " " << (*itO)->get_name() << std::endl;
+        }
+        std::cout << std::endl << "\t\t\t\tTOMAR: E";
+    }
+}
+
+void move_cmmi(char key,int &cmmi, std::list<OBJECT*>* &objects){
+    if((key == UP || key == UP2) && cmmi > 0) cmmi--;
+    else if((key == DOWN || key == DOWN) && cmmi < 5 && cmmi < objects->size()-1) cmmi++;
+}
+
+void take_object(std::list<OBJECT*>* &objects, int &cmmi, AVATAR &a){
+    std::list<OBJECT*>::iterator itO;
+    int i = 0;
+    if(objects->empty()) return;
+    else{
+        for(itO = objects->begin(); itO != objects->end(); itO++, i++){
+            if(i == cmmi){
+                a.take_object((*itO));
+                itO = objects->erase(itO);
+                cmmi = 0;
+                return;
+            }
+        }
+    }
+}
+
+void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
+    ENTRY_EXITS* entry_exit;
+    std::list<ENTRY_EXITS*>* e;
+    std::list<ENTRY_EXITS*>::iterator itE;
+    std::list<MAP*>::iterator itM;
+    std::list<OBJECT*>* o = a.get_inventory()->get_objects() ;
+    if(!a.interact_entrys_exits(*m, entry_exit)) return;
+    for(itM = maps.begin(); itM != maps.end(); itM++){
+        e = (*itM)->get_entries_exits();
+        for(itE = e->begin(); itE != e->end(); itE++){
+            if(entry_exit->get_code()+1 == (*itE)->get_code() || entry_exit->get_code()-1 == (*itE)->get_code()){
+                if((*itE)->interact_entry(o)){
+                    m = (*itM);
+                    a.set_x((*itE)->get_entry_exit_x());
+                    a.set_y((*itE)->get_entry_exit_y());
+                    c.set_y(a.get_y()-6);
+                    c.set_x(a.get_x()-26);
+                    if(!cinematic_1_flag) cinematic_1(m, c, a);
+                    return;
+                }
+                else return;
+            }
+        }
+    }
+}
+
+void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
+    char key;
+    OBJECT* item;
+    char** map = m->get_map_matriz();
+    if(!a.interact_objects(*m, item)) return;
+    a.take_object(item);
+    item->delete_(map);
+    item->set_x(0);
+    item->set_y(0);
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t" << item->get_interact_text();
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(false);
+            else return;
+        }
+    }
+}
+
+void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
+    MAP_OBJECT* map_object;
+    std::list<OBJECT*>* o;
+    int cmmi = 0;
+    char key = ' ';
+    if(!a.interact_map_objects(*m, map_object)) return;
+    o = map_object->get_objects();
+    CLEAR_SCREEN;
+    draw_map(c, a, m);
+    draw_menu_interaction(map_object, o, cmmi);
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2){
+                take_object(o, cmmi, a);
+                CLEAR_SCREEN;
+                draw_map(c, a, m);
+                draw_menu_interaction(map_object, o, cmmi);
+            }
+            else if(key == UP || key == UP2 || key == DOWN || key == DOWN2){
+                move_cmmi(key, cmmi, o);
+                CLEAR_SCREEN;
+                draw_map(c, a, m);
+                draw_menu_interaction(map_object, o, cmmi);
+            }
+            else return;
+        }
+    }
+}
+
 void intro(std::list<MAP*> &maps, MAP* &map){
     std::list<MAP*>::iterator itM;
     char key;
@@ -325,6 +384,7 @@ int main(){
     std::list<MAP*> maps;
     std::list<MAP*>::iterator itM;
     maps.push_back(new TUTORIAL());
+    maps.push_back(new ROOM1());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     itM = maps.begin();
@@ -349,9 +409,6 @@ int main(){
                 pick_up_item(map, a, c);
                 CLEAR_SCREEN;
                 draw_map(c, a, map);
-                // CLEAR_SCREEN;
-                // run_lights_out();
-                // draw_map(c, a, *map);
             }
             else if(key == MOVE_OBJECT || key == MOVE_OBJECT2){
                 move_map_objects(map, a, c);

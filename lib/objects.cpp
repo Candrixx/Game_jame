@@ -71,7 +71,7 @@ LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remi
 }
 
 void LETTER_TUTORIAL::content(){
-    std::string text = "-Hola de nuevo XXXXX o como sea que te llames ahora,\n\t\t\t\tdiria que ya te sabes las reglas pero ese no es el\n\t\t\t\tcaso, en fin empezemos desde el principio,en este\n\t\t\t\tmomento estas ATRAPADO (vaya novedad), salir? depen-\n\t\t\t\tdera de tus habilidades, en este lugar encontraras\n\t\t\t\t";
+    std::string text = "-Hola de nuevo XXXXX o como sea que te llames ahora,\n\t\t\t\tdiria que ya te sabes las reglas pero ese no es el\n\t\t\t\tcaso, en fin empecemos desde el principio, en este\n\t\t\t\tmomento estas ATRAPADO (vaya novedad), salir? depen-\n\t\t\t\tdera de tus habilidades, en este lugar encontraras\n\t\t\t\tdistintos enigmas aun por desvelar, tu trabajo es encontrar\n\t\t\t\tla manera de salir de este lugar (si puedes).\n\t\t\t\tUn consejo: Todo lo que encuentres tiene una razon.\n\n\t\t\t\t Att: El JUEZ";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;

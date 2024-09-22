@@ -169,8 +169,9 @@ void delete_piece(int oldX, int oldY) {
 }
 
 void print_minigame() {
-    
+    std::cout << std::endl << std::endl;
      for (int i = 0; i < 24; i++) {
+        std::cout << "\t\t\t";
         for (int j = 0; j < 46; j++) {
             if (pX == j && pY == i)
                 std::cout << '*';
