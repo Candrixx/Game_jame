@@ -6,6 +6,11 @@
 #include "../include/objects.h"
 
 extern bool lights_out_flag;
+extern bool lever_1_flag;
+extern bool lever_2_flag;
+extern bool lever_3_flag;
+extern bool lever_4_flag;
+extern bool lever_5_flag;
 
 class MAP_OBJECT{
     std::string name;
@@ -105,6 +110,51 @@ public:
 class CUPBOARD_PUZLE:public MAP_OBJECT{
 public:
     CUPBOARD_PUZLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class LEVER_1:public MAP_OBJECT{
+public:
+    LEVER_1(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class LEVER_2:public MAP_OBJECT{
+public:
+    LEVER_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class LEVER_3:public MAP_OBJECT{
+public:
+    LEVER_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class LEVER_4:public MAP_OBJECT{
+public:
+    LEVER_4(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class LEVER_5:public MAP_OBJECT{
+public:
+    LEVER_5(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
     void print(char** &map) override;
     void delete_(char** &map) override;
     void get_interact_empty(char** &map) override;

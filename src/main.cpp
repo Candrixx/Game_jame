@@ -8,6 +8,7 @@
 #include "../include/objects.h"
 #include "../include/re_door.h"
 #include "../include/timer.h"
+#include "../include/pause_menu.h"
 
 #define UP 'w'
 #define DOWN 's'
@@ -219,12 +220,6 @@ void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     }
 }
 
-void draw_pause_menu() {
-
-    std::cout << "\t\t\t\t\tPAUSA" << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\tReanudar" << std::endl;
-}
-
 void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
     char** map = m->get_map_matriz();
     std::list<OBJECT*>::iterator itO;
@@ -232,6 +227,11 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
     if(objects->empty()){
         map_object->get_interact_empty(map);
         if(map_object->get_name() == "Armario con Mecanismo" && !lights_out_flag){
+            CLEAR_SCREEN;
+            draw_map(c, a, m);
+            return;
+        }
+        else if(map_object->get_name() == "Palanca" && (!lever_1_flag || !lever_2_flag || !lever_3_flag || !lever_4_flag || !lever_5_flag)){
             CLEAR_SCREEN;
             draw_map(c, a, m);
             return;
@@ -328,6 +328,7 @@ void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
     draw_map(c, a, m);
     draw_menu_interaction(m, a, c, map_object, o, cmmi);
     if(map_object->get_name() == "Armario con Mecanismo" && !lights_out_flag) return;
+    else if(map_object->get_name() == "Palanca" && (!lever_1_flag || !lever_2_flag || !lever_3_flag || !lever_4_flag || !lever_5_flag)) return;
     while(true){
         if(kbhit()){
             key = getch();
@@ -428,9 +429,16 @@ int main(){
             else if (key == UP || key == UP2 || key == DOWN || key == DOWN2 || key == LEFT || key == LEFT2 || key == RIGHT || key == RIGHT2)
                 move_avatar(key , a, c, map);
             
-                
-
-        }
+            else if(key == ESC){
+                if(run_pause_menu()){
+                    return 0;
+                }
+                else{
+                    draw_map(c, a, map);
+                    continue;
+                }
+            } 
+        }   
     }
 
     return 0;

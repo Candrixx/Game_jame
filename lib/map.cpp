@@ -24,11 +24,6 @@ bool ENTRY_EXITS::get_acces(){ return acces; }
 int ENTRY_EXITS::get_heigth(){ return heigth; }
 int ENTRY_EXITS::get_width(){ return width; }
 
-void ENTRY_EXITS::delete_(char** map){
-    map[entry_exit_y][entry_exit_x] = ' '; map[entry_exit_y][entry_exit_x+1] = ' '; 
-    map[entry_exit_y+1][entry_exit_x] = ' '; map[entry_exit_y+1][entry_exit_x+1] = ' '; 
-}
-
 void ENTRY_EXITS::set_acces(bool a){
     this->acces = a;
 }
@@ -106,6 +101,8 @@ bool ENTRY_EXITS_MAP_PRUEBA::interact_entry(std::list<OBJECT*>* &o){
     }
     return false;
 }
+
+void ENTRY_EXITS_MAP_PRUEBA::delete_(char** &m){}
 
 MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     fill_map();
@@ -222,6 +219,8 @@ bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(std::list<OBJECT*>* &o){
     return false;
 }
 
+void ENTRY_EXITS_MAP_PRUEBA2::delete_(char** &m){}
+
 MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     fill_map();
     std::list<ENTRY_EXITS*>* e = get_entries_exits();
@@ -241,6 +240,7 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     std::list<MAP_OBJECT*>::iterator itMO;
     mo->push_back(new BOX(12, 2, 17, 4));
     mo->push_back(new CUPBOARD_PUZLE(18, 3, 24, 4));
+    mo->push_back(new LEVER_1(43, 14, 45, 15));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     }
@@ -280,6 +280,8 @@ void EXIT_TUTORIAL_ENTRY_ROOM1::print(char** &m){
 
 bool EXIT_TUTORIAL_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){ return false; }
 
+void EXIT_TUTORIAL_ENTRY_ROOM1::delete_(char** &m){}
+
 EXIT_ROOM1_ENTRY_TUTORIAL::EXIT_ROOM1_ENTRY_TUTORIAL(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 2, 2, 2, true){}
 
 void EXIT_ROOM1_ENTRY_TUTORIAL::print(char** &m){
@@ -302,6 +304,11 @@ bool EXIT_ROOM1_ENTRY_TUTORIAL::interact_entry(std::list<OBJECT*>* &o){
     }
     return false;
  }
+
+void EXIT_ROOM1_ENTRY_TUTORIAL::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = ' '; m[get_entry_exit_y()][get_entry_exit_x()+1] = ' ';
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = ' '; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = ' ';
+}
 
 TUTORIAL::TUTORIAL():MAP(50, 16, "Tutorial"){
     fill_map();

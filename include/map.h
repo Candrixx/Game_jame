@@ -21,7 +21,7 @@ public:
     int get_width();
     virtual void print(char **&m) = 0;
     virtual bool interact_entry(std::list<OBJECT*>* &o) = 0;
-    void delete_(char** map);
+    virtual void delete_(char** &map) = 0;
 };
 
 class MAP{
@@ -52,6 +52,7 @@ public:
     ENTRY_EXITS_MAP_PRUEBA(int entry_exit_x, int entry_exit_y);
     void print(char** &m) override;
     bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
 };
 
 class ENTRY_EXITS_MAP_PRUEBA2: public ENTRY_EXITS{
@@ -59,6 +60,7 @@ public:
     ENTRY_EXITS_MAP_PRUEBA2(int entry_exit_x, int entry_exit_y);
     void print(char** &m) override;
     bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
 };
 
 class MAP_PRUEBA:public MAP{
@@ -78,6 +80,7 @@ public:
     EXIT_TUTORIAL_ENTRY_ROOM1(int entry_exit_x, int entry_exit_y);
     void print(char** &m) override;
     bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
 };
 
 class EXIT_ROOM1_ENTRY_TUTORIAL: public ENTRY_EXITS{
@@ -85,6 +88,7 @@ public:
     EXIT_ROOM1_ENTRY_TUTORIAL(int entry_exit_x, int entry_exit_y);
     void print(char** &m) override;
     bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
 };
 
 class TUTORIAL:public MAP{

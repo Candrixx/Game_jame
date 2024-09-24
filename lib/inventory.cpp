@@ -46,6 +46,7 @@ void INVENTORY::draw_interface(){
                     i++;
                 }    
             }
+            std::cout << std::endl << "\t\t\t\tINSPECCIONAR: E";
             std::cout << std::endl << "\t\t\t\t\t\t\t" << l << " " << j ;
         }
         else if(!page){
@@ -57,6 +58,7 @@ void INVENTORY::draw_interface(){
                     i++;
                 }    
             }
+            std::cout << std::endl << "\t\t\t\tINSPECCIONAR: E";
             std::cout << std::endl << "\t\t\t\t\t\t\t" << j << " " << l ;
         }
         
