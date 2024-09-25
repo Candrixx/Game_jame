@@ -14,6 +14,7 @@ bool lever_2_flag = false;
 bool lever_3_flag = false;
 bool lever_4_flag = false;
 bool lever_5_flag = false;
+bool error_order_levers_flag = false;
 
 
 MAP_OBJECT::MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name, int object_heigth){
@@ -365,10 +366,10 @@ void LEVER_1::print(char** &map){
 }
 
 void LEVER_1::delete_(char** &map){
-    map[get_up_left_y()-2][get_up_left_x()] = ' '; map[get_up_left_y()-2][get_up_left_x()+1] = ' '; map[get_up_left_y()-2][get_up_left_x()+2] = ' '; map[get_up_left_y()-2][get_up_left_x()+3] = ' '; map[get_up_left_y()-2][get_up_left_x()+4] = ' ';
-    map[get_up_left_y()-1][get_up_left_x()] = ' '; map[get_up_left_y()-1][get_up_left_x()+1] = ' '; map[get_up_left_y()-1][get_up_left_x()+2] = ' '; map[get_up_left_y()-1][get_up_left_x()+3] = ' '; map[get_up_left_y()-1][get_up_left_x()+4] = ' ';
-    map[get_up_left_y()][get_up_left_x()] = ' '; map[get_up_left_y()][get_up_left_x()+1] = ' '; map[get_up_left_y()][get_up_left_x()+2] = ' '; map[get_up_left_y()][get_up_left_x()+3] = ' '; map[get_up_left_y()][get_up_left_x()+4] = ' ';
-    map[get_up_left_y()+1][get_up_left_x()] = ' '; map[get_up_left_y()+1][get_up_left_x()+1] = ' '; map[get_up_left_y()+1][get_up_left_x()+2] = ' '; map[get_up_left_y()+1][get_up_left_x()+3] = ' '; map[get_up_left_y()+1][get_up_left_x()+4] = ' ';
+    map[get_up_left_y()-2][get_up_left_x()] = ' '; map[get_up_left_y()-2][get_up_left_x()+1] = ' '; map[get_up_left_y()-2][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()-1][get_up_left_x()] = ' '; map[get_up_left_y()-1][get_up_left_x()+1] = ' '; map[get_up_left_y()-1][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()][get_up_left_x()] = ' '; map[get_up_left_y()][get_up_left_x()+1] = ' '; map[get_up_left_y()][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()+1][get_up_left_x()] = ' '; map[get_up_left_y()+1][get_up_left_x()+1] = ' '; map[get_up_left_y()+1][get_up_left_x()+2] = ' ';
 }
 
 void LEVER_1::move(char** &m, int const &dir, int const &higth, int const &width){}
@@ -386,10 +387,22 @@ void LEVER_1::get_interact_empty(char** &map){
             if(kbhit()){
                 key = getch();
                 if(key == ACTION || key == ACTION2){
-                    lever_1_flag = true;
-                    map[get_up_left_y()-1][get_up_left_x()+1] = 95;
-                    map[get_up_left_y()][get_up_left_x()+1] = 193;
-                    return;
+                    if(!lever_2_flag && !lever_3_flag && !lever_4_flag && !lever_5_flag){
+                        lever_1_flag = true;
+                        map[get_up_left_y()-1][get_up_left_x()+1] = 95;
+                        map[get_up_left_y()][get_up_left_x()+1] = 193;
+                        return;
+                    }
+                    else{
+                        error_order_levers_flag = true;
+                        lever_1_flag = false;
+                        lever_2_flag = false;
+                        lever_3_flag = false;
+                        lever_4_flag = false;
+                        lever_5_flag = false;
+                        return;
+                    }
+                    
                 }
                 else if(key == ESC) return;
             }
@@ -409,5 +422,268 @@ void LEVER_1::get_interact_empty(char** &map){
     }
 }
 
+LEVER_2::LEVER_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Palanca", left_up_y-2){}
 
+void LEVER_2::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 95; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 218; map[get_up_left_y()-2][get_up_left_x()+3] = 196; map[get_up_left_y()-2][get_up_left_x()+4] = 191; 
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 92; map[get_up_left_y()-1][get_up_left_x()+2] = 124; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 124; 
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 124; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 124; 
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 192; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 217; 
+}
 
+void LEVER_2::delete_(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32; map[get_up_left_y()-2][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 32; 
+}
+
+void LEVER_2::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void LEVER_2::get_interact_empty(char** &map){
+    char key;
+    if(!lever_2_flag){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tSI: E              NO: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    if(lever_1_flag && !lever_3_flag && !lever_4_flag && !lever_5_flag){
+                        lever_2_flag = true;
+                        map[get_up_left_y()-2][get_up_left_x()] = 32;
+                         map[get_up_left_y()+1][get_up_left_x()] = 238;
+                         map[get_up_left_y()-1][get_up_left_x()+1] = 32;
+                         map[get_up_left_y()][get_up_left_x()+1] = 47;
+                         return;
+                    }
+                    else{
+                        error_order_levers_flag = true;
+                        lever_1_flag = false;
+                        lever_2_flag = false;
+                        lever_3_flag = false;
+                        lever_4_flag = false;
+                        lever_5_flag = false;
+                        return;
+                    }
+                }
+                else if(key == ESC) return;
+            }
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tCERRAR: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ESC) return;
+            }
+        }
+    }
+}
+
+LEVER_3::LEVER_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Palanca", left_up_y-2){}
+
+void LEVER_3::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 218; map[get_up_left_y()-2][get_up_left_x()+1] = 196; map[get_up_left_y()-2][get_up_left_x()+2] = 191; 
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 194; map[get_up_left_y()-1][get_up_left_x()+2] = 124; 
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 238; map[get_up_left_y()][get_up_left_x()+2] = 124; 
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 217; 
+}
+
+void LEVER_3::delete_(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = ' '; map[get_up_left_y()-2][get_up_left_x()+1] = ' '; map[get_up_left_y()-2][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()-1][get_up_left_x()] = ' '; map[get_up_left_y()-1][get_up_left_x()+1] = ' '; map[get_up_left_y()-1][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()][get_up_left_x()] = ' '; map[get_up_left_y()][get_up_left_x()+1] = ' '; map[get_up_left_y()][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()+1][get_up_left_x()] = ' '; map[get_up_left_y()+1][get_up_left_x()+1] = ' '; map[get_up_left_y()+1][get_up_left_x()+2] = ' ';
+}
+
+void LEVER_3::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void LEVER_3::get_interact_empty(char** &map){
+    char key;
+    if(!lever_3_flag){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tSI: E              NO: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    if(lever_1_flag && lever_2_flag && !lever_4_flag && !lever_5_flag){
+                        lever_3_flag = true;
+                        map[get_up_left_y()-1][get_up_left_x()+1] = 95;
+                        map[get_up_left_y()][get_up_left_x()+1] = 193;
+                        return;
+                    }
+                    else{
+                        error_order_levers_flag = true;
+                        lever_1_flag = false;
+                        lever_2_flag = false;
+                        lever_3_flag = false;
+                        lever_4_flag = false;
+                        lever_5_flag = false;
+                        return;
+                    }
+                    
+                }
+                else if(key == ESC) return;
+            }
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tCERRAR: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ESC) return;
+            }
+        }
+    }
+}
+
+LEVER_4::LEVER_4(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Palanca", left_up_y-2){}
+
+void LEVER_4::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 218; map[get_up_left_y()-2][get_up_left_x()+1] = 196; map[get_up_left_y()-2][get_up_left_x()+2] = 191; map[get_up_left_y()-2][get_up_left_x()+3] = 32; map[get_up_left_y()-2][get_up_left_x()+4] = 95; 
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 124; map[get_up_left_y()-1][get_up_left_x()+3] = 47; map[get_up_left_y()-1][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 124; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 217; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 32; 
+}
+
+void LEVER_4::delete_(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32; map[get_up_left_y()-2][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32; 
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 32; 
+}
+
+void LEVER_4::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void LEVER_4::get_interact_empty(char** &map){
+    char key;
+    if(!lever_4_flag){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tSI: E              NO: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    if(lever_1_flag && lever_2_flag && lever_3_flag &&  !lever_5_flag){
+                        lever_4_flag = true;
+                        map[get_up_left_y()-1][get_up_left_x()+3] = 32;
+                        map[get_up_left_y()][get_up_left_x()+3] = 92;
+                        map[get_up_left_y()-2][get_up_left_x()+4] = 32; 
+                        map[get_up_left_y()+1][get_up_left_x()+4] = 238; 
+                        return;
+                    }
+                    else{
+                        error_order_levers_flag = true;
+                        lever_1_flag = false;
+                        lever_2_flag = false;
+                        lever_3_flag = false;
+                        lever_4_flag = false;
+                        lever_5_flag = false;
+                        return;
+                    }
+                }
+                else if(key == ESC) return;
+            }
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tCERRAR: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ESC) return;
+            }
+        }
+    }
+}
+
+LEVER_5::LEVER_5(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Palanca", left_up_y-2){}
+
+void LEVER_5::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 218; map[get_up_left_y()-2][get_up_left_x()+1] = 196; map[get_up_left_y()-2][get_up_left_x()+2] = 191; 
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 194; map[get_up_left_y()-1][get_up_left_x()+2] = 124; 
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 238; map[get_up_left_y()][get_up_left_x()+2] = 124; 
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 217; 
+}
+
+void LEVER_5::delete_(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = ' '; map[get_up_left_y()-2][get_up_left_x()+1] = ' '; map[get_up_left_y()-2][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()-1][get_up_left_x()] = ' '; map[get_up_left_y()-1][get_up_left_x()+1] = ' '; map[get_up_left_y()-1][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()][get_up_left_x()] = ' '; map[get_up_left_y()][get_up_left_x()+1] = ' '; map[get_up_left_y()][get_up_left_x()+2] = ' '; 
+    map[get_up_left_y()+1][get_up_left_x()] = ' '; map[get_up_left_y()+1][get_up_left_x()+1] = ' '; map[get_up_left_y()+1][get_up_left_x()+2] = ' ';
+}
+
+void LEVER_5::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void LEVER_5::get_interact_empty(char** &map){
+    char key;
+    if(!lever_5_flag){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tSI: E              NO: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    if(lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag){
+                        lever_5_flag = true;
+                        map[get_up_left_y()-1][get_up_left_x()+1] = 95;
+                        map[get_up_left_y()][get_up_left_x()+1] = 193;
+                        return;
+                    }
+                    else{
+                        error_order_levers_flag = true;
+                        lever_1_flag = false;
+                        lever_2_flag = false;
+                        lever_3_flag = false;
+                        lever_4_flag = false;
+                        lever_5_flag = false;
+                        return;
+                    }
+                    
+                }
+                else if(key == ESC) return;
+            }
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tCERRAR: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ESC) return;
+            }
+        }
+    }
+}

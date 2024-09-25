@@ -241,6 +241,10 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     mo->push_back(new BOX(12, 2, 17, 4));
     mo->push_back(new CUPBOARD_PUZLE(18, 3, 24, 4));
     mo->push_back(new LEVER_1(43, 14, 45, 15));
+    mo->push_back(new LEVER_2(34, 14, 38, 15));
+    mo->push_back(new LEVER_3(10, 14, 12, 15));
+    mo->push_back(new LEVER_4(23, 14, 27, 15));
+    mo->push_back(new LEVER_5(32, 8, 34, 9));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     }

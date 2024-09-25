@@ -26,6 +26,7 @@
 #define MOVE_OBJECT2 'R'
 
 bool cinematic_1_flag = false;
+bool entry_room_2_1_flag = false;
 
 void remove_cursor(){
     HANDLE encabezado;
@@ -231,10 +232,33 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
             draw_map(c, a, m);
             return;
         }
-        else if(map_object->get_name() == "Palanca" && (!lever_1_flag || !lever_2_flag || !lever_3_flag || !lever_4_flag || !lever_5_flag)){
+        else if(map_object->get_name() == "Palanca" && !error_order_levers_flag && (!lever_1_flag || !lever_2_flag || !lever_3_flag || !lever_4_flag || !lever_5_flag)){
             CLEAR_SCREEN;
             draw_map(c, a, m);
             return;
+        }
+        else if(map_object->get_name() == "Palanca" && entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) return;
+        else if(map_object->get_name() == "Palanca" && !entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag){
+            // std::list<ENTRY_EXITS*>* e = m->get_entries_exits();
+            // std::list<ENTRY_EXITS*>::iterator itE;
+            // e->push_back(new );
+            // itE = e->end();
+            // (*itE)->print(map);
+            CLEAR_SCREEN;
+            draw_map(c, a, m);
+            std::cout << std::endl << std::endl;
+            std::cout << "\t\t\t\tAcaba de aparecer una puerta en el suelo de la habitacion";
+        }
+        else if(map_object->get_name() == "Palanca" && error_order_levers_flag){
+            std::list<MAP_OBJECT*>* mo = m->get_map_objects();
+            std::list<MAP_OBJECT*>::iterator itMO;
+            for(itMO = mo->begin(); itMO!=mo->end(); itMO++){
+                if((*itMO)->get_name() == "Palanca") (*itMO)->print(map);
+            }
+            CLEAR_SCREEN;
+            draw_map(c, a, m);
+            std::cout << std::endl << std::endl;
+            std::cout << "\t\t\t\tUh parece que el orden de activacion no es correcto";
         }
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
@@ -328,7 +352,10 @@ void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
     draw_map(c, a, m);
     draw_menu_interaction(m, a, c, map_object, o, cmmi);
     if(map_object->get_name() == "Armario con Mecanismo" && !lights_out_flag) return;
-    else if(map_object->get_name() == "Palanca" && (!lever_1_flag || !lever_2_flag || !lever_3_flag || !lever_4_flag || !lever_5_flag)) return;
+    else if(map_object->get_name() == "Palanca" && !error_order_levers_flag && (!lever_1_flag || !lever_2_flag || !lever_3_flag || !lever_4_flag || !lever_5_flag)) return;
+    else if(map_object->get_name() == "Palanca" && error_order_levers_flag) error_order_levers_flag = false;
+    else if(map_object->get_name() == "Palanca" && entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) return;
+    else if(map_object->get_name() == "Palanca" && !entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) entry_room_2_1_flag = true;
     while(true){
         if(kbhit()){
             key = getch();
