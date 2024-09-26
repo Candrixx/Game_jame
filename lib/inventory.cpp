@@ -22,6 +22,11 @@ INVENTORY::INVENTORY(){
     this->cant_letters = 0;
     this->cant_others = 0;
     this->page = false;
+    objects.push_back(new LOG1(0,0));
+    objects.push_back(new LOG2(0,0));
+    objects.push_back(new LOG3(0,0));
+    objects.push_back(new LOG4(0,0));
+    objects.push_back(new LOG5(0,0));
     count_cant_letters();
 }
 
@@ -143,8 +148,10 @@ void INVENTORY::inventory_interaction(){
             for(itO = objects.begin(); itO!=objects.end(); itO++){
                 if((*itO)->get_code() / 100 == 1){
                     if( cor_cam <= i && i <= cor_cam + 17){
-                        (*itO)->content();
-                        return;
+                        if(cord_marker == i){
+                            (*itO)->content();
+                            return;
+                        }
                     }
                     i++;
                 }    
@@ -154,8 +161,10 @@ void INVENTORY::inventory_interaction(){
             for(itO = objects.begin(); itO!=objects.end(); itO++){
                 if((*itO)->get_code() / 100 != 1){
                     if(cor_cam <= i && i <= cor_cam + 17){
-                        (*itO)->content();
-                        return;
+                        if(cord_marker == i){
+                            (*itO)->content();
+                            return;
+                        }
                     }
                     i++;
                 }    

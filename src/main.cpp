@@ -322,6 +322,8 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
 }
 
 void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
+    std::list<OBJECT*>* o = m->get_player_objects();
+    std::list<OBJECT*>::iterator itO;
     char key;
     OBJECT* item;
     char** map = m->get_map_matriz();
@@ -330,6 +332,12 @@ void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
     item->delete_(map);
     item->set_x(0);
     item->set_y(0);
+    for(itO = o->begin(); itO!=o->end(); itO++){
+        if((*itO)->get_code() == item->get_code()){
+            itO = o->erase(itO);
+            break;
+        }
+    }
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\t" << item->get_interact_text();
     while(true){

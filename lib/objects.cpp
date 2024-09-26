@@ -153,7 +153,7 @@ PIECE9::PIECE9(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE9::content(){
 }
 
-KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Podria servir en alguna puerta", 211){
+KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Podria servir en alguna puerta", 222){
     std::string text = "Has recogido Llave oxidada";
     set_interact_text(text);
 }

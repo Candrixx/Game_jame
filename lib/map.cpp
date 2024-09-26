@@ -120,6 +120,9 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     mo->push_back(new CUPBOARD_ESPECIAL(45, 3, 48, 4));
     mo->push_back(new CUPBOARD(34, 12, 37, 13));
     mo->push_back(new TABLE(45, 15, 59, 17));
+    mo->push_back(new SHELF_1(80, 15, 93, 16));
+    mo->push_back(new SHELF_2(66, 15, 79, 16));
+    mo->push_back(new SHELF_3(66, 10, 79, 11));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     } 
@@ -245,6 +248,8 @@ MAP_PRUEBA2::MAP_PRUEBA2():MAP(60, 25, "Mapa Prueba 2"){
     mo->push_back(new LEVER_3(10, 14, 12, 15));
     mo->push_back(new LEVER_4(23, 14, 27, 15));
     mo->push_back(new LEVER_5(32, 8, 34, 9));
+    mo->push_back(new PICTURE_1(26, 2, 30, 2));
+    mo->push_back(new PICTURE_2(31, 2, 40, 2));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     }
