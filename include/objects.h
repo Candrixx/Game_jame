@@ -151,4 +151,10 @@ public:
     void content() override;
 };
 
+class NEWSPAPERCUT: public OBJECT{
+public:
+    NEWSPAPERCUT(int _x, int _y);
+    void content() override;
+};
+
 #endif

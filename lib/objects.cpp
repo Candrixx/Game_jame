@@ -39,7 +39,7 @@ void OBJECT::set_interact_text(std::string text){
     this->interac_text = text;
 }
 
-LETTER_PRUEBA::LETTER_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Carta de Prueba", "Carta escrita por una persona anonima", 151){
+LETTER_PRUEBA::LETTER_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Carta de Prueba", "Carta escrita por una persona anonima.", 161){
     std::string text = "Has recogido una Carta de Prueba";
     set_interact_text(text);
 }
@@ -57,7 +57,7 @@ void LETTER_PRUEBA::content(){
     }    
 }
 
-KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Llave de Prueba", "Llave que abre una cerradura", 211){
+KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Llave de Prueba", "Llave que abre una cerradura.", 211){
     std::string text = "Has recogido una Llave de Prueba";
     set_interact_text(text);
 }
@@ -65,7 +65,7 @@ KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Llave de Prueba", "Llave
 void KEY_PRUEBA::content(){
 }
 
-LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "¿Una carta dirigida a mi?", 152){
+LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Una carta dirigida a mi?", 162){
 }
 
 void LETTER_TUTORIAL::content(){
@@ -81,7 +81,7 @@ void LETTER_TUTORIAL::content(){
     }
 }
 //
-PIECE1::PIECE1(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 391){
+PIECE1::PIECE1(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 391){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -89,7 +89,7 @@ PIECE1::PIECE1(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE1::content(){
 }
 
-PIECE2::PIECE2(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 392){
+PIECE2::PIECE2(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 392){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -97,7 +97,7 @@ PIECE2::PIECE2(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE2::content(){
 }
 
-PIECE3::PIECE3(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 393){
+PIECE3::PIECE3(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 393){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -105,7 +105,7 @@ PIECE3::PIECE3(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE3::content(){
 }
 
-PIECE4::PIECE4(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 394){
+PIECE4::PIECE4(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 394){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -113,7 +113,7 @@ PIECE4::PIECE4(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE4::content(){
 }
 
-PIECE5::PIECE5(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 395){
+PIECE5::PIECE5(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 395){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -121,7 +121,7 @@ PIECE5::PIECE5(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE5::content(){
 }
 
-PIECE6::PIECE6(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 396){
+PIECE6::PIECE6(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 396){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -129,7 +129,7 @@ PIECE6::PIECE6(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE6::content(){
 }
 
-PIECE7::PIECE7(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 397){
+PIECE7::PIECE7(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 397){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -137,7 +137,7 @@ PIECE7::PIECE7(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE7::content(){
 }
 
-PIECE8::PIECE8(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 398){
+PIECE8::PIECE8(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 398){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -145,7 +145,7 @@ PIECE8::PIECE8(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE8::content(){
 }
 
-PIECE9::PIECE9(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande", 399){
+PIECE9::PIECE9(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 399){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -153,7 +153,7 @@ PIECE9::PIECE9(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE9::content(){
 }
 
-KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Podria servir en alguna puerta", 222){
+KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Podria servir en alguna puerta.", 222){
     std::string text = "Has recogido Llave oxidada";
     set_interact_text(text);
 }
@@ -161,7 +161,7 @@ KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Pod
 void KEY_TO_THREE::content(){
 }
 
-LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un caso legal. Parece tener partes redactadas", 451){
+LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un caso legal. Parece tener partes redactadas.", 451){
     std::string text = "Has recogido Reporte legal #1";
     set_interact_text(text);
 }
@@ -179,7 +179,7 @@ void LOG1::content(){
     }
 }
 
-LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un caso legal. Parece tener partes redactadas", 452){
+LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un caso legal. Parece tener partes redactadas.", 452){
     std::string text = "Has recogido Reporte legal #2";
     set_interact_text(text);
 }
@@ -197,7 +197,7 @@ void LOG2::content(){
     }
 }
 
-LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un caso legal. Parece tener partes redactadas", 453){
+LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un caso legal. Parece tener partes redactadas.", 453){
     std::string text = "Has recogido Reporte legal #3";
     set_interact_text(text);
 }
@@ -215,7 +215,7 @@ void LOG3::content(){
     }
 }
 
-LOG4::LOG4(int _x, int _y): OBJECT(_x, _y, "Reporte legal #4", "Reporte de un caso legal. Parece tener partes redactadas", 454){
+LOG4::LOG4(int _x, int _y): OBJECT(_x, _y, "Reporte legal #4", "Reporte de un caso legal. Parece tener partes redactadas.", 454){
     std::string text = "Has recogido Reporte legal #4";
     set_interact_text(text);
 }
@@ -233,7 +233,7 @@ void LOG4::content(){
     }
 }
 
-LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un caso legal. Parece tener partes redactadas", 455){
+LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un caso legal. Parece tener partes redactadas.", 455){
     std::string text = "Has recogido Reporte legal #5";
     set_interact_text(text);
 }
@@ -251,7 +251,7 @@ void LOG5::content(){
     }
 }
 
-NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota", "Una nota? Ha habido gente antes que yo?", 153){
+NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota", "Una nota? Ha habido gente antes que yo?", 163){
     std::string text = "Has recogido Nota";
     set_interact_text(text);
 }
@@ -269,7 +269,7 @@ void NOTE1::content(){
     }
 }
 
-NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota acertijo", "Quien habra escrito esto? El Juez, o alguien mas?", 154){
+NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota acertijo", "Quien habra escrito esto? El Juez, o alguien mas?", 164){
     std::string text = "Has recogido Nota acertijo";
     set_interact_text(text);
 }
@@ -287,7 +287,7 @@ void NOTE2::content(){
     }
 }
 
-NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es de un periodico de hace tiempo, parece hablar de un caso", 155){
+NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es de un periodico de hace tiempo, parece hablar de un caso.", 165){
     std::string text = "Has recogido Pedazo de periodico";
     set_interact_text(text);
 }
@@ -297,6 +297,24 @@ void NEWSPAPER::content(){
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
+    while(true){
+        if(kbhit()){
+            char key = getch();
+            if(key == ACTION || key == ACTION2 || key == ESC) return;
+        }
+    }
+}
+
+NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de la imagen de la noticia del juez.", 164){
+    std::string text = "Has recogido Recorte de periodico";
+    set_interact_text(text);
+}
+
+void NEWSPAPERCUT::content(){
+    std::string text = "####\n\t\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t  ################\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t    ############\n\t\t\t\t\t\t\t      ########\n\t\t\t\t\t\t\t       ######\n\t\t\t\t\t\t\t         ##";
+    CLEAR_SCREEN;
+    std::cout << std::endl << std::endl << std::endl << std::endl;
+    std::cout << "\t\t\t\t\t\t\t\t" << text;
     while(true){
         if(kbhit()){
             char key = getch();

@@ -1,5 +1,6 @@
 #include <chrono>
 #include <iostream>
+#include <string>
 
 class Timer {
 public:
@@ -18,7 +19,8 @@ private:
 int main() {
     std::cin.get();
     Timer timer;
-    // Your code to be timed goes here
+    std::string text = "####\n\t\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t  ################\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t    ############\n\t\t\t\t\t\t      ########\n\t\t\t\t\t\t       ######\n\t\t\t\t\t\t         ##";
+    std::cout << "\t\t\t\t\t\t\t\t" << text;
     std::cin.get();
     float elapsed_time = timer.get_elapsed_time();
     std::cout << "Elapsed time: " << elapsed_time << " seconds" << std::endl;
