@@ -15,6 +15,7 @@ bool lever_3_flag = false;
 bool lever_4_flag = false;
 bool lever_5_flag = false;
 bool error_order_levers_flag = false;
+bool picture_flag = false;
 
 
 MAP_OBJECT::MAP_OBJECT(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y, std::string name, int object_heigth){
@@ -81,7 +82,24 @@ void CUPBOARD::print(char** &map){
     map[get_up_left_y()-2][get_up_left_x()+3] = 191;
 }
 
-void CUPBOARD::delete_(char** &m){}
+void CUPBOARD::delete_(char** &map){
+    map[get_up_left_y()][get_up_left_x()] = 32;
+    map[get_up_left_y()][get_up_left_x()+1] =32;
+    map[get_up_left_y()][get_up_left_x()+2] =32;
+    map[get_up_left_y()][get_up_left_x()+3] = 32;
+    map[get_bot_right_y()][get_bot_right_x()] = 32;
+    map[get_bot_right_y()][get_bot_right_x()-1] = 32;
+    map[get_bot_right_y()][get_bot_right_x()-2] = 32;
+    map[get_bot_right_y()][get_bot_right_x()-3] = 32;
+    map[get_up_left_y()-1][get_up_left_x()] = 32;
+    map[get_up_left_y()-1][get_up_left_x()+1] =32;
+    map[get_up_left_y()-1][get_up_left_x()+2] =32;
+    map[get_up_left_y()-1][get_up_left_x()+3] = 32;
+    map[get_up_left_y()-2][get_up_left_x()] = 32;
+    map[get_up_left_y()-2][get_up_left_x()+1] = 32;
+    map[get_up_left_y()-2][get_up_left_x()+2] = 32;
+    map[get_up_left_y()-2][get_up_left_x()+3] = 32;
+}
 
 void CUPBOARD::move(char** &m, int const &dir, int const &higth, int const &width){}
 
@@ -763,7 +781,7 @@ void SHELF_3::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tUn estante de madera con libros sobre leyes";
 }
 
-PICTURE_1::PICTURE_1(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Estante", left_up_y-3){}
+PICTURE_1::PICTURE_1(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro", left_up_y-3){}
 
 void PICTURE_1::print(char** &map){
    map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 191;
@@ -782,7 +800,7 @@ void PICTURE_1::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tUn retrado con personas que no conozco";
 }
 
-PICTURE_2::PICTURE_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Estante", left_up_y-3){}
+PICTURE_2::PICTURE_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro", left_up_y-3){}
 
 void PICTURE_2::print(char** &map){
    map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 196; map[get_up_left_y()-1][get_up_left_x()+5] = 196; map[get_up_left_y()-1][get_up_left_x()+6] = 196; map[get_up_left_y()-1][get_up_left_x()+7] = 196; map[get_up_left_y()-1][get_up_left_x()+8] = 196; map[get_up_left_y()-1][get_up_left_x()+9] = 191;
@@ -799,5 +817,166 @@ void PICTURE_2::move(char** &m, int const &dir, int const &higth, int const &wid
 void PICTURE_2::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tUna pintura de algo parecido a una prision";
+}
+
+PICTURE_ESPECIAL::PICTURE_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro ", left_up_y-3){}
+
+void PICTURE_ESPECIAL::print(char** &map){
+   map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 191;
+   map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 95; map[get_up_left_y()][get_up_left_x()+2] = 95; map[get_up_left_y()][get_up_left_x()+3] = 95; map[get_up_left_y()][get_up_left_x()+4] = 124;
+}
+
+void PICTURE_ESPECIAL::delete_(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32;
+   map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] =32; map[get_up_left_y()][get_up_left_x()+4] = 32;
+}
+
+void PICTURE_ESPECIAL::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void PICTURE_ESPECIAL::get_interact_empty(char** &map){
+    std::list<OBJECT*>* o = get_objects();
+    char key;
+    if(!picture_flag){
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tUn cuadro de un lugar que parece un tribunal";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tParece haber algo que sobresale en el marco";
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tINVESTIGAR: E         CERRAR: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    if(o->empty()){
+                        o->push_back(new LETTER_PRUEBA(0,0));
+                        picture_flag = true;
+                        return;
+                    }
+                }
+                else if(key == ESC) return;
+            }
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\tUn cuadro de un tribunal";
+    }
+}
+
+CUPBOARD_2::CUPBOARD_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-1){}
+
+void CUPBOARD_2::print(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 196; map[get_up_left_y()-1][get_up_left_x()+5] = 196; map[get_up_left_y()-1][get_up_left_x()+6] = 196; map[get_up_left_y()-1][get_up_left_x()+7] = 196; map[get_up_left_y()-1][get_up_left_x()+8] = 196; map[get_up_left_y()-1][get_up_left_x()+9] = 191;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 111; map[get_up_left_y()][get_up_left_x()+4] = 32; map[get_up_left_y()][get_up_left_x()+5] = 32; map[get_up_left_y()][get_up_left_x()+6] = 111; map[get_up_left_y()][get_up_left_x()+7] = 32; map[get_up_left_y()][get_up_left_x()+8] = 32; map[get_up_left_y()][get_up_left_x()+9] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 196; map[get_up_left_y()+1][get_up_left_x()+5] = 196; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 217;
+}
+
+void CUPBOARD_2::delete_(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32; map[get_up_left_y()-1][get_up_left_x()+5] = 32; map[get_up_left_y()-1][get_up_left_x()+6] = 32; map[get_up_left_y()-1][get_up_left_x()+7] = 32; map[get_up_left_y()-1][get_up_left_x()+8] = 32; map[get_up_left_y()-1][get_up_left_x()+9] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] =32; map[get_up_left_y()][get_up_left_x()+5] =32; map[get_up_left_y()][get_up_left_x()+6] = 32; map[get_up_left_y()][get_up_left_x()+7] =32; map[get_up_left_y()][get_up_left_x()+8] =32; map[get_up_left_y()][get_up_left_x()+9] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] =32; map[get_up_left_y()+1][get_up_left_x()+2] =32; map[get_up_left_y()+1][get_up_left_x()+3] =32; map[get_up_left_y()+1][get_up_left_x()+4] =32; map[get_up_left_y()+1][get_up_left_x()+5] =32; map[get_up_left_y()+1][get_up_left_x()+6] =32; map[get_up_left_y()+1][get_up_left_x()+7] =32; map[get_up_left_y()+1][get_up_left_x()+8] =32; map[get_up_left_y()+1][get_up_left_x()+9] = 32;
+}
+
+void CUPBOARD_2::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CUPBOARD_2::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tParece un Gabinete Ordinario de Madera";
+}
+
+CUPBOARD_3::CUPBOARD_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario de una puerta", left_up_y-2){}
+
+void CUPBOARD_3::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 218; map[get_up_left_y()-2][get_up_left_x()+1] = 196; map[get_up_left_y()-2][get_up_left_x()+2] = 196; map[get_up_left_y()-2][get_up_left_x()+3] = 191;
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 46; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 124;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 217;
+}
+
+void CUPBOARD_3::delete_(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32;
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] =32; map[get_up_left_y()-1][get_up_left_x()+2] =32; map[get_up_left_y()-1][get_up_left_x()+3] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32;
+}
+
+void CUPBOARD_3::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CUPBOARD_3::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tParece un Armario de una puerta de Madera sin nada especial";
+}
+
+CUPBOARD_SIDE::CUPBOARD_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-3){}
+
+void CUPBOARD_SIDE::print(char** &map){
+    map[get_up_left_y()-3][get_up_left_x()] = 47; map[get_up_left_y()-3][get_up_left_x()+1] = 238; map[get_up_left_y()-3][get_up_left_x()+2] = 238; map[get_up_left_y()-3][get_up_left_x()+3] = 92;
+    map[get_up_left_y()-2][get_up_left_x()] = 124; map[get_up_left_y()-2][get_up_left_x()+1] = 238; map[get_up_left_y()-2][get_up_left_x()+2] = 238; map[get_up_left_y()-2][get_up_left_x()+3] = 124;
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 124;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 217;
+}
+
+void CUPBOARD_SIDE::delete_(char** &map){
+    map[get_up_left_y()-3][get_up_left_x()] =32; map[get_up_left_y()-3][get_up_left_x()+1] = 32; map[get_up_left_y()-3][get_up_left_x()+2] = 32; map[get_up_left_y()-3][get_up_left_x()+3] =32;
+    map[get_up_left_y()-2][get_up_left_x()] = 32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32;
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] =32; map[get_up_left_y()-1][get_up_left_x()+2] =32; map[get_up_left_y()-1][get_up_left_x()+3] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32;
+}
+
+void CUPBOARD_SIDE::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CUPBOARD_SIDE::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
+}
+
+CUPBOARD_2_SIDE::CUPBOARD_2_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-2){}
+
+void CUPBOARD_2_SIDE::print(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] = 47; map[get_up_left_y()-2][get_up_left_x()+1] = 238; map[get_up_left_y()-2][get_up_left_x()+2] = 238; map[get_up_left_y()-2][get_up_left_x()+3] = 238; map[get_up_left_y()-2][get_up_left_x()+4] = 92;
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 238; map[get_up_left_y()-1][get_up_left_x()+2] = 238; map[get_up_left_y()-1][get_up_left_x()+3] = 238; map[get_up_left_y()-1][get_up_left_x()+4] = 124;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 217;
+}
+
+void CUPBOARD_2_SIDE::delete_(char** &map){
+    map[get_up_left_y()-2][get_up_left_x()] =32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32; map[get_up_left_y()-2][get_up_left_x()+4] = 32; map[get_up_left_y()-2][get_up_left_x()+5] = 32; map[get_up_left_y()-2][get_up_left_x()+6] =32;
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32; map[get_up_left_y()-1][get_up_left_x()+5] = 32; map[get_up_left_y()-1][get_up_left_x()+6] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] =32; map[get_up_left_y()][get_up_left_x()+4] =32; map[get_up_left_y()][get_up_left_x()+5] =32; map[get_up_left_y()][get_up_left_x()+6] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 32; map[get_up_left_y()+1][get_up_left_x()+5] = 32; map[get_up_left_y()+1][get_up_left_x()+6] = 32;
+}
+
+void CUPBOARD_2_SIDE::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CUPBOARD_2_SIDE::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tParece un Gabinete Ordinario de Madera";
+}
+
+CUPBOARD_3_SIDE::CUPBOARD_3_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-3){}
+
+void CUPBOARD_3_SIDE::print(char** &map){
+    map[get_up_left_y()-3][get_up_left_x()] = 47; map[get_up_left_y()-3][get_up_left_x()+1] = 238; map[get_up_left_y()-3][get_up_left_x()+2] = 238; map[get_up_left_y()-3][get_up_left_x()+3] = 92;
+    map[get_up_left_y()-2][get_up_left_x()] = 124; map[get_up_left_y()-2][get_up_left_x()+1] = 238; map[get_up_left_y()-2][get_up_left_x()+2] = 238; map[get_up_left_y()-2][get_up_left_x()+3] = 124;
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 124;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 217;
+}
+
+void CUPBOARD_3_SIDE::delete_(char** &map){
+    map[get_up_left_y()-3][get_up_left_x()] =32; map[get_up_left_y()-3][get_up_left_x()+1] = 32; map[get_up_left_y()-3][get_up_left_x()+2] = 32; map[get_up_left_y()-3][get_up_left_x()+3] =32;
+    map[get_up_left_y()-2][get_up_left_x()] = 32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32;
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] =32; map[get_up_left_y()-1][get_up_left_x()+2] =32; map[get_up_left_y()-1][get_up_left_x()+3] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32;
+}
+
+void CUPBOARD_3_SIDE::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CUPBOARD_3_SIDE::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tParece un Armario de una puerta de Madera sin nada especial";
 }
 

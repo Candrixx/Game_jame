@@ -225,6 +225,14 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
     char** map = m->get_map_matriz();
     std::list<OBJECT*>::iterator itO;
     int i;
+    if(map_object->get_name() == "Recuadro " && objects->empty()){
+        map_object->get_interact_empty(map);
+        if(picture_flag){
+            CLEAR_SCREEN;
+            draw_map(c, a, m);
+        }
+        else return;
+    }
     if(objects->empty()){
         map_object->get_interact_empty(map);
         if(map_object->get_name() == "Armario con Mecanismo" && !lights_out_flag){
@@ -364,6 +372,7 @@ void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
     else if(map_object->get_name() == "Palanca" && error_order_levers_flag) error_order_levers_flag = false;
     else if(map_object->get_name() == "Palanca" && entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) return;
     else if(map_object->get_name() == "Palanca" && !entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) entry_room_2_1_flag = true;
+    else if(map_object->get_name() == "Recuadro " && !picture_flag) return;
     while(true){
         if(kbhit()){
             key = getch();
