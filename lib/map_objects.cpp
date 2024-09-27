@@ -980,3 +980,24 @@ void CUPBOARD_3_SIDE::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tParece un Armario de una puerta de Madera sin nada especial";
 }
 
+BODY_DEAD::BODY_DEAD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y){}
+
+void BODY_DEAD::print(char** &map){
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 79; map[get_up_left_y()][get_up_left_x()+2] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 47; map[get_up_left_y()][get_up_left_x()+1] = 124; map[get_up_left_y()][get_up_left_x()+2] = 92;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 94; map[get_up_left_y()][get_up_left_x()+2] = 32;
+}
+
+void BODY_DEAD::delete_(char** &map){
+    map[get_up_left_y()][get_up_left_x()] =32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32;
+    map[get_up_left_y()][get_up_left_x()] =32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32;
+    map[get_up_left_y()][get_up_left_x()] =32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32;
+}
+
+void BODY_DEAD::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void BODY_DEAD::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tUn cuerpo recostado de la pared";
+}
+

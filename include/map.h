@@ -4,7 +4,6 @@
 #include<iostream>
 #include<string.h>
 #include "../include/map_objects.h"
-
 class ENTRY_EXITS{
     int entry_exit_x, entry_exit_y;
     int code;
@@ -102,5 +101,7 @@ public:
     ROOM1();
     void fill_map() override;
 };
+
+void print_panel(char p[][51]);
 
 #endif

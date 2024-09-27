@@ -13,7 +13,6 @@ extern bool lever_4_flag;
 extern bool lever_5_flag;
 extern bool error_order_levers_flag;
 extern bool picture_flag;
-
 class MAP_OBJECT{
     std::string name;
     std::string text_empty;
@@ -256,6 +255,15 @@ public:
 class CUPBOARD_3_SIDE:public MAP_OBJECT{
 public:
     CUPBOARD_3_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class BODY_DEAD:public MAP_OBJECT{
+public:
+    BODY_DEAD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
     void print(char** &map) override;
     void delete_(char** &map) override;
     void get_interact_empty(char** &map) override;
