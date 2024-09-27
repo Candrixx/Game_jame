@@ -270,4 +270,22 @@ public:
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
 };
 
+class FLOWER:public MAP_OBJECT{
+public:
+    FLOWER(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class CUPBOARD_1_SIDE_ESPECIAL:public MAP_OBJECT{
+public:
+    CUPBOARD_1_SIDE_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
 #endif

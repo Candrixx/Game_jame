@@ -161,7 +161,7 @@ KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Pod
 void KEY_TO_THREE::content(){
 }
 
-LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un caso legal. Parece tener partes redactadas.", 451){
+LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un caso legal. Parece tener partes redactadas", 451){
     std::string text = "Has recogido Reporte legal #1";
     set_interact_text(text);
 }
@@ -179,7 +179,7 @@ void LOG1::content(){
     }
 }
 
-LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un caso legal. Parece tener partes redactadas.", 452){
+LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un caso legal. Parece tener partes redactadas", 452){
     std::string text = "Has recogido Reporte legal #2";
     set_interact_text(text);
 }
@@ -197,7 +197,7 @@ void LOG2::content(){
     }
 }
 
-LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un caso legal. Parece tener partes redactadas.", 453){
+LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un caso legal. Parece tener partes redactadas", 453){
     std::string text = "Has recogido Reporte legal #3";
     set_interact_text(text);
 }
@@ -215,7 +215,7 @@ void LOG3::content(){
     }
 }
 
-LOG4::LOG4(int _x, int _y): OBJECT(_x, _y, "Reporte legal #4", "Reporte de un caso legal. Parece tener partes redactadas.", 454){
+LOG4::LOG4(int _x, int _y): OBJECT(_x, _y, "Reporte legal #4", "Reporte de un caso legal. Parece tener partes redactadas", 454){
     std::string text = "Has recogido Reporte legal #4";
     set_interact_text(text);
 }
@@ -233,7 +233,7 @@ void LOG4::content(){
     }
 }
 
-LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un caso legal. Parece tener partes redactadas.", 455){
+LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un caso legal. Parece tener partes redactadas", 455){
     std::string text = "Has recogido Reporte legal #5";
     set_interact_text(text);
 }
@@ -251,13 +251,13 @@ void LOG5::content(){
     }
 }
 
-NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota", "Una nota? Ha habido gente antes que yo?", 163){
+NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Una nota? Ha habido gente antes que yo?", 163){
     std::string text = "Has recogido Nota";
     set_interact_text(text);
 }
 
 void NOTE1::content(){
-    std::string text = "Este lugar... donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\t\talla hace un segundo. Y los rompecabezas... no terminan! Cada vez que creo haber resuelto uno,\n\t\t\t\taparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t\tRecorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\t\tAlgo esta mal, muy mal. Necesito salir de aquí. Necesito encontrar una salida.";
+    std::string text = "Este lugar... donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\t\talla hace un segundo. Y los rompecabezas... no terminan! Cada vez que creo haber\n\t\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t\tRecorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\t\tAlgo esta mal, muy mal. Necesito salir de aquí. Necesito encontrar una salida.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -269,7 +269,7 @@ void NOTE1::content(){
     }
 }
 
-NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota acertijo", "Quien habra escrito esto? El Juez, o alguien mas?", 164){
+NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota acertijo    ", "Quien habra escrito esto? El Juez, o alguien mas?", 164){
     std::string text = "Has recogido Nota acertijo";
     set_interact_text(text);
 }
@@ -287,13 +287,13 @@ void NOTE2::content(){
     }
 }
 
-NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es de un periodico de hace tiempo, parece hablar de un caso.", 165){
+NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es de un periodico de hace tiempo", 165){
     std::string text = "Has recogido Pedazo de periodico";
     set_interact_text(text);
 }
 
 void NEWSPAPER::content(){
-    std::string text = "2 de marzo de 2004\n\n\t\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en trama de corrupcion\n\n\t\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal ha destapado\n\t\t\t\tuna red de corrupcion que involucra al juez federal, XXXXX XXXXXXX, y la prision\n\t\t\t\tprivada Mansfield. Segun fuentes confiables, el magistrado habria estado recibiendo sobornos millonarios a cambio de imponer\n\t\t\t\tsentencias desproporcionadas, especialmente a jovenes acusados de delitos menores.\n\n\t\t\t\tLa investigacion, que se prolongo durante varios meses, revelo una compleja trama de pagos encubiertos\n\t\t\t\ty presiones ejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision de\n\t\t\t\tMansfield. Al parecer, la sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones defensoras de los derechos humanos han exigido la\n\t\t\t\tdestitucion inmediata del juez XXXXXXX y la apertura de una investigacion a fondo para determinar si existen\n\t\t\t\totros magistrados involucrados en practicas similares.";
+    std::string text = "2 de marzo de 2004\n\n\t\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\t\ttrama de corrupcion\n\n\t\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\n\t\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision de Mansfield. Al parecer,\n\t\t\t\tla sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones\n\t\t\t\tdefensoras de los derechos humanos han exigido la destitucion inmediata del juez XXXXXXX\n\t\t\t\ty la apertura de una investigacion a fondo para determinar si existen\n\t\t\t\totros magistrados involucrados en practicas similares.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -305,7 +305,7 @@ void NEWSPAPER::content(){
     }
 }
 
-NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de la imagen de la noticia del juez.", 164){
+NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de periodico", 164){
     std::string text = "Has recogido Recorte de periodico";
     set_interact_text(text);
 }

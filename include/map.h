@@ -90,6 +90,30 @@ public:
     void delete_(char** &map) override;
 };
 
+class EXIT_ROOM1_ENTRY_ROOM2: public ENTRY_EXITS{
+public:
+    EXIT_ROOM1_ENTRY_ROOM2(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class EXIT_ROOM1_ENTRY_HALLWAY: public ENTRY_EXITS{
+public:
+    EXIT_ROOM1_ENTRY_HALLWAY(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class EXIT_ROOM1_ENTRY_ROOM5: public ENTRY_EXITS{
+public:
+    EXIT_ROOM1_ENTRY_ROOM5(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
 class TUTORIAL:public MAP{
 public:
     TUTORIAL();

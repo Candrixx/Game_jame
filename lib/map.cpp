@@ -367,7 +367,7 @@ void EXIT_ROOM1_ENTRY_TUTORIAL::delete_(char** &m){
     m[get_entry_exit_y()+1][get_entry_exit_x()] = ' '; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = ' ';
 }
 
-TUTORIAL::TUTORIAL():MAP(50, 16, "Tutorial"){
+TUTORIAL::TUTORIAL():MAP(50, 16, "?????"){
     fill_map();
     std::list<ENTRY_EXITS*>* e = get_entries_exits();
     std::list<ENTRY_EXITS*>::iterator itE;
@@ -423,11 +423,100 @@ void TUTORIAL::fill_map(){
     set_map(44, get_heigth()-3, char(254)); set_map(45, get_heigth()-3, char(254)); 
 }
 
-ROOM1::ROOM1():MAP(60, 16, "Tutorial"){
+EXIT_ROOM1_ENTRY_ROOM2::EXIT_ROOM1_ENTRY_ROOM2(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 18, 2, 3, true){}
+
+void EXIT_ROOM1_ENTRY_ROOM2::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 218; m[get_entry_exit_y()][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()][get_entry_exit_x()+2] = 191;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 124; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 124;
+}
+
+bool EXIT_ROOM1_ENTRY_ROOM2::interact_entry(std::list<OBJECT*>* &o){ 
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+void EXIT_ROOM1_ENTRY_ROOM2::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 32; m[get_entry_exit_y()][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+1] =32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 32;
+}
+
+EXIT_ROOM1_ENTRY_ROOM5::EXIT_ROOM1_ENTRY_ROOM5(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 15, 2, 3, true){}
+
+void EXIT_ROOM1_ENTRY_ROOM5::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 218; m[get_entry_exit_y()][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()][get_entry_exit_x()+2] = 191;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 124; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 124;
+    
+}
+
+bool EXIT_ROOM1_ENTRY_ROOM5::interact_entry(std::list<OBJECT*>* &o){ 
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+void EXIT_ROOM1_ENTRY_ROOM5::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 32; m[get_entry_exit_y()][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+1] =32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 32;
+}
+
+EXIT_ROOM1_ENTRY_HALLWAY::EXIT_ROOM1_ENTRY_HALLWAY(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 34, 2, 2, true){}
+
+void EXIT_ROOM1_ENTRY_HALLWAY::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
+}
+
+bool EXIT_ROOM1_ENTRY_HALLWAY::interact_entry(std::list<OBJECT*>* &o){
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+ }
+
+void EXIT_ROOM1_ENTRY_HALLWAY::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = ' '; m[get_entry_exit_y()][get_entry_exit_x()+1] = ' ';
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = ' '; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = ' ';
+}
+
+
+ROOM1::ROOM1():MAP(74, 20, "Salon"){
     fill_map();
     std::list<ENTRY_EXITS*>* e = get_entries_exits();
     std::list<ENTRY_EXITS*>::iterator itE;
-    e->push_back(new EXIT_ROOM1_ENTRY_TUTORIAL(1,6));
+    e->push_back(new EXIT_ROOM1_ENTRY_TUTORIAL(1,4));
+    e->push_back(new EXIT_ROOM1_ENTRY_ROOM2(51, 18));
+    e->push_back(new EXIT_ROOM1_ENTRY_ROOM5(21, 2));
+    e->push_back(new EXIT_ROOM1_ENTRY_HALLWAY(71, 8));
     char ** m = get_map_matriz();
     for(itE = e->begin(); itE != e->end(); itE++){
         (*itE)->print(m);
@@ -439,6 +528,12 @@ ROOM1::ROOM1():MAP(60, 16, "Tutorial"){
     }
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new CUPBOARD_2(9, 3, 18, 4));
+    mo->push_back(new FLOWER(33, 3, 35, 4));
+    mo->push_back(new SHELF_1(36, 3, 49, 4));
+    mo->push_back(new CUPBOARD_3_SIDE(69, 4, 72, 5));
+    mo->push_back(new CUPBOARD_PUZLE(47, 7, 53, 9));
+    mo->push_back(new CUPBOARD_1_SIDE_ESPECIAL(1, 12, 4, 13));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     }
@@ -467,7 +562,26 @@ void ROOM1::fill_map(){
             set_map(j, i, char(32));
         }
     }
+    for(int i = 15; i<64; i++){
+        set_map(i, 7, char(205));
+        set_map(i, 13, char(205));
+    }
+    for(int i = 7; i<14; i++){
+        set_map(15, i, char(186));
+        set_map(63, i, char(186));
+    }
+    for(int i =18; i<64; i+=6){
+        set_map(i, 8, char(42));
+        set_map(i, 10, char(42));
+        set_map(i, 12, char(42));
+    }
+    set_map(15, 7, char(201)); set_map(15, 13, char(200)); set_map(63, 7, char(187)); set_map(63, 13, char(188));
+
+    set_map(2, 1, char(196)); set_map(3, 1, char(196)); set_map(17, 2, char(196)); set_map(18, 2, char(196));
+    set_map(29, 1, char(196)); set_map(30, 1, char(196)); set_map(31, 1, char(196)); set_map(56, 2, char(196));
+    set_map(58, 1, char(196)); set_map(66, 2, char(196)); set_map(67, 2, char(196)); set_map(68, 2, char(196));
+    set_map(8, 17, char(196)); set_map(9, 17, char(196)); set_map(19, 18, char(196)); set_map(24, 17, char(196));
+    set_map(25, 17, char(196)); set_map(26, 17, char(196)); set_map(40, 18, char(196)); set_map(41, 18, char(196));
+    set_map(42, 18, char(196)); set_map(43, 18, char(196)); set_map(57, 17, char(196)); set_map(58, 17, char(196));
+    set_map(65, 18, char(196)); set_map(66, 18, char(196)); set_map(70, 17, char(196));
 }
-
-
-
