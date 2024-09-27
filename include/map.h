@@ -126,6 +126,29 @@ public:
     void fill_map() override;
 };
 
+class EXIT_ROOM2_ENTRY_ROOM1: public ENTRY_EXITS{
+public:
+    EXIT_ROOM2_ENTRY_ROOM1(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class EXIT_ROOM2_ENTRY_BASEMENT: public ENTRY_EXITS{
+public:
+    EXIT_ROOM2_ENTRY_BASEMENT(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class ROOM2:public MAP{
+public:
+    ROOM2();
+    void fill_map() override;
+};
+
+
 void print_panel(char p[][51]);
 
 #endif

@@ -161,7 +161,7 @@ void TABLE::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tParece una Mesa de madera sin nada especial";
 }
 
-BOX::BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "CAJA", left_up_y-1){}
+BOX::BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "Caja", left_up_y-1){}
 
 void BOX::print(char** &m){
     m[get_up_left_y()-1][get_up_left_x()] = 218; m[get_up_left_y()-1][get_up_left_x()+1] = 196; m[get_up_left_y()-1][get_up_left_x()+2] = 196; m[get_up_left_y()-1][get_up_left_x()+3] = 196; m[get_up_left_y()-1][get_up_left_x()+4] = 196; m[get_up_left_y()-1][get_up_left_x()+5] = 191;
@@ -179,33 +179,10 @@ void BOX::delete_(char** &m){
 
 void BOX::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna caja con un decorado en el frente, parece ligera";
+    std::cout << "\t\t\t\tUna caja con un decorado en el frente";
 }
 
-void BOX::move(char** &m, int const &dir, int const &higth, int const &width){
-    delete_(m);
-    if(get_moved()) return;
-    if(dir == 1 && get_up_left_y()-2 > 3){
-        set_up_left_y(get_up_left_y()-2);
-        set_bot_right_y(get_bot_right_y()-2);
-        set_moved(true);
-    }
-    else if(dir == 2 && get_bot_right_x()+2 < width){
-        set_up_left_x(get_up_left_x()+2);
-        set_bot_right_x(get_bot_right_x()+2);
-        set_moved(true);
-    }
-    else if(dir == 3 && get_bot_right_y()+2 < higth){
-        set_up_left_y(get_up_left_y()+2);
-        set_bot_right_y(get_bot_right_y()+2);
-        set_moved(true);
-    }
-    else if(dir == 4 && get_up_left_x()-2 > 0){
-        set_up_left_x(get_up_left_x()-2);
-        set_bot_right_x(get_bot_right_x()-2);
-        set_moved(true);
-    }
-}
+void BOX::move(char** &m, int const &dir, int const &higth, int const &width){}
 
 TABLE_TUTORIAL::TABLE_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Mesa", left_up_y-1){
     std::list<OBJECT*>* o = get_objects();
@@ -327,8 +304,8 @@ void CUPBOARD_PUZLE::get_interact_empty(char** &map){
                 key = getch();
                 if(key == ACTION || key == ACTION2){
                     if(run_lights_out()){
-                        o->push_back(new LETTER_PRUEBA(0,0));
-                        o->push_back(new KEY_PRUEBA(0,0));
+                        o->push_back(new LOG3(0,0));
+                        o->push_back(new PIECE6(0,0));
                         std::cout << std::endl << std::endl << std::endl << std::endl;
                         std::cout << "\t\t\t\t";
                         std::string text = "*Se escucha algo desbloqueandose*";
@@ -932,27 +909,27 @@ void CUPBOARD_SIDE::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
 }
 
-CUPBOARD_2_SIDE::CUPBOARD_2_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-2){}
+DESK::DESK(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-2){}
 
-void CUPBOARD_2_SIDE::print(char** &map){
+void DESK::print(char** &map){
     map[get_up_left_y()-2][get_up_left_x()] = 47; map[get_up_left_y()-2][get_up_left_x()+1] = 238; map[get_up_left_y()-2][get_up_left_x()+2] = 238; map[get_up_left_y()-2][get_up_left_x()+3] = 238; map[get_up_left_y()-2][get_up_left_x()+4] = 92;
     map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 238; map[get_up_left_y()-1][get_up_left_x()+2] = 238; map[get_up_left_y()-1][get_up_left_x()+3] = 238; map[get_up_left_y()-1][get_up_left_x()+4] = 124;
     map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 124;
     map[get_up_left_y()+1][get_up_left_x()] = 192; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 217;
 }
 
-void CUPBOARD_2_SIDE::delete_(char** &map){
+void DESK::delete_(char** &map){
     map[get_up_left_y()-2][get_up_left_x()] =32; map[get_up_left_y()-2][get_up_left_x()+1] = 32; map[get_up_left_y()-2][get_up_left_x()+2] = 32; map[get_up_left_y()-2][get_up_left_x()+3] = 32; map[get_up_left_y()-2][get_up_left_x()+4] = 32; map[get_up_left_y()-2][get_up_left_x()+5] = 32; map[get_up_left_y()-2][get_up_left_x()+6] =32;
     map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32; map[get_up_left_y()-1][get_up_left_x()+5] = 32; map[get_up_left_y()-1][get_up_left_x()+6] = 32;
     map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32; map[get_up_left_y()][get_up_left_x()+3] =32; map[get_up_left_y()][get_up_left_x()+4] =32; map[get_up_left_y()][get_up_left_x()+5] =32; map[get_up_left_y()][get_up_left_x()+6] = 32;
     map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 32; map[get_up_left_y()+1][get_up_left_x()+5] = 32; map[get_up_left_y()+1][get_up_left_x()+6] = 32;
 }
 
-void CUPBOARD_2_SIDE::move(char** &m, int const &dir, int const &higth, int const &width){}
+void DESK::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void CUPBOARD_2_SIDE::get_interact_empty(char** &map){
+void DESK::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Gabinete Ordinario de Madera";
+    std::cout << "\t\t\t\tUn escritorio de madera sin mas.";
 }
 
 CUPBOARD_3_SIDE::CUPBOARD_3_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-3){}
@@ -1052,4 +1029,24 @@ void CUPBOARD_1_SIDE_ESPECIAL::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
 }
 
+CHAIR::CHAIR(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Silla", left_up_y-1){}
+
+void CHAIR::print(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 124; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 124; map[get_up_left_y()][get_up_left_x()+1] = 238; map[get_up_left_y()][get_up_left_x()+2] = 238; map[get_up_left_y()][get_up_left_x()+3] = 191; 
+    map[get_up_left_y()+1][get_up_left_x()] = 47; map[get_up_left_y()+1][get_up_left_x()+1] = 238; map[get_up_left_y()+1][get_up_left_x()+2] = 238; map[get_up_left_y()+1][get_up_left_x()+3] = 92;
+}
+
+void CHAIR::delete_(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] =32; map[get_up_left_y()-1][get_up_left_x()+2] =32; map[get_up_left_y()-1][get_up_left_x()+3] =32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; 
+    map[get_up_left_y()+1][get_up_left_x()] =32; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] =32;
+}
+
+void CHAIR::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void CHAIR::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tUna silla algo desgastada.";
+}
 

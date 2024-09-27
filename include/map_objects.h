@@ -180,6 +180,15 @@ public:
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
 };
 
+class CHAIR:public MAP_OBJECT{
+public:
+    CHAIR(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
 class SHELF_3:public MAP_OBJECT{
 public:
     SHELF_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
@@ -243,9 +252,9 @@ public:
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
 };
 
-class CUPBOARD_2_SIDE:public MAP_OBJECT{
+class DESK:public MAP_OBJECT{
 public:
-    CUPBOARD_2_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    DESK(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
     void print(char** &map) override;
     void delete_(char** &map) override;
     void get_interact_empty(char** &map) override;

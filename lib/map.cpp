@@ -140,7 +140,7 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     mo->push_back(new SHELF_2(66, 15, 79, 16));
     mo->push_back(new SHELF_3(66, 10, 79, 11));
     mo->push_back(new CUPBOARD_SIDE(66, 19, 69, 20));
-    mo->push_back(new CUPBOARD_2_SIDE(70, 19, 74, 20));
+    mo->push_back(new DESK(70, 19, 74, 20));
     mo->push_back(new CUPBOARD_3_SIDE(77, 19, 80, 20));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
@@ -584,4 +584,122 @@ void ROOM1::fill_map(){
     set_map(25, 17, char(196)); set_map(26, 17, char(196)); set_map(40, 18, char(196)); set_map(41, 18, char(196));
     set_map(42, 18, char(196)); set_map(43, 18, char(196)); set_map(57, 17, char(196)); set_map(58, 17, char(196));
     set_map(65, 18, char(196)); set_map(66, 18, char(196)); set_map(70, 17, char(196));
+}
+
+EXIT_ROOM2_ENTRY_ROOM1::EXIT_ROOM2_ENTRY_ROOM1(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 19, 2, 3, true){}
+
+void EXIT_ROOM2_ENTRY_ROOM1::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 218; m[get_entry_exit_y()][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()][get_entry_exit_x()+2] = 191;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 124; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 124;
+}
+
+bool EXIT_ROOM2_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){ 
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+void EXIT_ROOM2_ENTRY_ROOM1::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 32; m[get_entry_exit_y()][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+1] =32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 32;
+}
+
+EXIT_ROOM2_ENTRY_BASEMENT::EXIT_ROOM2_ENTRY_BASEMENT(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 48, 2, 4, true){}
+
+void EXIT_ROOM2_ENTRY_BASEMENT::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 218; m[get_entry_exit_y()][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()][get_entry_exit_x()+2] = 196; m[get_entry_exit_y()][get_entry_exit_x()+3] = 191;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 192; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 196; m[get_entry_exit_y()+1][get_entry_exit_x()+3] = 217;
+}
+
+bool EXIT_ROOM2_ENTRY_BASEMENT::interact_entry(std::list<OBJECT*>* &o){ 
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa compuerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+void EXIT_ROOM2_ENTRY_BASEMENT::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 32; m[get_entry_exit_y()][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()][get_entry_exit_x()+2] = 32; m[get_entry_exit_y()][get_entry_exit_x()+3] = 32;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+3] = 32;
+}
+
+ROOM2::ROOM2():MAP(54, 30, "Taller"){
+    fill_map();
+    std::list<ENTRY_EXITS*>* e = get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    char ** m = get_map_matriz();
+    e->push_back(new EXIT_ROOM2_ENTRY_ROOM1(34, 2));
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new BOX(3, 2, 8, 4));
+    mo->push_back(new SHELF_3(10, 3, 23, 4));
+    mo->push_back(new CUPBOARD_3(43, 3, 46, 4));
+    mo->push_back(new CUPBOARD_3(47, 3, 50, 4));
+    mo->push_back(new LEVER_2(10, 7, 14, 8));
+    mo->push_back(new LEVER_1(43, 7, 45, 8));
+    mo->push_back(new CHAIR(43, 11, 46, 12));
+    mo->push_back(new DESK(48, 12, 52, 13));
+    mo->push_back(new CHAIR(43, 15, 46, 16));
+    mo->push_back(new DESK(48, 16, 52, 17));
+    mo->push_back(new CHAIR(43, 19, 46, 20));
+    mo->push_back(new DESK(48, 20, 52, 21));
+    mo->push_back(new LEVER_5(29, 15, 31, 16));
+    mo->push_back(new LEVER_3(9, 17, 11, 18));
+    mo->push_back(new LEVER_4(34, 23, 38, 24));
+    mo->push_back(new BOX(1, 23, 6, 25));
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
+void ROOM2::fill_map(){
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 1, char(32));
+        set_map(j, 2, char(32));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-2, char(32));
+        set_map(j, get_heigth()-3, char(32));
+        set_map(j, get_heigth()-4, char(238));
+    }
+
+    for(int i = 0; i < get_heigth(); i++){
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-1; j++){
+            set_map(j, i, char(32));
+        }
+    }
 }

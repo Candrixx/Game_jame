@@ -260,7 +260,7 @@ void NOTE1::content(){
     std::string text = "Este lugar... donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\t\talla hace un segundo. Y los rompecabezas... no terminan! Cada vez que creo haber\n\t\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t\tRecorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\t\tAlgo esta mal, muy mal. Necesito salir de aquí. Necesito encontrar una salida.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\t" << text;
+    std::cout << "\t\t\t" << text;
     while(true){
         if(kbhit()){
             char key = getch();

@@ -247,11 +247,18 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
         }
         else if(map_object->get_name() == "Palanca" && entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) return;
         else if(map_object->get_name() == "Palanca" && !entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag){
-            // std::list<ENTRY_EXITS*>* e = m->get_entries_exits();
-            // std::list<ENTRY_EXITS*>::iterator itE;
-            // e->push_back(new );
-            // itE = e->end();
-            // (*itE)->print(map);
+            if(m->get_name() == "Taller"){
+                std::list<ENTRY_EXITS*>* e = m->get_entries_exits();
+                std::list<ENTRY_EXITS*>::iterator itE;
+                e->push_back(new EXIT_ROOM2_ENTRY_BASEMENT(13, 23));
+                for(itE = e->begin(); itE!=e->end(); itE++){
+                    if((*itE)->get_code() == 48){
+                        (*itE)->print(map);
+                        break;
+                    } 
+                }
+                
+            }
             CLEAR_SCREEN;
             draw_map(c, a, m);
             std::cout << std::endl << std::endl;
@@ -316,8 +323,8 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
             if(entry_exit->get_code()+1 == (*itE)->get_code() || entry_exit->get_code()-1 == (*itE)->get_code()){
                 if((*itE)->interact_entry(o)){
                     m = (*itM);
-                    a.set_x((*itE)->get_entry_exit_x());
-                    a.set_y((*itE)->get_entry_exit_y());
+                    a.set_x((*itE)->get_entry_exit_x()+1);
+                    a.set_y((*itE)->get_entry_exit_y()+1);
                     c.set_y(a.get_y()-6);
                     c.set_x(a.get_x()-26);
                     if(!cinematic_1_flag && (*itE)->get_code() == 2) cinematic_1(m, c, a);
@@ -441,6 +448,7 @@ int main(){
     std::list<MAP*> maps;
     maps.push_back(new TUTORIAL());
     maps.push_back(new ROOM1());
+    maps.push_back(new ROOM2());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     MAP* map = (*maps.begin());
