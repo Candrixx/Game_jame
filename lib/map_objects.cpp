@@ -105,7 +105,7 @@ void CUPBOARD::move(char** &m, int const &dir, int const &higth, int const &widt
 
 void CUPBOARD::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
+    std::cout << "\t\t\t\tParece un armario ordinario de madera";
 }
 
 CUPBOARD_ESPECIAL::CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
@@ -140,7 +140,7 @@ void CUPBOARD_ESPECIAL::move(char** &m, int const &dir, int const &higth, int co
 
 void CUPBOARD_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece que el Armario esta vacio";
+    std::cout << "\t\t\t\tParece que el armario esta vacio";
 }
 
 TABLE::TABLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-1){}
@@ -158,7 +158,7 @@ void TABLE::move(char** &m, int const &dir, int const &higth, int const &width){
 
 void TABLE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece una Mesa de madera sin nada especial";
+    std::cout << "\t\t\t\tParece una mesa de madera sin nada especial";
 }
 
 BOX::BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "Caja", left_up_y-1){}
@@ -202,7 +202,7 @@ void TABLE_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const
 
 void TABLE_TUTORIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece una Mesa de madera normal, tiene algunas marcas pero sin sentido";
+    std::cout << "\t\t\t\tParece una mesa de madera normal, tiene algunas marcas pero sin sentido";
 }
 
 WINDOW::WINDOW(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-1){}
@@ -309,9 +309,9 @@ void CUPBOARD_PUZLE::get_interact_empty(char** &map){
                         std::cout << std::endl << std::endl << std::endl << std::endl;
                         std::cout << "\t\t\t\t";
                         std::string text = "*Se escucha algo desbloqueandose*";
-                        std::string text2 = "El Armario parece estar abierto";
+                        std::string text2 = "El armario parece estar abierto";
                         std::string text3 = "Pero...";
-                        std::string text4 = "Porque siento que esto ya lo he hecho antes";
+                        std::string text4 = "Porque siento que esto ya lo he hecho antes?";
                         std::string* t_pointer = &text;
                         int count = 0;
                         while(true){
@@ -347,7 +347,7 @@ void CUPBOARD_PUZLE::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEl Armario ya esta abierto pero vacio";
+        std::cout << "\t\t\t\tEl armario ya esta abierto pero vacio";
     }
 }
 
@@ -375,7 +375,7 @@ void LEVER_1::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece que la palanca no esta activada";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << "\t\t\t\tQuieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -441,7 +441,7 @@ void LEVER_2::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece que la palanca no esta activada";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << "\t\t\t\tQuieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -508,7 +508,7 @@ void LEVER_3::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece que la palanca no esta activada";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << "\t\t\t\tQuieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -574,7 +574,7 @@ void LEVER_4::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece que la palanca no esta activada";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << "\t\t\t\tQuieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -641,7 +641,7 @@ void LEVER_5::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece que la palanca no esta activada";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres Activarla?";
+        std::cout << "\t\t\t\tQuieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -689,8 +689,8 @@ void SHELF_1::print(char** &map){
     map[get_up_left_y()-3][get_up_left_x()] = 218; map[get_up_left_y()-3][get_up_left_x()+1] = 196; map[get_up_left_y()-3][get_up_left_x()+2] = 196; map[get_up_left_y()-3][get_up_left_x()+3] = 196; map[get_up_left_y()-3][get_up_left_x()+4] = 196; map[get_up_left_y()-3][get_up_left_x()+5] = 196; map[get_up_left_y()-3][get_up_left_x()+6] = 196; map[get_up_left_y()-3][get_up_left_x()+7] = 196; map[get_up_left_y()-3][get_up_left_x()+8] = 196; map[get_up_left_y()-3][get_up_left_x()+9] = 196; map[get_up_left_y()-3][get_up_left_x()+10] = 196; map[get_up_left_y()-3][get_up_left_x()+11] = 196; map[get_up_left_y()-3][get_up_left_x()+12] = 196; map[get_up_left_y()-3][get_up_left_x()+13] = 191;
     map[get_up_left_y()-2][get_up_left_x()] = 195; map[get_up_left_y()-2][get_up_left_x()+1] = 186; map[get_up_left_y()-2][get_up_left_x()+2] = 186; map[get_up_left_y()-2][get_up_left_x()+3] = 186; map[get_up_left_y()-2][get_up_left_x()+4] = 186; map[get_up_left_y()-2][get_up_left_x()+5] = 196; map[get_up_left_y()-2][get_up_left_x()+6] = 196; map[get_up_left_y()-2][get_up_left_x()+7] = 196; map[get_up_left_y()-2][get_up_left_x()+8] = 196; map[get_up_left_y()-2][get_up_left_x()+9] = 196; map[get_up_left_y()-2][get_up_left_x()+10] = 196; map[get_up_left_y()-2][get_up_left_x()+11] = 196; map[get_up_left_y()-2][get_up_left_x()+12] = 196; map[get_up_left_y()-2][get_up_left_x()+13] = 180;
     map[get_up_left_y()-1][get_up_left_x()] = 195; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 196; map[get_up_left_y()-1][get_up_left_x()+5] = 196; map[get_up_left_y()-1][get_up_left_x()+6] = 196; map[get_up_left_y()-1][get_up_left_x()+7] = 196; map[get_up_left_y()-1][get_up_left_x()+8] = 196; map[get_up_left_y()-1][get_up_left_x()+9] = 196; map[get_up_left_y()-1][get_up_left_x()+10] = 196; map[get_up_left_y()-1][get_up_left_x()+11] = 196; map[get_up_left_y()-1][get_up_left_x()+12] = 196; map[get_up_left_y()-1][get_up_left_x()+13] = 180;
-    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 196; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 196; map[get_up_left_y()][get_up_left_x()+5] = 196; map[get_up_left_y()][get_up_left_x()+6] = 196; map[get_up_left_y()][get_up_left_x()+7] = 196; map[get_up_left_y()][get_up_left_x()+8] = 196; map[get_up_left_y()][get_up_left_x()+9] = 196; map[get_up_left_y()][get_up_left_x()+10] = 196; map[get_up_left_y()][get_up_left_x()+11] = 196; map[get_up_left_y()][get_up_left_x()+12] = 196; map[get_up_left_y()][get_up_left_x()+13] = 180;
-    map[get_up_left_y()+1][get_up_left_x()] = 195; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 196; map[get_up_left_y()+1][get_up_left_x()+5] = 196; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 186; map[get_up_left_y()+1][get_up_left_x()+10] = 186; map[get_up_left_y()+1][get_up_left_x()+11] = 186; map[get_up_left_y()+1][get_up_left_x()+12] = 186; map[get_up_left_y()+1][get_up_left_x()+13] = 180;
+    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 196; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 196; map[get_up_left_y()][get_up_left_x()+5] = 196; map[get_up_left_y()][get_up_left_x()+6] = 196; map[get_up_left_y()][get_up_left_x()+7] = 196; map[get_up_left_y()][get_up_left_x()+8] = 186; map[get_up_left_y()][get_up_left_x()+9] = 186; map[get_up_left_y()][get_up_left_x()+10] = 186; map[get_up_left_y()][get_up_left_x()+11] = 186; map[get_up_left_y()][get_up_left_x()+12] = 196; map[get_up_left_y()][get_up_left_x()+13] = 180;
+    map[get_up_left_y()+1][get_up_left_x()] = 195; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 196; map[get_up_left_y()+1][get_up_left_x()+5] = 196; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 196; map[get_up_left_y()+1][get_up_left_x()+10] = 196; map[get_up_left_y()+1][get_up_left_x()+11] = 196; map[get_up_left_y()+1][get_up_left_x()+12] = 196; map[get_up_left_y()+1][get_up_left_x()+13] = 180;
 }
 
 void SHELF_1::delete_(char** &map){
@@ -714,8 +714,8 @@ void SHELF_2::print(char** &map){
     map[get_up_left_y()-3][get_up_left_x()] = 218; map[get_up_left_y()-3][get_up_left_x()+1] = 196; map[get_up_left_y()-3][get_up_left_x()+2] = 196; map[get_up_left_y()-3][get_up_left_x()+3] = 196; map[get_up_left_y()-3][get_up_left_x()+4] = 196; map[get_up_left_y()-3][get_up_left_x()+5] = 196; map[get_up_left_y()-3][get_up_left_x()+6] = 196; map[get_up_left_y()-3][get_up_left_x()+7] = 196; map[get_up_left_y()-3][get_up_left_x()+8] = 196; map[get_up_left_y()-3][get_up_left_x()+9] = 196; map[get_up_left_y()-3][get_up_left_x()+10] = 196; map[get_up_left_y()-3][get_up_left_x()+11] = 196; map[get_up_left_y()-3][get_up_left_x()+12] = 196; map[get_up_left_y()-3][get_up_left_x()+13] = 191;
     map[get_up_left_y()-2][get_up_left_x()] = 195; map[get_up_left_y()-2][get_up_left_x()+1] = 196; map[get_up_left_y()-2][get_up_left_x()+2] = 196; map[get_up_left_y()-2][get_up_left_x()+3] = 196; map[get_up_left_y()-2][get_up_left_x()+4] = 186; map[get_up_left_y()-2][get_up_left_x()+5] = 196; map[get_up_left_y()-2][get_up_left_x()+6] = 196; map[get_up_left_y()-2][get_up_left_x()+7] = 186; map[get_up_left_y()-2][get_up_left_x()+8] = 186; map[get_up_left_y()-2][get_up_left_x()+9] = 186; map[get_up_left_y()-2][get_up_left_x()+10] = 196; map[get_up_left_y()-2][get_up_left_x()+11] = 196; map[get_up_left_y()-2][get_up_left_x()+12] = 196; map[get_up_left_y()-2][get_up_left_x()+13] = 180;
     map[get_up_left_y()-1][get_up_left_x()] = 195; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 196; map[get_up_left_y()-1][get_up_left_x()+5] = 196; map[get_up_left_y()-1][get_up_left_x()+6] = 196; map[get_up_left_y()-1][get_up_left_x()+7] = 196; map[get_up_left_y()-1][get_up_left_x()+8] = 196; map[get_up_left_y()-1][get_up_left_x()+9] = 196; map[get_up_left_y()-1][get_up_left_x()+10] = 196; map[get_up_left_y()-1][get_up_left_x()+11] = 196; map[get_up_left_y()-1][get_up_left_x()+12] = 196; map[get_up_left_y()-1][get_up_left_x()+13] = 180;
-    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 196; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 196; map[get_up_left_y()][get_up_left_x()+5] = 196; map[get_up_left_y()][get_up_left_x()+6] = 196; map[get_up_left_y()][get_up_left_x()+7] = 196; map[get_up_left_y()][get_up_left_x()+8] = 196; map[get_up_left_y()][get_up_left_x()+9] = 196; map[get_up_left_y()][get_up_left_x()+10] = 196; map[get_up_left_y()][get_up_left_x()+11] = 196; map[get_up_left_y()][get_up_left_x()+12] = 196; map[get_up_left_y()][get_up_left_x()+13] = 180;
-    map[get_up_left_y()+1][get_up_left_x()] = 195; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 186; map[get_up_left_y()+1][get_up_left_x()+3] = 186; map[get_up_left_y()+1][get_up_left_x()+4] = 186; map[get_up_left_y()+1][get_up_left_x()+5] = 186; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 196; map[get_up_left_y()+1][get_up_left_x()+10] = 196; map[get_up_left_y()+1][get_up_left_x()+11] = 196; map[get_up_left_y()+1][get_up_left_x()+12] = 196; map[get_up_left_y()+1][get_up_left_x()+13] = 180;
+    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 186; map[get_up_left_y()][get_up_left_x()+3] = 186; map[get_up_left_y()][get_up_left_x()+4] = 186; map[get_up_left_y()][get_up_left_x()+5] = 186; map[get_up_left_y()][get_up_left_x()+6] = 196; map[get_up_left_y()][get_up_left_x()+7] = 196; map[get_up_left_y()][get_up_left_x()+8] = 196; map[get_up_left_y()][get_up_left_x()+9] = 196; map[get_up_left_y()][get_up_left_x()+10] = 196; map[get_up_left_y()][get_up_left_x()+11] = 196; map[get_up_left_y()][get_up_left_x()+12] = 196; map[get_up_left_y()][get_up_left_x()+13] = 180;
+    map[get_up_left_y()+1][get_up_left_x()] = 195; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 196; map[get_up_left_y()+1][get_up_left_x()+5] = 196; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 196; map[get_up_left_y()+1][get_up_left_x()+10] = 196; map[get_up_left_y()+1][get_up_left_x()+11] = 196; map[get_up_left_y()+1][get_up_left_x()+12] = 196; map[get_up_left_y()+1][get_up_left_x()+13] = 180;
 }
 
 void SHELF_2::delete_(char** &map){
@@ -739,8 +739,8 @@ void SHELF_3::print(char** &map){
     map[get_up_left_y()-3][get_up_left_x()] = 218; map[get_up_left_y()-3][get_up_left_x()+1] = 196; map[get_up_left_y()-3][get_up_left_x()+2] = 196; map[get_up_left_y()-3][get_up_left_x()+3] = 196; map[get_up_left_y()-3][get_up_left_x()+4] = 196; map[get_up_left_y()-3][get_up_left_x()+5] = 196; map[get_up_left_y()-3][get_up_left_x()+6] = 196; map[get_up_left_y()-3][get_up_left_x()+7] = 196; map[get_up_left_y()-3][get_up_left_x()+8] = 196; map[get_up_left_y()-3][get_up_left_x()+9] = 196; map[get_up_left_y()-3][get_up_left_x()+10] = 196; map[get_up_left_y()-3][get_up_left_x()+11] = 196; map[get_up_left_y()-3][get_up_left_x()+12] = 196; map[get_up_left_y()-3][get_up_left_x()+13] = 191;
     map[get_up_left_y()-2][get_up_left_x()] = 195; map[get_up_left_y()-2][get_up_left_x()+1] = 186; map[get_up_left_y()-2][get_up_left_x()+2] = 186; map[get_up_left_y()-2][get_up_left_x()+3] = 186; map[get_up_left_y()-2][get_up_left_x()+4] = 196; map[get_up_left_y()-2][get_up_left_x()+5] = 196; map[get_up_left_y()-2][get_up_left_x()+6] = 186; map[get_up_left_y()-2][get_up_left_x()+7] = 186; map[get_up_left_y()-2][get_up_left_x()+8] = 186; map[get_up_left_y()-2][get_up_left_x()+9] = 196; map[get_up_left_y()-2][get_up_left_x()+10] = 196; map[get_up_left_y()-2][get_up_left_x()+11] = 196; map[get_up_left_y()-2][get_up_left_x()+12] = 196; map[get_up_left_y()-2][get_up_left_x()+13] = 180;
     map[get_up_left_y()-1][get_up_left_x()] = 195; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 196; map[get_up_left_y()-1][get_up_left_x()+5] = 196; map[get_up_left_y()-1][get_up_left_x()+6] = 196; map[get_up_left_y()-1][get_up_left_x()+7] = 196; map[get_up_left_y()-1][get_up_left_x()+8] = 196; map[get_up_left_y()-1][get_up_left_x()+9] = 196; map[get_up_left_y()-1][get_up_left_x()+10] = 196; map[get_up_left_y()-1][get_up_left_x()+11] = 196; map[get_up_left_y()-1][get_up_left_x()+12] = 196; map[get_up_left_y()-1][get_up_left_x()+13] = 180;
-    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 186; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 186; map[get_up_left_y()][get_up_left_x()+5] = 186; map[get_up_left_y()][get_up_left_x()+6] = 196; map[get_up_left_y()][get_up_left_x()+7] = 196; map[get_up_left_y()][get_up_left_x()+8] = 196; map[get_up_left_y()][get_up_left_x()+9] = 196; map[get_up_left_y()][get_up_left_x()+10] = 196; map[get_up_left_y()][get_up_left_x()+11] = 196; map[get_up_left_y()][get_up_left_x()+12] = 196; map[get_up_left_y()][get_up_left_x()+13] = 180;
-    map[get_up_left_y()+1][get_up_left_x()] = 195; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 196; map[get_up_left_y()+1][get_up_left_x()+5] = 196; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 196; map[get_up_left_y()+1][get_up_left_x()+10] = 186; map[get_up_left_y()+1][get_up_left_x()+11] = 186; map[get_up_left_y()+1][get_up_left_x()+12] = 196; map[get_up_left_y()+1][get_up_left_x()+13] = 180;
+    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 186; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 186; map[get_up_left_y()][get_up_left_x()+5] = 186; map[get_up_left_y()][get_up_left_x()+6] = 196; map[get_up_left_y()][get_up_left_x()+7] = 196; map[get_up_left_y()][get_up_left_x()+8] = 196; map[get_up_left_y()][get_up_left_x()+9] = 196; map[get_up_left_y()][get_up_left_x()+10] = 196; map[get_up_left_y()][get_up_left_x()+11] = 186; map[get_up_left_y()][get_up_left_x()+12] = 186; map[get_up_left_y()][get_up_left_x()+13] = 180;
+    map[get_up_left_y()+1][get_up_left_x()] = 195; map[get_up_left_y()+1][get_up_left_x()+1] = 196; map[get_up_left_y()+1][get_up_left_x()+2] = 196; map[get_up_left_y()+1][get_up_left_x()+3] = 196; map[get_up_left_y()+1][get_up_left_x()+4] = 196; map[get_up_left_y()+1][get_up_left_x()+5] = 196; map[get_up_left_y()+1][get_up_left_x()+6] = 196; map[get_up_left_y()+1][get_up_left_x()+7] = 196; map[get_up_left_y()+1][get_up_left_x()+8] = 196; map[get_up_left_y()+1][get_up_left_x()+9] = 196; map[get_up_left_y()+1][get_up_left_x()+10] = 196; map[get_up_left_y()+1][get_up_left_x()+11] = 196; map[get_up_left_y()+1][get_up_left_x()+12] = 196; map[get_up_left_y()+1][get_up_left_x()+13] = 180;
 }
 
 void SHELF_3::delete_(char** &map){
@@ -755,7 +755,7 @@ void SHELF_3::move(char** &m, int const &dir, int const &higth, int const &width
 
 void SHELF_3::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUn estante de madera con libros sobre leyes";
+    std::cout << "\t\t\t\tUna estanteria con libros sobre bricolaje.";
 }
 
 PICTURE_1::PICTURE_1(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro", left_up_y-3){}
@@ -774,7 +774,7 @@ void PICTURE_1::move(char** &m, int const &dir, int const &higth, int const &wid
 
 void PICTURE_1::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUn retrado con personas que no conozco";
+    std::cout << "\t\t\t\tUn retrato con personas que no conozco";
 }
 
 PICTURE_2::PICTURE_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro", left_up_y-3){}
@@ -858,7 +858,7 @@ void CUPBOARD_2::move(char** &m, int const &dir, int const &higth, int const &wi
 
 void CUPBOARD_2::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Gabinete Ordinario de Madera";
+    std::cout << "\t\t\t\tParece un gabinete ordinario de madera";
 }
 
 CUPBOARD_3::CUPBOARD_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario de una puerta", left_up_y-2){}
@@ -881,7 +881,7 @@ void CUPBOARD_3::move(char** &m, int const &dir, int const &higth, int const &wi
 
 void CUPBOARD_3::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Armario de una puerta de Madera sin nada especial";
+    std::cout << "\t\t\t\tUn casillero que contiene herramientas, pero no creo que sean utiles.";
 }
 
 CUPBOARD_SIDE::CUPBOARD_SIDE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-3){}
@@ -906,7 +906,7 @@ void CUPBOARD_SIDE::move(char** &m, int const &dir, int const &higth, int const 
 
 void CUPBOARD_SIDE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
+    std::cout << "\t\t\t\tParece un armario ordinario de madera";
 }
 
 DESK::DESK(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-2){}
@@ -954,7 +954,7 @@ void CUPBOARD_3_SIDE::move(char** &m, int const &dir, int const &higth, int cons
 
 void CUPBOARD_3_SIDE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Armario de una puerta de Madera sin nada especial";
+    std::cout << "\t\t\t\tParece un armario de una puerta de madera sin nada especial";
 }
 
 BODY_DEAD::BODY_DEAD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cadaver", left_up_y){
@@ -1029,7 +1029,7 @@ void CUPBOARD_1_SIDE_ESPECIAL::move(char** &m, int const &dir, int const &higth,
 
 void CUPBOARD_1_SIDE_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un Armario Ordinario de Madera";
+    std::cout << "\t\t\t\tParece un armario ordinario de madera";
 }
 
 CHAIR::CHAIR(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Silla", left_up_y-1){}

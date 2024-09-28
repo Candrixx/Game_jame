@@ -39,7 +39,7 @@ void INVENTORY::draw_interface(){
         std::cout << "\t\t\t\tINVENTARIO\t\t\tDESCRIPCION" << std::endl << std::endl;
         if(page){
             for(itO = objects.begin(); itO!=objects.end(); itO++){
-                if((*itO)->get_code() / 100 == 1){
+                if((*itO)->get_code() / 100 == 1 || (*itO)->get_code() / 100 == 4){
                     if( cor_cam <= i && i <= cor_cam + 17){
                         std::cout << "\t\t\t\t"; i == cord_marker ? std::cout << '*' : std::cout << "o"; std::cout << "  " << (*itO)->get_name(); std::cout << "\t\t"; i == cord_marker ? std::cout << (*itO)->get_description() : std::cout << ""; std::cout << std::endl;
                     }
@@ -51,7 +51,7 @@ void INVENTORY::draw_interface(){
         }
         else if(!page){
             for(itO = objects.begin(); itO!=objects.end(); itO++){
-                if((*itO)->get_code() / 100 != 1){
+                if((*itO)->get_code() / 100 != 1 && (*itO)->get_code() / 100 != 4){
                     if(cor_cam <= i && i <= cor_cam + 17){
                         std::cout << "\t\t\t\t"; i == cord_marker ? std::cout << '*' : std::cout << "o"; std::cout << "  " << (*itO)->get_name(); std::cout << "\t\t"; i == cord_marker ? std::cout << (*itO)->get_description() : std::cout << ""; std::cout << std::endl;
                     }
@@ -119,7 +119,7 @@ void INVENTORY::include_item(OBJECT* &item){
     for(itO = objects.begin(); itO!=objects.end(); itO++){
         if(item->get_code() == (*itO)->get_code()) return;
     }
-    if(item->get_code() / 100 == 1) cant_letters+=1;
+    if(item->get_code() / 100 == 1 || item->get_code() / 100 == 4) cant_letters+=1;
     else cant_others+=1;
     objects.push_back(item);
 }
@@ -141,7 +141,7 @@ void INVENTORY::inventory_interaction(){
     if(objects.empty()) return;
     if(page){
             for(itO = objects.begin(); itO!=objects.end(); itO++){
-                if((*itO)->get_code() / 100 == 1){
+                if((*itO)->get_code() / 100 == 1 || (*itO)->get_code() / 100 == 4){
                     if( cor_cam <= i && i <= cor_cam + 17){
                         if(cord_marker == i){
                             (*itO)->content();
@@ -154,7 +154,7 @@ void INVENTORY::inventory_interaction(){
         }
         else if(!page){
             for(itO = objects.begin(); itO!=objects.end(); itO++){
-                if((*itO)->get_code() / 100 != 1){
+                if((*itO)->get_code() / 100 != 1 && (*itO)->get_code() / 100 != 4){
                     if(cor_cam <= i && i <= cor_cam + 17){
                         if(cord_marker == i){
                             (*itO)->content();
@@ -170,10 +170,10 @@ void INVENTORY::inventory_interaction(){
 void INVENTORY::count_cant_letters(){
     std::list<OBJECT*>::iterator itO;
     for(itO = objects.begin(); itO != objects.end(); itO++){
-        if((*itO)->get_code() / 100 == 1){
+        if((*itO)->get_code() / 100 == 1 || (*itO)->get_code() / 100 == 4){
             cant_letters+=1;
         }
-        else if ((*itO)->get_code() / 100 != 1){
+        else if ((*itO)->get_code() / 100 != 1 && (*itO)->get_code() / 100 != 4){
             cant_others+=1;
         }
     }

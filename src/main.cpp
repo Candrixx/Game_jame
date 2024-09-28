@@ -231,7 +231,7 @@ void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
     while(true){
         if(time.get_elapsed_time() >= 0.2) break;
     }
-    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!";
+    std::cout << "!!!!!!!!!!!!!!!!!!!";
     Timer time2;
     while(true){
         if(time2.get_elapsed_time() >= 1.2) break;
@@ -240,7 +240,7 @@ void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
         move_avatar('d', a, c, m);
         Timer time;
         while(true){
-            if(time.get_elapsed_time() >= 2.6) break;
+            if(time.get_elapsed_time() >= 2.2) break;
         }
     }
     text[0] = "Que cara.....";
@@ -483,7 +483,7 @@ void intro(std::list<MAP*> &maps, MAP* &map){
     char key;
     bool flag = false;
     std::string text1 = "\t\t\tDetras de cada puerta cerrada se esconde un secreto, y detras de cada secreto,\n\n\t\t\tuna verdad. En este juego, te sumergiras en un mundo lleno de enigmas y misterios.\n\n\t\t\tEstas listo para descubrir el precio de la libertad y desvelar los secretos que se\n\n\t\t\tesconden en la sombra?";
-    std::string text2 = "\t\t\tNelson Mandela dijo: 'La libertad es el precio de la valentia'.\n\n\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\tEstas dispuesto a pagar el precio de la libertad?";
+    std::string text2 = "\t\t\t'La libertad es el precio de la valentia'.\n\n\t\t\t- Nelson Mandela\n\n\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\tEstas dispuesto a pagar el precio de la libertad?";
     std::string* pointer = &text1;
     
     while(true){
@@ -528,6 +528,7 @@ int main(){
     maps.push_back(new ROOM1());
     maps.push_back(new ROOM2());
     maps.push_back(new BASEMENT());
+    maps.push_back(new HALLWAY());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     MAP* map = (*maps.begin());

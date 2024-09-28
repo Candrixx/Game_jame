@@ -81,7 +81,7 @@ void LETTER_TUTORIAL::content(){
     }
 }
 //
-PIECE1::PIECE1(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 391){
+PIECE1::PIECE1(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 391){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -89,7 +89,7 @@ PIECE1::PIECE1(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE1::content(){
 }
 
-PIECE2::PIECE2(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 392){
+PIECE2::PIECE2(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 392){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -97,7 +97,7 @@ PIECE2::PIECE2(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE2::content(){
 }
 
-PIECE3::PIECE3(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 393){
+PIECE3::PIECE3(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 393){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -105,7 +105,7 @@ PIECE3::PIECE3(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE3::content(){
 }
 
-PIECE4::PIECE4(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 394){
+PIECE4::PIECE4(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 394){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -113,7 +113,7 @@ PIECE4::PIECE4(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE4::content(){
 }
 
-PIECE5::PIECE5(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 395){
+PIECE5::PIECE5(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 395){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -121,7 +121,7 @@ PIECE5::PIECE5(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE5::content(){
 }
 
-PIECE6::PIECE6(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 396){
+PIECE6::PIECE6(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 396){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -129,7 +129,7 @@ PIECE6::PIECE6(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE6::content(){
 }
 
-PIECE7::PIECE7(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 397){
+PIECE7::PIECE7(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 397){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -137,7 +137,7 @@ PIECE7::PIECE7(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE7::content(){
 }
 
-PIECE8::PIECE8(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 398){
+PIECE8::PIECE8(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 398){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }
@@ -145,7 +145,7 @@ PIECE8::PIECE8(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar part
 void PIECE8::content(){
 }
 
-PIECE9::PIECE9(int _x, int _y): OBJECT(_x, _y, "Pieza rota", "Parece formar parte de algo mas grande.", 399){
+PIECE9::PIECE9(int _x, int _y): OBJECT(_x, _y, "Pieza rota         ", "Parece formar parte de algo mas grande.", 399){
     std::string text = "Has recogido una pieza rota";
     set_interact_text(text);
 }

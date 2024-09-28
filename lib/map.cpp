@@ -654,6 +654,7 @@ ROOM2::ROOM2():MAP(54, 30, "Taller"){
     }
     std::list<OBJECT*>* o = get_player_objects();
     std::list<OBJECT*>::iterator itO;
+    o->push_back(new NOTE2(2, 6));
     for(itO = o->begin(); itO != o->end(); itO++){
         (*itO)->print(m);
     }
@@ -792,4 +793,164 @@ void BASEMENT::fill_map(){
     set_map(25, 2, char(92)); set_map(26, 2, char(47)); set_map(27, 2, char(92)); set_map(28, 2, char(47));
     set_map(29, 1, char(47)); set_map(30, 1, char(124)); set_map(33, 1, char(124)); set_map(33, 2, char(180));
     set_map(34, 1, char(92)); set_map(35, 1, char(95)); set_map(36, 1, char(47)); set_map(35, 2, char(47));
+}
+
+EXIT_HALLWAY_ENTRY_ROOM1::EXIT_HALLWAY_ENTRY_ROOM1(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 35, 2, 2, false){}
+
+void EXIT_HALLWAY_ENTRY_ROOM1::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
+}
+
+bool EXIT_HALLWAY_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
+    std::list<OBJECT*>::iterator itO;
+    bool if_key = false;
+    char key;
+    if(!get_acces()){
+        for(itO = o->begin(); itO != o->end(); itO++){
+            if((*itO)->get_code() == 222){
+                if_key = true;
+                break;;
+            }
+        }
+        if(if_key){
+            std::cout << std::endl << std::endl;
+            std::cout << "\t\t\t\tQuieres usar la Llave Oxidada para abrir la puerta?" << std::endl << std::endl;
+            std::cout << "\t\t\t\tSI: E              NO: ESC";
+            while(true){
+                if(kbhit()){
+                    key = getch();
+                    if(key == ACTION || key == ACTION2){
+                        set_acces(true);
+                        return true;
+                    }
+                    else if(key == ESC) return false;
+                }
+            }
+        }
+        else{
+            std::cout << std::endl << std::endl;
+            std::cout << "\t\t\t\tEsta cerrada, parece nececitar una llave." << std::endl << std::endl;
+            std::cout << "\t\t\t\tCERRAR: ESC";
+            while(true){
+                if(kbhit()){
+                    key = getch();
+                    if(key == ESC) return false;
+                }
+            }
+            return false;
+        }
+    }
+    else{
+        std::cout << std::endl << std::endl;
+        std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+        std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+        std:: cout << "\t\t\t\tSI: E      NO: ESC";
+        while(true){
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2) return true;
+                else if(key == ESC) return false;
+            }
+        }
+        return false;
+    }
+    return false;
+ }
+
+void EXIT_HALLWAY_ENTRY_ROOM1::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = ' '; m[get_entry_exit_y()][get_entry_exit_x()+1] = ' ';
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = ' '; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = ' ';
+}
+
+EXIT_HALLWAY_ENTRY_ROOM3::EXIT_HALLWAY_ENTRY_ROOM3(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 72, 2, 2, true){}
+
+void EXIT_HALLWAY_ENTRY_ROOM3::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 240; m[get_entry_exit_y()][get_entry_exit_x()+1] = 240;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 240; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 240;
+}
+
+bool EXIT_HALLWAY_ENTRY_ROOM3::interact_entry(std::list<OBJECT*>* &o){
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+ }
+
+void EXIT_HALLWAY_ENTRY_ROOM3::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = ' '; m[get_entry_exit_y()][get_entry_exit_x()+1] = ' ';
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = ' '; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = ' ';
+}
+
+HALLWAY::HALLWAY():MAP(82, 13, "Pasillo"){
+    fill_map();
+    std::list<ENTRY_EXITS*>* e = get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    char ** m = get_map_matriz();
+    e->push_back(new EXIT_HALLWAY_ENTRY_ROOM1(1, 6));
+    e->push_back(new EXIT_HALLWAY_ENTRY_ROOM3(79, 6));
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new CUPBOARD_2(3, 3, 12, 4));
+    mo->push_back(new PICTURE_1(17, 2, 21, 2));
+    mo->push_back(new PICTURE_2(24, 2, 33, 2));
+    mo->push_back(new FLOWER(40, 3, 42, 4));
+    mo->push_back(new CUPBOARD_2(44, 3, 53, 4));
+    mo->push_back(new PICTURE_ESPECIAL(57, 2, 61, 2));
+    mo->push_back(new PICTURE_1(65, 2, 69, 2));
+    mo->push_back(new FLOWER(76, 3, 78, 4));
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
+void HALLWAY::fill_map(){
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 1, char(32));
+        set_map(j, 2, char(32));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-2, char(32));
+        set_map(j, get_heigth()-3, char(32));
+        set_map(j, get_heigth()-4, char(238));
+    }
+
+    for(int i = 0; i < get_heigth(); i++){
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-1; j++){
+            set_map(j, i, char(32));
+        }
+    }
+    for(int i=6; i<76; i++){
+        set_map(i, 5, char(196));
+        set_map(i, 8, char(196));
+    }
+    for(int i=5; i<9; i++){
+        set_map(6, i, char(124));
+        set_map(75, i, char(124));
+    }
+    set_map(6, 5, char(218)); set_map(6, 8, char(192)); set_map(75, 5, char(191)); set_map(75, 8, char(217));
 }
