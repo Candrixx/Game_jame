@@ -6,7 +6,6 @@
 #include "../include/map.h"
 #include "../include/avatar.h"
 #include "../include/objects.h"
-#include "../include/re_door.h"
 #include "../include/timer.h"
 #include "../include/pause_menu.h"
 
@@ -529,6 +528,7 @@ int main(){
     maps.push_back(new ROOM2());
     maps.push_back(new BASEMENT());
     maps.push_back(new HALLWAY());
+    maps.push_back(new ROOM3());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     MAP* map = (*maps.begin());

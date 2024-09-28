@@ -266,8 +266,10 @@ bool run_re_door() {
                     }
                 }
             }
-            else if (select_key == ESC)
+            else if (select_key == ESC) {
+                CLEAR_SCREEN;
                 break;
+            }
         }
         else if (key == ESC)
             break;
@@ -295,6 +297,7 @@ bool run_re_door() {
             return true;
         }   
     }
+    CLEAR_SCREEN;
     return false;
 }
 

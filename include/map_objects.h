@@ -306,4 +306,13 @@ public:
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
 };
 
+class PIANO:public MAP_OBJECT{
+public:
+    PIANO(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
 #endif

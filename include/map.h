@@ -184,6 +184,44 @@ public:
     void fill_map() override;
 };
 
+class EXIT_ROOM3_ENTRY_HALLWAY: public ENTRY_EXITS{
+public:
+    EXIT_ROOM3_ENTRY_HALLWAY(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class EXIT_ROOM3_ENTRY_ROOM4: public ENTRY_EXITS{
+public:
+    EXIT_ROOM3_ENTRY_ROOM4(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class EXIT_ROOM3_ENTRY_ROOM6: public ENTRY_EXITS{
+public:
+    EXIT_ROOM3_ENTRY_ROOM6(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class EXIT_ROOM6_ENTRY_ROOM3: public ENTRY_EXITS{
+public:
+    EXIT_ROOM6_ENTRY_ROOM3(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class ROOM3:public MAP{
+public:
+    ROOM3();
+    void fill_map() override;
+};
+
 void print_panel(char p[][51]);
 
 #endif
