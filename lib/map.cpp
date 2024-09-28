@@ -11,6 +11,8 @@
 #define ESC 27
 #define CLEAR_SCREEN system("cls")
 
+char question = 168;
+
 void print_panel(char p[][51]){
     std::cout << std::endl << std::endl << std::endl << std::endl;
     for(int i=0; i<11; i++){
@@ -106,7 +108,7 @@ bool ENTRY_EXITS_MAP_PRUEBA::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar al Mapa de Prueba"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar al Mapa Prueba?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -216,8 +218,8 @@ bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(std::list<OBJECT*>* &o){
         int count = 0;
         char key;
         std::cout << std::endl << std::endl;
-        std:: cout << "\t\t\t\tLa puerta parece nececitar un codigo." << std::endl << std::endl;
-        std:: cout << "\t\t\t\tQuieres intentarlo"<< std::endl << std::endl;
+        std:: cout << "\t\t\t\tLa puerta parece necesitar un codigo." << std::endl << std::endl;
+        std:: cout << "\t\t\t\t" << question << "Quieres intentarlo?"<< std::endl << std::endl;
         std:: cout << "\t\t\t\tSI: E      NO: ESC";
         while(true){
             if(kbhit()){
@@ -258,7 +260,7 @@ bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(std::list<OBJECT*>* &o){
         char key;
         std::cout << std::endl << std::endl;
         std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-        std:: cout << "\t\t\t\tQuieres entrar al Mapa de Prueba"<< std::endl << std::endl;
+        std:: cout << "\t\t\t\t" << question << "Quieres entrar al Mapa Prueba?"<< std::endl << std::endl;
         std:: cout << "\t\t\t\tSI: E      NO: ESC";
         while(true){
             if(kbhit()){
@@ -353,7 +355,7 @@ bool EXIT_ROOM1_ENTRY_TUTORIAL::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -437,7 +439,7 @@ bool EXIT_ROOM1_ENTRY_ROOM2::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -466,7 +468,7 @@ bool EXIT_ROOM1_ENTRY_ROOM5::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -494,7 +496,7 @@ bool EXIT_ROOM1_ENTRY_HALLWAY::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -600,7 +602,7 @@ bool EXIT_ROOM2_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -628,7 +630,7 @@ bool EXIT_ROOM2_ENTRY_BASEMENT::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa compuerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -722,7 +724,7 @@ bool EXIT_BASEMENT_ENTRY_ROOM2::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa compuerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -817,7 +819,7 @@ bool EXIT_HALLWAY_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
         }
         if(if_key){
             std::cout << std::endl << std::endl;
-            std::cout << "\t\t\t\tQuieres usar la Llave Oxidada para abrir la puerta?" << std::endl << std::endl;
+            std::cout << "\t\t\t\t" << question << "Quieres usar la Llave oxidada para abrir la puerta?" << std::endl << std::endl;
             std::cout << "\t\t\t\tSI: E              NO: ESC";
             while(true){
                 if(kbhit()){
@@ -832,7 +834,7 @@ bool EXIT_HALLWAY_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
         }
         else{
             std::cout << std::endl << std::endl;
-            std::cout << "\t\t\t\tEsta cerrada, parece nececitar una llave." << std::endl << std::endl;
+            std::cout << "\t\t\t\tEsta cerrada, parece necesitar una llave." << std::endl << std::endl;
             std::cout << "\t\t\t\tCERRAR: ESC";
             while(true){
                 if(kbhit()){
@@ -846,7 +848,7 @@ bool EXIT_HALLWAY_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
     else{
         std::cout << std::endl << std::endl;
         std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-        std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+        std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
         std:: cout << "\t\t\t\tSI: E      NO: ESC";
         while(true){
             if(kbhit()){
@@ -876,7 +878,7 @@ bool EXIT_HALLWAY_ENTRY_ROOM3::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -968,7 +970,7 @@ bool EXIT_ROOM3_ENTRY_HALLWAY::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres abrir la puerta"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -996,7 +998,7 @@ bool EXIT_ROOM3_ENTRY_ROOM4::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){
@@ -1045,7 +1047,7 @@ bool EXIT_ROOM6_ENTRY_ROOM3::interact_entry(std::list<OBJECT*>* &o){
         std::cout << std::endl << std::endl;
         std:: cout << "\t\t\t\tLa puerta esta cerrada, hay una ranura donde va la cerradura." << std::endl << std::endl;
         std:: cout << "\t\t\t\tPareces tener todas las piezas." << std::endl << std::endl;
-        std:: cout << "\t\t\t\tQuieres intentar repararla"<< std::endl << std::endl;
+        std:: cout << "\t\t\t\t" << question << "Quieres intentar repararla?"<< std::endl << std::endl;
         std:: cout << "\t\t\t\tSI: E      NO: ESC";
         while(true){
             if(kbhit()){
@@ -1062,7 +1064,7 @@ bool EXIT_ROOM6_ENTRY_ROOM3::interact_entry(std::list<OBJECT*>* &o){
         char key;
         std::cout << std::endl << std::endl;
         std:: cout << "\t\t\t\tLa puerta esta cerrada, hay una ranura donde va la cerradura." << std::endl << std::endl;
-        std:: cout << "\t\t\t\tPareces que te faltan piezas." << std::endl << std::endl;
+        std:: cout << "\t\t\t\tParece que te faltan piezas." << std::endl << std::endl;
         std:: cout << "\t\t\t\tCERRAR: ESC";
         while(true){
             if(kbhit()){

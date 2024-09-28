@@ -8,6 +8,7 @@
 #define ACTION 'e'
 #define ACTION2 'E'
 
+char question = 168;
 bool lights_out_flag = false;
 bool lever_1_flag = false;
 bool lever_2_flag = false;
@@ -105,7 +106,7 @@ void CUPBOARD::move(char** &m, int const &dir, int const &higth, int const &widt
 
 void CUPBOARD::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un armario ordinario de madera";
+    std::cout << "\t\t\t\tParece un armario ordinario de madera.";
 }
 
 CUPBOARD_ESPECIAL::CUPBOARD_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
@@ -140,7 +141,7 @@ void CUPBOARD_ESPECIAL::move(char** &m, int const &dir, int const &higth, int co
 
 void CUPBOARD_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece que el armario esta vacio";
+    std::cout << "\t\t\t\tParece que el armario esta vacio.";
 }
 
 TABLE::TABLE(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cupboard", left_up_y-1){}
@@ -158,7 +159,7 @@ void TABLE::move(char** &m, int const &dir, int const &higth, int const &width){
 
 void TABLE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece una mesa de madera sin nada especial";
+    std::cout << "\t\t\t\tParece una mesa de madera sin nada especial.";
 }
 
 BOX::BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "Caja", left_up_y-1){}
@@ -179,7 +180,7 @@ void BOX::delete_(char** &m){
 
 void BOX::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna caja con un decorado en el frente";
+    std::cout << "\t\t\t\tUna caja con un decorado en el frente.";
 }
 
 void BOX::move(char** &m, int const &dir, int const &higth, int const &width){}
@@ -202,7 +203,7 @@ void TABLE_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const
 
 void TABLE_TUTORIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece una mesa de madera normal, tiene algunas marcas pero sin sentido";
+    std::cout << "\t\t\t\tParece una mesa de madera normal, tiene algunas marcas pero sin sentido.";
 }
 
 WINDOW::WINDOW(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-1){}
@@ -218,7 +219,7 @@ void WINDOW::move(char** &m, int const &dir, int const &higth, int const &width)
 
 void WINDOW::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tHay una neblina que no deja ver mas alla";
+    std::cout << "\t\t\t\tHay una neblina que no deja ver mas alla.";
 }
 
 BOX_TUTORIAL::BOX_TUTORIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "CAJA", left_up_y-1){}
@@ -237,7 +238,7 @@ void BOX_TUTORIAL::delete_(char** &map){
 
 void BOX_TUTORIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna caja de carton, parece ligera";
+    std::cout << "\t\t\t\tUna caja de carton, parece ligera.";
 }
 
 void BOX_TUTORIAL::move(char** &m, int const &dir, int const &higth, int const &width){
@@ -296,7 +297,7 @@ void CUPBOARD_PUZLE::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece haber un mecanismo que no deja abrir el armario.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres intentar desbloquearlo?";
+        std::cout << "\t\t\t\t" << question << "Quieres intentar desbloquearlo?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E         NO: ESC";
         while(true){
@@ -311,11 +312,16 @@ void CUPBOARD_PUZLE::get_interact_empty(char** &map){
                         std::string text = "*Se escucha algo desbloqueandose*";
                         std::string text2 = "El armario parece estar abierto";
                         std::string text3 = "Pero...";
-                        std::string text4 = "Porque siento que esto ya lo he hecho antes?";
+                        std::string text4 = "Por que siento que esto ya lo he hecho antes?";
+                        bool question_flag = false;
                         std::string* t_pointer = &text;
                         int count = 0;
                         while(true){
                             for(int i=0; i< t_pointer->length(); i++){
+                                if (question_flag == false && count == 3) {
+                                    std::cout << question;
+                                    question_flag = true;
+                                }
                                 std::cout << (*t_pointer)[i];
                                 Timer t;
                                 while(true){
@@ -347,7 +353,7 @@ void CUPBOARD_PUZLE::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEl armario ya esta abierto pero vacio";
+        std::cout << "\t\t\t\tEl armario ya esta abierto pero vacio.";
     }
 }
 
@@ -373,9 +379,9 @@ void LEVER_1::get_interact_empty(char** &map){
     char key;
     if(!lever_1_flag){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << "\t\t\t\tParece que la palanca no esta activada.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres activarla?";
+        std::cout << "\t\t\t\t" << question << "Quieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -405,7 +411,7 @@ void LEVER_1::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << "\t\t\t\tEsta palanca ya esta activada.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
@@ -439,9 +445,9 @@ void LEVER_2::get_interact_empty(char** &map){
     char key;
     if(!lever_2_flag){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << "\t\t\t\tParece que la palanca no esta activada.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres activarla?";
+        std::cout << "\t\t\t\t" << question << "Quieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -472,7 +478,7 @@ void LEVER_2::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << "\t\t\t\tEsta palanca ya esta activada.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
@@ -508,7 +514,7 @@ void LEVER_3::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tParece que la palanca no esta activada";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres activarla?";
+        std::cout << "\t\t\t\t" << question << "Quieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -538,7 +544,7 @@ void LEVER_3::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << "\t\t\t\tEsta palanca ya esta activada.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
@@ -572,9 +578,9 @@ void LEVER_4::get_interact_empty(char** &map){
     char key;
     if(!lever_4_flag){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << "\t\t\t\tParece que la palanca no esta activada.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres activarla?";
+        std::cout << "\t\t\t\t" << question << "Quieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -605,7 +611,7 @@ void LEVER_4::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << "\t\t\t\tEsta palanca ya esta activada.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
@@ -639,9 +645,9 @@ void LEVER_5::get_interact_empty(char** &map){
     char key;
     if(!lever_5_flag){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParece que la palanca no esta activada";
+        std::cout << "\t\t\t\tParece que la palanca no esta activada.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tQuieres activarla?";
+        std::cout << "\t\t\t\t" << question << "Quieres activarla?";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tSI: E              NO: ESC";
         while(true){
@@ -671,7 +677,7 @@ void LEVER_5::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tEsta palanca ya esta activada";
+        std::cout << "\t\t\t\tEsta palanca ya esta activada.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
@@ -705,7 +711,7 @@ void SHELF_1::move(char** &m, int const &dir, int const &higth, int const &width
 
 void SHELF_1::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUn estante de madera con libros sobre leyes";
+    std::cout << "\t\t\t\tUn estante de madera con libros sobre leyes.";
 }
 
 SHELF_2::SHELF_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Estante", left_up_y-3){}
@@ -730,7 +736,7 @@ void SHELF_2::move(char** &m, int const &dir, int const &higth, int const &width
 
 void SHELF_2::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUn estante de madera con libros sobre leyes";
+    std::cout << "\t\t\t\tUn estante de madera con libros sobre leyes.";
 }
 
 SHELF_3::SHELF_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Estante", left_up_y-3){}
@@ -774,7 +780,7 @@ void PICTURE_1::move(char** &m, int const &dir, int const &higth, int const &wid
 
 void PICTURE_1::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUn retrato con personas que no conozco";
+    std::cout << "\t\t\t\tUn retrato con personas que no conozco.";
 }
 
 PICTURE_2::PICTURE_2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro", left_up_y-3){}
@@ -793,7 +799,7 @@ void PICTURE_2::move(char** &m, int const &dir, int const &higth, int const &wid
 
 void PICTURE_2::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna pintura de algo parecido a una prision";
+    std::cout << "\t\t\t\tUna pintura de algo parecido a una prision.";
 }
 
 PICTURE_ESPECIAL::PICTURE_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Recuadro ", left_up_y-3){}
@@ -815,9 +821,9 @@ void PICTURE_ESPECIAL::get_interact_empty(char** &map){
     char key;
     if(!picture_flag){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tUn cuadro de un lugar que parece un tribunal";
+        std::cout << "\t\t\t\tUn cuadro de un lugar que parece un tribunal.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParece haber algo que sobresale en el marco";
+        std::cout << "\t\t\t\tParece haber algo que sobresale en el marco.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tINVESTIGAR: E         CERRAR: ESC";
         while(true){
@@ -836,7 +842,7 @@ void PICTURE_ESPECIAL::get_interact_empty(char** &map){
     }
     else{
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tUn cuadro de un tribunal";
+        std::cout << "\t\t\t\tUn cuadro de un tribunal.";
     }
 }
 
@@ -858,7 +864,7 @@ void CUPBOARD_2::move(char** &m, int const &dir, int const &higth, int const &wi
 
 void CUPBOARD_2::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un gabinete ordinario de madera";
+    std::cout << "\t\t\t\tParece un gabinete ordinario de madera.";
 }
 
 CUPBOARD_3::CUPBOARD_3(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario de una puerta", left_up_y-2){}
@@ -906,7 +912,7 @@ void CUPBOARD_SIDE::move(char** &m, int const &dir, int const &higth, int const 
 
 void CUPBOARD_SIDE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un armario ordinario de madera";
+    std::cout << "\t\t\t\tParece un armario ordinario de madera.";
 }
 
 DESK::DESK(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-2){}
@@ -954,7 +960,7 @@ void CUPBOARD_3_SIDE::move(char** &m, int const &dir, int const &higth, int cons
 
 void CUPBOARD_3_SIDE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un armario de una puerta de madera sin nada especial";
+    std::cout << "\t\t\t\tParece un armario de una puerta de madera sin nada especial.";
 }
 
 BODY_DEAD::BODY_DEAD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cadaver", left_up_y){
@@ -978,7 +984,7 @@ void BODY_DEAD::move(char** &m, int const &dir, int const &higth, int const &wid
 
 void BODY_DEAD::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUn cuerpo recostado de la pared";
+    std::cout << "\t\t\t\tUn cuerpo recostado de la pared.";
 }
 
 FLOWER::FLOWER(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){}
@@ -1001,7 +1007,7 @@ void FLOWER::move(char** &m, int const &dir, int const &higth, int const &width)
 
 void FLOWER::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna maceta con una flor que no reconozco";
+    std::cout << "\t\t\t\tUna maceta con una flor que no reconozco.";
 }
 
 CUPBOARD_1_SIDE_ESPECIAL::CUPBOARD_1_SIDE_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-3){
@@ -1029,7 +1035,7 @@ void CUPBOARD_1_SIDE_ESPECIAL::move(char** &m, int const &dir, int const &higth,
 
 void CUPBOARD_1_SIDE_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un armario ordinario de madera";
+    std::cout << "\t\t\t\tParece un armario ordinario de madera.";
 }
 
 CHAIR::CHAIR(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Silla", left_up_y-1){}
@@ -1069,7 +1075,7 @@ void BIG_BOX::delete_(char** &map){
 
 void BIG_BOX::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna gran caja de carton, parece que se puede mover";
+    std::cout << "\t\t\t\tUna gran caja de carton, parece que se puede mover.";
 }
 
 void BIG_BOX::move(char** &m, int const &dir, int const &higth, int const &width){

@@ -7,6 +7,9 @@
 #define ACTION2 'E'
 #define ESC 27
 
+char question = 168;
+char exclamation = 173;
+
 OBJECT::OBJECT(int _x, int _y, std::string _name, std::string _des, int _code){
     this->x = _x;
     this->y = _y;
@@ -65,14 +68,15 @@ KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Llave de Prueba", "Llave
 void KEY_PRUEBA::content(){
 }
 
-LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Una carta dirigida a mi?", 162){
+LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Parece ser una carta dirigida a mi", 162){
 }
 
 void LETTER_TUTORIAL::content(){
-    std::string text = "-Hola de nuevo XXXXX o como sea que te llames ahora,\n\t\t\t\tdiria que ya te sabes las reglas pero ese no es el\n\t\t\t\tcaso. En fin, empecemos desde el principio, en este\n\t\t\t\tmomento estas ATRAPADO (vaya novedad), salir? depen-\n\t\t\t\tdera de tus habilidades, en este lugar encontraras\n\t\t\t\tdistintos enigmas aun por desvelar, tu trabajo es encontrar\n\t\t\t\tla manera de salir de este lugar (si puedes).\n\t\t\t\tUn consejo: Todo lo que encuentres tiene una razon.\n\n\t\t\t\t Att: El JUEZ";
+    std::string text = "-Hola de nuevo XXXXX o como sea que te llames ahora,\n\t\t\t\tdiria que ya te sabes las reglas pero ese no es el\n\t\t\t\tcaso. En fin, empecemos desde el principio, en este\n\t\t\t\tmomento estas ATRAPADO (vaya novedad), ";
+    std::string text2 = "salir? depen-\n\t\t\t\tdera de tus habilidades, en este lugar encontraras\n\t\t\t\tdistintos enigmas aun por desvelar, tu trabajo es encontrar\n\t\t\t\tla manera de salir de este lugar (si puedes).\n\t\t\t\tUn consejo: Todo lo que encuentres tiene una razon.\n\n\t\t\t\t Att: El JUEZ";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\t" << text;
+    std::cout << "\t\t\t\t" << text << question << text2;
     while(true){
         if(kbhit()){
             char key = getch();
@@ -161,7 +165,7 @@ KEY_TO_THREE::KEY_TO_THREE(int _x, int _y): OBJECT(_x, _y, "Llave oxidada", "Pod
 void KEY_TO_THREE::content(){
 }
 
-LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un caso legal. Parece tener partes redactadas", 451){
+LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un caso legal. Tiene partes redactadas.", 451){
     std::string text = "Has recogido Reporte legal #1";
     set_interact_text(text);
 }
@@ -179,7 +183,7 @@ void LOG1::content(){
     }
 }
 
-LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un caso legal. Parece tener partes redactadas", 452){
+LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un caso legal. Tiene partes redactadas.", 452){
     std::string text = "Has recogido Reporte legal #2";
     set_interact_text(text);
 }
@@ -197,13 +201,13 @@ void LOG2::content(){
     }
 }
 
-LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un caso legal. Parece tener partes redactadas", 453){
+LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un caso legal. Tiene partes redactadas.", 453){
     std::string text = "Has recogido Reporte legal #3";
     set_interact_text(text);
 }
 
 void LOG3::content(){
-    std::string text = "Acusado: Eric de Andrade\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 13 de enero de 2002\n\n\t\t\t\tEric de Andrade, joven ingeniero a la edad de veinticinco, trabajaba para 1\n\t\t\t\tempresa no muy grande dedicada a la elaboracion\n\t\t\t\tde productos quimicos. Con el fin de ahorrar costos para la empresa, virtio de manera\n\t\t\t\tilegal residuos toxicos en un rio cercano. Fue condenado a sesenta \n\t\t\t\ty cinco meses en la prision Mansfield";
+    std::string text = "Acusado: Eric de Andrade\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 13 de enero de 2002\n\n\t\t\t\tEric de Andrade, joven ingeniero a la edad de veinticinco, trabajaba para 1\n\t\t\t\tempresa no muy grande dedicada a la elaboracion\n\t\t\t\tde productos quimicos. Con el fin de ahorrar costos para la empresa,\n\t\t\t\tvirtio de manera ilegal residuos toxicos en un rio cercano. Fue\n\t\t\t\tcondenado a sesenta y cinco meses en la prision Mansfield";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -215,7 +219,7 @@ void LOG3::content(){
     }
 }
 
-LOG4::LOG4(int _x, int _y): OBJECT(_x, _y, "Reporte legal #4", "Reporte de un caso legal. Parece tener partes redactadas", 454){
+LOG4::LOG4(int _x, int _y): OBJECT(_x, _y, "Reporte legal #4", "Reporte de un caso legal. Tiene partes redactadas.", 454){
     std::string text = "Has recogido Reporte legal #4";
     set_interact_text(text);
 }
@@ -233,7 +237,7 @@ void LOG4::content(){
     }
 }
 
-LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un caso legal. Parece tener partes redactadas", 455){
+LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un caso legal. Tiene partes redactadas.", 455){
     std::string text = "Has recogido Reporte legal #5";
     set_interact_text(text);
 }
@@ -251,16 +255,19 @@ void LOG5::content(){
     }
 }
 
-NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Una nota? Ha habido gente antes que yo?", 163){
+NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Nota escrita por una persona desconocida.", 163){
     std::string text = "Has recogido Nota";
     set_interact_text(text);
 }
 
 void NOTE1::content(){
-    std::string text = "Este lugar... donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\talla hace un segundo. Y los rompecabezas... no terminan! Cada vez que creo haber\n\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\tRecorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\tAlgo esta mal, muy mal. Necesito salir de aqui. Necesito encontrar una salida.";
+    std::string text1 = "Este lugar... "; 
+    std::string text2 = "donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\talla hace un segundo. Y los rompecabezas... "; 
+    std::string text3 = "no terminan! Cada vez que creo haber\n\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t";
+    std::string text4 = "Recorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\tAlgo esta mal, muy mal. Necesito salir de aqui. Necesito encontrar una salida.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t" << text;
+    std::cout << "\t\t\t" << text1 << question << text2 << exclamation << text3 << exclamation << text4;
     while(true){
         if(kbhit()){
             char key = getch();
@@ -269,13 +276,13 @@ void NOTE1::content(){
     }
 }
 
-NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota misteriosa    ", "Quien habra escrito esto? El Juez, o alguien mas?", 164){
+NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota misteriosa    ", "Esta nota parece indicar algo...", 164){
     std::string text = "Has recogido Nota misteriosa";
     set_interact_text(text);
 }
 
 void NOTE2::content(){
-    std::string text = "En el obraje del creador, donde las manos dan forma,\n\t\t\t\tCinco signos esperan, su orden se desvela.\n\t\t\t\tEl primero, donde tus instrumentos aguardan el primer toque.\n\t\t\t\tEn la sabiduria de los bocetos y trazos, sus secretos invoca.\n\t\t\t\tDebajo de este, el tercero, oculta un paso más al arte.\n\t\t\t\tSeguido, sientate y elabora tu destino.\n\t\t\t\tFinalmente, en el corazon del oficio, el enigma se desvela.";
+    std::string text = "En el obraje del creador, donde las manos dan forma,\n\t\t\t\tCinco signos esperan, su orden se desvela.\n\t\t\t\tEl primero, donde tus instrumentos aguardan el primer toque.\n\t\t\t\tEn la sabiduria de los bocetos y trazos, sus secretos invoca.\n\t\t\t\tDebajo de este, el tercero, oculta un paso mas al arte.\n\t\t\t\tSeguido, sientate y elabora tu destino.\n\t\t\t\tFinalmente, en el corazon del oficio, el enigma se desvela.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -293,7 +300,7 @@ NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es 
 }
 
 void NEWSPAPER::content(){
-    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision de Mansfield. Al parecer,\n\t\t\tla sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones\n\t\t\tdefensoras de los derechos humanos han exigido la destitucion inmediata del juez XXXXXXX\n\t\t\ty la apertura de una investigacion a fondo para determinar si existen\n\t\t\totros magistrados involucrados en practicas similares.";
+    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision privada Mansfield. Al parecer,\n\t\t\tla sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones\n\t\t\tdefensoras de los derechos humanos han exigido la destitucion inmediata del juez XXXXXXX\n\t\t\ty la apertura de una investigacion a fondo para determinar si existen\n\t\t\totros magistrados involucrados en practicas similares.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t" << text;

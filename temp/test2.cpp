@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+char question = 168;
+
 class Timer {
 public:
     Timer() : start_time_(std::chrono::steady_clock::now()) {}
@@ -21,6 +23,7 @@ int main() {
     Timer timer;
     std::string text = "####\n\t\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t  ################\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t    ############\n\t\t\t\t\t\t      ########\n\t\t\t\t\t\t       ######\n\t\t\t\t\t\t         ##";
     std::cout << "\t\t\t\t\t\t\t\t" << text;
+    std::cout << std::endl << std::endl << question << "Prueba?";
     std::cin.get();
     float elapsed_time = timer.get_elapsed_time();
     std::cout << "Elapsed time: " << elapsed_time << " seconds" << std::endl;

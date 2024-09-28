@@ -28,6 +28,9 @@ bool cinematic_1_flag = false;
 bool cinematic_2_flag = false;
 bool entry_room_2_1_flag = false;
 
+char question = 168;
+char exclamation = 173;
+
 void remove_cursor(){
     HANDLE encabezado;
     encabezado = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -203,7 +206,7 @@ void cinematic_1(MAP* &m, CAMERA &c, AVATAR &a){
 void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
     std::string text[3];
     text[0] = "Uh.. Esta algo oscuro y no puedo ver bien que es...";
-    text[1] = "Mis ojos parecen acostumbrarse a la oscuridad";
+    text[1] = "Mis ojos parecen acostumbrarse a la oscuridad.";
     text[2] = "A ver...";
     CLEAR_SCREEN;
     draw_map(c, a, m);
@@ -243,7 +246,7 @@ void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
         }
     }
     text[0] = "Que cara.....";
-    text[1] = "Porque hay un... Bleeeeeeeeeeegh";
+    text[1] = "Porque hay un... Bleeeeeeeeeeegh.";
     text[2] = "Tengo que salir de aqui.";
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\t";
@@ -273,7 +276,7 @@ void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     if(!a.interact_map_objects(*m, map_object)) return;
     if(map_object->get_moved()){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tNo parece que se pueda mover mas" << std::endl << std::endl;
+        std::cout << "\t\t\t\tNo parece que se pueda mover mas." << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
             if(kbhit()){
@@ -335,7 +338,7 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
             CLEAR_SCREEN;
             draw_map(c, a, m);
             std::cout << std::endl << std::endl;
-            std::cout << "\t\t\t\tAcaba de aparecer una puerta en el suelo de la habitacion";
+            std::cout << "\t\t\t\tAcaba de aparecer una puerta en el suelo de la habitacion.";
         }
         else if(map_object->get_name() == "Palanca" && error_order_levers_flag){
             std::list<MAP_OBJECT*>* mo = m->get_map_objects();
@@ -346,7 +349,7 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
             CLEAR_SCREEN;
             draw_map(c, a, m);
             std::cout << std::endl << std::endl;
-            std::cout << "\t\t\t\tUh parece que el orden de activacion no es correcto";
+            std::cout << "\t\t\t\tUh, parece que el orden de activacion no es correcto.";
         }
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tCERRAR: ESC";
@@ -482,7 +485,7 @@ void intro(std::list<MAP*> &maps, MAP* &map){
     char key;
     bool flag = false;
     std::string text1 = "\t\t\tDetras de cada puerta cerrada se esconde un secreto, y detras de cada secreto,\n\n\t\t\tuna verdad. En este juego, te sumergiras en un mundo lleno de enigmas y misterios.\n\n\t\t\tEstas listo para descubrir el precio de la libertad y desvelar los secretos que se\n\n\t\t\tesconden en la sombra?";
-    std::string text2 = "\t\t\t'La libertad es el precio de la valentia'.\n\n\t\t\t- Nelson Mandela\n\n\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\tEstas dispuesto a pagar el precio de la libertad?";
+    std::string text2 = "\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\tEstas dispuesto a pagar el precio de la libertad?";
     std::string* pointer = &text1;
     
     while(true){
