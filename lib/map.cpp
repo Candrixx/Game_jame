@@ -142,6 +142,7 @@ MAP_PRUEBA::MAP_PRUEBA(): MAP(100, 30, "Mapa Prueba"){
     mo->push_back(new CUPBOARD_SIDE(66, 19, 69, 20));
     mo->push_back(new DESK(70, 19, 74, 20));
     mo->push_back(new CUPBOARD_3_SIDE(77, 19, 80, 20));
+    mo->push_back(new BIG_BOX(72, 3, 76, 4));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     } 
@@ -702,4 +703,93 @@ void ROOM2::fill_map(){
             set_map(j, i, char(32));
         }
     }
+}
+
+EXIT_BASEMENT_ENTRY_ROOM2::EXIT_BASEMENT_ENTRY_ROOM2(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 49, 2, 3, true){}
+
+void EXIT_BASEMENT_ENTRY_ROOM2::print(char** &m){
+    m[get_entry_exit_y()-3][get_entry_exit_x()] = 195; m[get_entry_exit_y()-3][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()-3][get_entry_exit_x()+2] = 180;
+    m[get_entry_exit_y()-2][get_entry_exit_x()] = 195; m[get_entry_exit_y()-2][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()-2][get_entry_exit_x()+2] = 180;
+    m[get_entry_exit_y()-1][get_entry_exit_x()] = 195; m[get_entry_exit_y()-1][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()-1][get_entry_exit_x()+2] = 180;
+    m[get_entry_exit_y()][get_entry_exit_x()] = 195; m[get_entry_exit_y()][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()][get_entry_exit_x()+2] = 180;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 195; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 180;
+}
+
+bool EXIT_BASEMENT_ENTRY_ROOM2::interact_entry(std::list<OBJECT*>* &o){ 
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa compuerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\tQuieres entrar a la habitacion"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+void EXIT_BASEMENT_ENTRY_ROOM2::delete_(char** &m){
+    m[get_entry_exit_y()-3][get_entry_exit_x()] = 32; m[get_entry_exit_y()-3][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()-3][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()-2][get_entry_exit_x()] = 32; m[get_entry_exit_y()-2][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()-2][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()-1][get_entry_exit_x()] = 32; m[get_entry_exit_y()-1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()-1][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()][get_entry_exit_x()] = 32; m[get_entry_exit_y()][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 32;
+}
+
+BASEMENT::BASEMENT():MAP(45, 10, "Sotano"){
+    fill_map();
+    std::list<ENTRY_EXITS*>* e = get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    char ** m = get_map_matriz();
+    e->push_back(new EXIT_BASEMENT_ENTRY_ROOM2(4, 3));
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    o->push_back(new KEY_TO_THREE(19, 4));
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new BIG_BOX(17, 3, 21, 4));
+    mo->push_back(new BODY_DEAD(30, 2, 32, 4));
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
+void BASEMENT::fill_map(){
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 1, char(32));
+        set_map(j, 2, char(32));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-2, char(32));
+        set_map(j, get_heigth()-3, char(32));
+        set_map(j, get_heigth()-4, char(238));
+    }
+
+    for(int i = 0; i < get_heigth(); i++){
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-1; j++){
+            set_map(j, i, char(32));
+        }
+    }
+    set_map(1, 0, char(88)); set_map(2, 0, char(88)); set_map(1, 2, char(88)); set_map(1, 3, char(88));
+    set_map(2, 3, char(88)); set_map(42, 0, char(88)); set_map(43, 0, char(88)); set_map(41, 1, char(88));
+    set_map(42, 1, char(88)); set_map(43, 1, char(88)); set_map(43, 2, char(88)); set_map(24, 1, char(92));
+    set_map(25, 2, char(92)); set_map(26, 2, char(47)); set_map(27, 2, char(92)); set_map(28, 2, char(47));
+    set_map(29, 1, char(47)); set_map(30, 1, char(124)); set_map(33, 1, char(124)); set_map(33, 2, char(180));
+    set_map(34, 1, char(92)); set_map(35, 1, char(95)); set_map(36, 1, char(47)); set_map(35, 2, char(47));
 }

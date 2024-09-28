@@ -22,11 +22,6 @@ INVENTORY::INVENTORY(){
     this->cant_letters = 0;
     this->cant_others = 0;
     this->page = false;
-    objects.push_back(new LOG1(0,0));
-    objects.push_back(new LOG2(0,0));
-    objects.push_back(new LOG3(0,0));
-    objects.push_back(new LOG4(0,0));
-    objects.push_back(new LOG5(0,0));
     count_cant_letters();
 }
 

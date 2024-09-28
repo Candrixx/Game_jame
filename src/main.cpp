@@ -26,6 +26,7 @@
 #define MOVE_OBJECT2 'R'
 
 bool cinematic_1_flag = false;
+bool cinematic_2_flag = false;
 bool entry_room_2_1_flag = false;
 
 void remove_cursor(){
@@ -200,16 +201,85 @@ void cinematic_1(MAP* &m, CAMERA &c, AVATAR &a){
     return;
 }
 
+void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
+    std::string text[3];
+    text[0] = "Uh.. Esta algo oscuro y no puedo ver bien que es...";
+    text[1] = "Mis ojos parecen acostumbrarse a la oscuridad";
+    text[2] = "A ver...";
+    CLEAR_SCREEN;
+    draw_map(c, a, m);
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t";
+    for(int i=0; i<3; i++){
+        for(int j=0; j<text[i].length(); j++){
+            std::cout << text[i][j];
+            Timer time;
+            while(true){
+                if(time.get_elapsed_time() >= 0.02) break;
+            }
+        }
+        Timer time;
+        while(true){
+            if(time.get_elapsed_time() >= 1.8) break;
+        }
+        CLEAR_SCREEN;
+        draw_map(c, a, m);
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\t";
+    }
+    Timer time;
+    while(true){
+        if(time.get_elapsed_time() >= 0.2) break;
+    }
+    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!";
+    Timer time2;
+    while(true){
+        if(time2.get_elapsed_time() >= 1.2) break;
+    }
+    for(int i=0; i<2; i++){
+        move_avatar('d', a, c, m);
+        Timer time;
+        while(true){
+            if(time.get_elapsed_time() >= 2.6) break;
+        }
+    }
+    text[0] = "Que cara.....";
+    text[1] = "Porque hay un... Bleeeeeeeeeeegh";
+    text[2] = "Tengo que salir de aqui.";
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\t";
+    for(int i=0; i<3; i++){
+        for(int j=0; j<text[i].length(); j++){
+            std::cout << text[i][j];
+            Timer time;
+            while(true){
+                if(time.get_elapsed_time() >= 0.02) break;
+            }
+        }
+        Timer time;
+        while(true){
+            if(time.get_elapsed_time() >= 1.8) break;
+        }
+        CLEAR_SCREEN;
+        draw_map(c, a, m);
+        std::cout << std::endl << std::endl;
+        std::cout << "\t\t\t\t";
+    }
+    return;
+}
+
 void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     char ** matriz = m->get_map_matriz(); 
     MAP_OBJECT* map_object;
     if(!a.interact_map_objects(*m, map_object)) return;
     if(map_object->get_moved()){
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tNo parece que se pueda mover mas";
+        std::cout << "\t\t\t\tNo parece que se pueda mover mas" << std::endl << std::endl;
+        std::cout << "\t\t\t\tCERRAR: ESC";
         while(true){
             if(kbhit()){
-                if(true) return;
+                char key = getch();
+                if(key == ESC) return;
             }
         }
     }
@@ -225,6 +295,10 @@ void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object
     char** map = m->get_map_matriz();
     std::list<OBJECT*>::iterator itO;
     int i;
+    if(map_object->get_name() == "Cadaver" && !cinematic_2_flag){
+        cinematic_2(m, c, a);
+        return;
+    }
     if(map_object->get_name() == "Recuadro " && objects->empty()){
         map_object->get_interact_empty(map);
         if(picture_flag){
@@ -354,12 +428,12 @@ void pick_up_item(MAP* &m, AVATAR &a, CAMERA &c){
         }
     }
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\t" << item->get_interact_text();
+    std::cout << "\t\t\t\t" << item->get_interact_text() << std::endl << std::endl;
+    std::cout << "\t\t\t\tCERRAR: ESC";
     while(true){
         if(kbhit()){
             key = getch();
-            if(false);
-            else return;
+            if(key == ESC) return;
         }
     }
 }
@@ -380,6 +454,10 @@ void menu_interact(MAP* &m, AVATAR &a, CAMERA &c){
     else if(map_object->get_name() == "Palanca" && entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) return;
     else if(map_object->get_name() == "Palanca" && !entry_room_2_1_flag && lever_1_flag && lever_2_flag && lever_3_flag && lever_4_flag && lever_5_flag) entry_room_2_1_flag = true;
     else if(map_object->get_name() == "Recuadro " && !picture_flag) return;
+    else if(map_object->get_name() == "Cadaver" && !cinematic_2_flag){
+        cinematic_2_flag = true;
+        return;
+    }
     while(true){
         if(kbhit()){
             key = getch();
@@ -449,6 +527,7 @@ int main(){
     maps.push_back(new TUTORIAL());
     maps.push_back(new ROOM1());
     maps.push_back(new ROOM2());
+    maps.push_back(new BASEMENT());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     MAP* map = (*maps.begin());

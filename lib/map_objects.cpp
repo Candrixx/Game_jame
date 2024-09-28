@@ -957,18 +957,21 @@ void CUPBOARD_3_SIDE::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tParece un Armario de una puerta de Madera sin nada especial";
 }
 
-BODY_DEAD::BODY_DEAD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y){}
+BODY_DEAD::BODY_DEAD(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Cadaver", left_up_y){
+    std::list<OBJECT*>* o = get_objects();
+    o->push_back(new LOG1(0,0));
+}
 
 void BODY_DEAD::print(char** &map){
     map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 79; map[get_up_left_y()][get_up_left_x()+2] = 32;
-    map[get_up_left_y()][get_up_left_x()] = 47; map[get_up_left_y()][get_up_left_x()+1] = 124; map[get_up_left_y()][get_up_left_x()+2] = 92;
-    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 94; map[get_up_left_y()][get_up_left_x()+2] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 47; map[get_up_left_y()+1][get_up_left_x()+1] = 124; map[get_up_left_y()+1][get_up_left_x()+2] = 92;
+    map[get_up_left_y()+2][get_up_left_x()] = 32; map[get_up_left_y()+2][get_up_left_x()+1] = 94; map[get_up_left_y()+2][get_up_left_x()+2] = 32;
 }
 
 void BODY_DEAD::delete_(char** &map){
     map[get_up_left_y()][get_up_left_x()] =32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32;
-    map[get_up_left_y()][get_up_left_x()] =32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32;
-    map[get_up_left_y()][get_up_left_x()] =32; map[get_up_left_y()][get_up_left_x()+1] =32; map[get_up_left_y()][get_up_left_x()+2] =32;
+    map[get_up_left_y()+1][get_up_left_x()] =32; map[get_up_left_y()+1][get_up_left_x()+1] =32; map[get_up_left_y()+1][get_up_left_x()+2] =32;
+    map[get_up_left_y()+2][get_up_left_x()] =32; map[get_up_left_y()+2][get_up_left_x()+1] =32; map[get_up_left_y()+2][get_up_left_x()+2] =32;
 }
 
 void BODY_DEAD::move(char** &m, int const &dir, int const &higth, int const &width){}
@@ -1049,4 +1052,43 @@ void CHAIR::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tUna silla algo desgastada.";
 }
+
+BIG_BOX::BIG_BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "Caja grande", left_up_y-1){}
+
+void BIG_BOX::print(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 191;
+    map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 196; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 180;
+    map[get_up_left_y()+1][get_up_left_x()] = 124; map[get_up_left_y()+1][get_up_left_x()+1] = 95; map[get_up_left_y()+1][get_up_left_x()+2] = 95; map[get_up_left_y()+1][get_up_left_x()+3] = 95; map[get_up_left_y()+1][get_up_left_x()+4] = 124;
+}
+
+void BIG_BOX::delete_(char** &map){
+    map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32;
+    map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32;
+    map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] =32; map[get_up_left_y()+1][get_up_left_x()+2] =32; map[get_up_left_y()+1][get_up_left_x()+3] =32; map[get_up_left_y()+1][get_up_left_x()+4] = 32;
+}
+
+void BIG_BOX::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tUna gran caja de carton, parece que se puede mover";
+}
+
+void BIG_BOX::move(char** &m, int const &dir, int const &higth, int const &width){
+    delete_(m);
+    if(get_moved()) return;
+    else if(dir == 2 && get_bot_right_x()+5 < width){
+        set_up_left_x(get_up_left_x()+5);
+        set_bot_right_x(get_bot_right_x()+5);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
+    else if(dir == 4 && get_up_left_x()-5 > 0){
+        set_up_left_x(get_up_left_x()-5);
+        set_bot_right_x(get_bot_right_x()-5);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
+}
+
+
+
 
