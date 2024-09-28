@@ -13,6 +13,7 @@ extern bool lever_4_flag;
 extern bool lever_5_flag;
 extern bool error_order_levers_flag;
 extern bool picture_flag;
+
 class MAP_OBJECT{
     std::string name;
     std::string text_empty;

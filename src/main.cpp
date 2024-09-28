@@ -28,9 +28,6 @@ bool cinematic_1_flag = false;
 bool cinematic_2_flag = false;
 bool entry_room_2_1_flag = false;
 
-char question = 168;
-char exclamation = 173;
-
 void remove_cursor(){
     HANDLE encabezado;
     encabezado = GetStdHandle(STD_OUTPUT_HANDLE);

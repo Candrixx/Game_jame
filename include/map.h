@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string.h>
 #include "../include/map_objects.h"
+
 class ENTRY_EXITS{
     int entry_exit_x, entry_exit_y;
     int code;
@@ -219,6 +220,20 @@ public:
 class ROOM3:public MAP{
 public:
     ROOM3();
+    void fill_map() override;
+};
+
+class EXIT_ROOM4_ENTRY_ROOM3: public ENTRY_EXITS{
+public:
+    EXIT_ROOM4_ENTRY_ROOM3(int entry_exit_x, int entry_exit_y);
+    void print(char** &m) override;
+    bool interact_entry(std::list<OBJECT*>* &o) override;
+    void delete_(char** &map) override;
+};
+
+class ROOM4:public MAP{
+public:
+    ROOM4();
     void fill_map() override;
 };
 

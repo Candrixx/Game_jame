@@ -8,7 +8,6 @@
 #define ACTION 'e'
 #define ACTION2 'E'
 
-char question = 168;
 bool lights_out_flag = false;
 bool lever_1_flag = false;
 bool lever_2_flag = false;
@@ -912,7 +911,7 @@ void CUPBOARD_SIDE::move(char** &m, int const &dir, int const &higth, int const 
 
 void CUPBOARD_SIDE::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tParece un armario ordinario de madera.";
+    std::cout << "\t\t\t\tUn armario lleno de papeles.";
 }
 
 DESK::DESK(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Gabinete", left_up_y-2){}

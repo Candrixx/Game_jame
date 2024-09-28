@@ -3,6 +3,9 @@
 #include<iostream>
 #include<string.h>
 
+
+extern char question;
+extern char exclamation;
 class OBJECT{
     int x, y;
     std::string name;

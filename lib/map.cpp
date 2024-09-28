@@ -11,8 +11,6 @@
 #define ESC 27
 #define CLEAR_SCREEN system("cls")
 
-char question = 168;
-
 void print_panel(char p[][51]){
     std::cout << std::endl << std::endl << std::endl << std::endl;
     for(int i=0; i<11; i++){
@@ -1143,4 +1141,89 @@ void ROOM3::fill_map(){
         set_map(i, 9, char(42));
     }
     set_map(7, 6, char(201)); set_map(7, 10, char(200)); set_map(46, 6, char(187)); set_map(46, 10, char(188));
+}
+
+EXIT_ROOM4_ENTRY_ROOM3::EXIT_ROOM4_ENTRY_ROOM3(int entry_exit_x, int entry_exit_y):ENTRY_EXITS(entry_exit_x, entry_exit_y, 82, 2, 3, true){}
+
+void EXIT_ROOM4_ENTRY_ROOM3::print(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 218; m[get_entry_exit_y()][get_entry_exit_x()+1] = 196; m[get_entry_exit_y()][get_entry_exit_x()+2] = 191;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 124; m[get_entry_exit_y()+1][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 124;
+}
+
+bool EXIT_ROOM4_ENTRY_ROOM3::interact_entry(std::list<OBJECT*>* &o){ 
+    char key;
+    std::cout << std::endl << std::endl;
+    std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres entrar a la habitacion?"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\tSI: E      NO: ESC";
+    while(true){
+        if(kbhit()){
+            key = getch();
+            if(key == ACTION || key == ACTION2) return true;
+            else if(key == ESC) return false;
+        }
+    }
+    return false;
+}
+
+void EXIT_ROOM4_ENTRY_ROOM3::delete_(char** &m){
+    m[get_entry_exit_y()][get_entry_exit_x()] = 32; m[get_entry_exit_y()][get_entry_exit_x()+1] = 32; m[get_entry_exit_y()][get_entry_exit_x()+2] = 32;
+    m[get_entry_exit_y()+1][get_entry_exit_x()] = 32; m[get_entry_exit_y()+1][get_entry_exit_x()+1] =32; m[get_entry_exit_y()+1][get_entry_exit_x()+2] = 32;
+}
+
+ROOM4::ROOM4():MAP(57, 16, "Sala de Acustica"){
+    fill_map();
+    std::list<ENTRY_EXITS*>* e = get_entries_exits();
+    std::list<ENTRY_EXITS*>::iterator itE;
+    char ** m = get_map_matriz();
+    e->push_back(new EXIT_ROOM4_ENTRY_ROOM3(27, 2));
+    for(itE = e->begin(); itE != e->end(); itE++){
+        (*itE)->print(m);
+    }
+    std::list<OBJECT*>* o = get_player_objects();
+    std::list<OBJECT*>::iterator itO;
+    for(itO = o->begin(); itO != o->end(); itO++){
+        (*itO)->print(m);
+    }
+    std::list<MAP_OBJECT*>* mo = get_map_objects();
+    std::list<MAP_OBJECT*>::iterator itMO;
+    mo->push_back(new SHELF_1(6, 3, 19, 4));
+    mo->push_back(new SHELF_2(37, 3, 50, 4));
+    mo->push_back(new CUPBOARD_SIDE(1, 7, 4, 8));
+    mo->push_back(new CUPBOARD_SIDE(1, 9, 4, 10));
+    mo->push_back(new CHAIR(46, 7, 49, 8));
+    mo->push_back(new DESK(51, 8, 55, 9));
+    for(itMO = mo->begin(); itMO != mo->end(); itMO++){
+        (*itMO)->print(m);
+    }
+}
+
+void ROOM4::fill_map(){
+
+    for(int j = 0; j<get_width(); j++){
+        set_map(j, 0, char(238));
+        set_map(j, 1, char(32));
+        set_map(j, 2, char(32));
+        set_map(j, 3, char(205));
+        set_map(j, get_heigth()-1, char(205));
+        set_map(j, get_heigth()-2, char(32));
+        set_map(j, get_heigth()-3, char(32));
+        set_map(j, get_heigth()-4, char(238));
+    }
+
+    for(int i = 0; i < get_heigth(); i++){
+        set_map(0, i, char(124));
+        set_map(get_width()-1, i, char(124));
+    }
+
+    for(int i = 4; i<get_heigth()-4; i++){
+        for(int j = 1; j<get_width()-1; j++){
+            set_map(j, i, char(32));
+        }
+    }
+    set_map(15, 5, char(95)); set_map(16, 5, char(95)); set_map(14, 6, char(47)); set_map(15, 6, char(95)); set_map(16, 6, char(47));
+    set_map(32, 4, char(95)); set_map(33, 4, char(95)); set_map(31, 5, char(47)); set_map(32, 5, char(95)); set_map(33, 5, char(47));
+    set_map(22, 7, char(95)); set_map(23, 7, char(95)); set_map(22, 8, char(92)); set_map(23, 8, char(95)); set_map(24, 8, char(92));
+    set_map(10, 9, char(95)); set_map(11, 9, char(95)); set_map(10, 10, char(92)); set_map(11, 10, char(95)); set_map(12, 10, char(92));
+    set_map(35, 9, char(95)); set_map(36, 9, char(95)); set_map(34, 10, char(47)); set_map(35, 10, char(95)); set_map(36, 10, char(47));
 }
