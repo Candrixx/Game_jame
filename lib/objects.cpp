@@ -257,7 +257,7 @@ NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Una nota? H
 }
 
 void NOTE1::content(){
-    std::string text = "Este lugar... donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\t\talla hace un segundo. Y los rompecabezas... no terminan! Cada vez que creo haber\n\t\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t\tRecorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\t\tAlgo esta mal, muy mal. Necesito salir de aquí. Necesito encontrar una salida.";
+    std::string text = "Este lugar... donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\talla hace un segundo. Y los rompecabezas... no terminan! Cada vez que creo haber\n\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\tRecorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\tAlgo esta mal, muy mal. Necesito salir de aqui. Necesito encontrar una salida.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t" << text;
@@ -269,13 +269,13 @@ void NOTE1::content(){
     }
 }
 
-NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota acertijo    ", "Quien habra escrito esto? El Juez, o alguien mas?", 164){
-    std::string text = "Has recogido Nota acertijo";
+NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota misteriosa    ", "Quien habra escrito esto? El Juez, o alguien mas?", 164){
+    std::string text = "Has recogido Nota misteriosa";
     set_interact_text(text);
 }
 
 void NOTE2::content(){
-    std::string text = "";
+    std::string text = "En el obraje del creador, donde las manos dan forma,\n\t\t\t\tCinco signos esperan, su orden se desvela.\n\t\t\t\tEl primero, donde tus instrumentos aguardan el primer toque.\n\t\t\t\tEn la sabiduria de los bocetos y trazos, sus secretos invoca.\n\t\t\t\tDebajo de este, el tercero, oculta un paso más al arte.\n\t\t\t\tSeguido, sientate y elabora tu destino.\n\t\t\t\tFinalmente, en el corazon del oficio, el enigma se desvela.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -293,10 +293,10 @@ NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es 
 }
 
 void NEWSPAPER::content(){
-    std::string text = "2 de marzo de 2004\n\n\t\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\t\ttrama de corrupcion\n\n\t\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\n\t\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision de Mansfield. Al parecer,\n\t\t\t\tla sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones\n\t\t\t\tdefensoras de los derechos humanos han exigido la destitucion inmediata del juez XXXXXXX\n\t\t\t\ty la apertura de una investigacion a fondo para determinar si existen\n\t\t\t\totros magistrados involucrados en practicas similares.";
+    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision de Mansfield. Al parecer,\n\t\t\tla sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones\n\t\t\tdefensoras de los derechos humanos han exigido la destitucion inmediata del juez XXXXXXX\n\t\t\ty la apertura de una investigacion a fondo para determinar si existen\n\t\t\totros magistrados involucrados en practicas similares.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\t" << text;
+    std::cout << "\t\t\t" << text;
     while(true){
         if(kbhit()){
             char key = getch();
