@@ -42,7 +42,7 @@ void OBJECT::set_interact_text(std::string text){
     this->interac_text = text;
 }
 
-LETTER_PRUEBA::LETTER_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Carta de Prueba", "Carta escrita por una persona anonima.", 161){
+LETTER_PRUEBA::LETTER_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Carta de Prueba", "Carta escrita por una persona anonima.", 171){
     std::string text = "Has recogido una Carta de Prueba";
     set_interact_text(text);
 }
@@ -68,7 +68,7 @@ KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Llave de Prueba", "Llave
 void KEY_PRUEBA::content(){
 }
 
-LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Parece ser una carta dirigida a mi", 162){
+LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Parece ser una carta dirigida a mi", 172){
 }
 
 void LETTER_TUTORIAL::content(){
@@ -255,7 +255,7 @@ void LOG5::content(){
     }
 }
 
-NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Nota escrita por una persona desconocida.", 163){
+NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Nota escrita por una persona desconocida.", 173){
     std::string text = "Has recogido Nota";
     set_interact_text(text);
 }
@@ -276,7 +276,7 @@ void NOTE1::content(){
     }
 }
 
-NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota misteriosa    ", "Esta nota parece indicar algo...", 164){
+NOTE2::NOTE2(int _x, int _y): OBJECT(_x, _y, "Nota misteriosa    ", "Esta nota parece indicar algo...", 174){
     std::string text = "Has recogido Nota misteriosa";
     set_interact_text(text);
 }
@@ -294,7 +294,7 @@ void NOTE2::content(){
     }
 }
 
-NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es de un periodico de hace tiempo", 165){
+NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es de un periodico de hace tiempo", 175){
     std::string text = "Has recogido Pedazo de periodico";
     set_interact_text(text);
 }
@@ -312,7 +312,7 @@ void NEWSPAPER::content(){
     }
 }
 
-NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de periodico", 164){
+NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de periodico", 176){
     std::string text = "Has recogido Recorte de periodico";
     set_interact_text(text);
 }
@@ -322,6 +322,28 @@ void NEWSPAPERCUT::content(){
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t\t\t\t\t" << text;
+    while(true){
+        if(kbhit()){
+            char key = getch();
+            if(key == ACTION || key == ACTION2 || key == ESC) return;
+        }
+    }
+}
+
+NOTE3::NOTE3(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de periodico", 177){
+    std::string text = "Has recogido Recorte de periodico";
+    set_interact_text(text);
+}
+
+void NOTE3::content(){
+    std::string text1 = "Estan por todas partes. Numeros, codigos, simbolos que no significan nada. Paginas y paginas\n\t\t\t\tde leyes que se retuercen en mi cabeza. ";
+    std::string text2 = "Por que estoy aqui? ";
+    std::string text3 = "Que he hecho para merecer\n\t\t\t\testo? Quiero salir de este laberinto, de este limbo legal. Las paredes se cierran\n\t\t\t\tsobre mi, los puzzles me atormentan. Mis pensamientos son un rompecabezas\n\t\t\t\tsin solucion. ";
+    std::string text4 = "Alguien me oye? ";
+    std::string text5 = "Alguien puede ayudarme a escapar de esta pesadilla?";
+    CLEAR_SCREEN;
+    std::cout << std::endl << std::endl << std::endl << std::endl;
+    std::cout << "\t\t\t\t" << text1 << question << text2 << question << text3 << question << text4 << question << text5;
     while(true){
         if(kbhit()){
             char key = getch();

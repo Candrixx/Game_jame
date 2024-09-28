@@ -157,4 +157,10 @@ public:
     void content() override;
 };
 
+class NOTE3: public OBJECT{
+public:
+    NOTE3(int _x, int _y);
+    void content() override;
+};
+
 #endif
