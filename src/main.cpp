@@ -160,6 +160,8 @@ void cinematic_1(MAP* &m, CAMERA &c, AVATAR &a){
     for(itE = e->begin(); itE!=e->end(); itE++){
         if((*itE)->get_code() == 2){
             (*itE)->delete_(map);
+            itE = e->erase(itE);
+            break;
         }
     }
     CLEAR_SCREEN;
@@ -561,9 +563,19 @@ void intro(std::list<MAP*> &maps, MAP* &map){
                 }
             }
         }
+        std::cout  << std::endl << std::endl;
+        std::cout  << "\t\t\tSIGUIENTE: E";
         Timer t;
         while(true){
             if(t.get_elapsed_time() >= 5) break;
+            if(kbhit()){
+                key = getch();
+                if(key == ACTION || key == ACTION2){
+                    CLEAR_SCREEN;
+                    break;
+                }
+
+            }
         }
         CLEAR_SCREEN;
         if(flag){
@@ -644,6 +656,10 @@ int main(){
                     continue;
                 }
             } 
+        }
+        Timer t;
+        while(true){
+            if(t.get_elapsed_time() >= 0.08) break;
         }   
     }
     

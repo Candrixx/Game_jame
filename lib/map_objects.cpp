@@ -1063,13 +1063,15 @@ BIG_BOX::BIG_BOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y)
 void BIG_BOX::print(char** &map){
     map[get_up_left_y()-1][get_up_left_x()] = 218; map[get_up_left_y()-1][get_up_left_x()+1] = 196; map[get_up_left_y()-1][get_up_left_x()+2] = 196; map[get_up_left_y()-1][get_up_left_x()+3] = 196; map[get_up_left_y()-1][get_up_left_x()+4] = 191;
     map[get_up_left_y()][get_up_left_x()] = 195; map[get_up_left_y()][get_up_left_x()+1] = 196; map[get_up_left_y()][get_up_left_x()+2] = 196; map[get_up_left_y()][get_up_left_x()+3] = 196; map[get_up_left_y()][get_up_left_x()+4] = 180;
-    map[get_up_left_y()+1][get_up_left_x()] = 124; map[get_up_left_y()+1][get_up_left_x()+1] = 95; map[get_up_left_y()+1][get_up_left_x()+2] = 95; map[get_up_left_y()+1][get_up_left_x()+3] = 95; map[get_up_left_y()+1][get_up_left_x()+4] = 124;
+    map[get_up_left_y()+1][get_up_left_x()] = 124; map[get_up_left_y()+1][get_up_left_x()+1] = 32; map[get_up_left_y()+1][get_up_left_x()+2] = 32; map[get_up_left_y()+1][get_up_left_x()+3] = 32; map[get_up_left_y()+1][get_up_left_x()+4] = 124;
+     map[get_up_left_y()+2][get_up_left_x()] = 192; map[get_up_left_y()+2][get_up_left_x()+1] =196; map[get_up_left_y()+2][get_up_left_x()+2] =196; map[get_up_left_y()+2][get_up_left_x()+3] =196; map[get_up_left_y()+2][get_up_left_x()+4] = 217;
 }
 
 void BIG_BOX::delete_(char** &map){
     map[get_up_left_y()-1][get_up_left_x()] = 32; map[get_up_left_y()-1][get_up_left_x()+1] = 32; map[get_up_left_y()-1][get_up_left_x()+2] = 32; map[get_up_left_y()-1][get_up_left_x()+3] = 32; map[get_up_left_y()-1][get_up_left_x()+4] = 32;
     map[get_up_left_y()][get_up_left_x()] = 32; map[get_up_left_y()][get_up_left_x()+1] = 32; map[get_up_left_y()][get_up_left_x()+2] = 32; map[get_up_left_y()][get_up_left_x()+3] = 32; map[get_up_left_y()][get_up_left_x()+4] = 32;
     map[get_up_left_y()+1][get_up_left_x()] = 32; map[get_up_left_y()+1][get_up_left_x()+1] =32; map[get_up_left_y()+1][get_up_left_x()+2] =32; map[get_up_left_y()+1][get_up_left_x()+3] =32; map[get_up_left_y()+1][get_up_left_x()+4] = 32;
+    map[get_up_left_y()+2][get_up_left_x()] = 32; map[get_up_left_y()+2][get_up_left_x()+1] =32; map[get_up_left_y()+2][get_up_left_x()+2] =32; map[get_up_left_y()+2][get_up_left_x()+3] =32; map[get_up_left_y()+2][get_up_left_x()+4] = 32;
 }
 
 void BIG_BOX::get_interact_empty(char** &map){

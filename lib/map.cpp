@@ -573,7 +573,7 @@ ROOM2::ROOM2():MAP(54, 30, "Taller"){
     }
     std::list<OBJECT*>* o = get_player_objects();
     std::list<OBJECT*>::iterator itO;
-    o->push_back(new NOTE2(2, 6));
+    o->push_back(new NOTE2(1, 6));
     for(itO = o->begin(); itO != o->end(); itO++){
         (*itO)->print(m);
     }
@@ -676,7 +676,7 @@ BASEMENT::BASEMENT():MAP(45, 10, "Sotano"){
     }
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
-    mo->push_back(new BIG_BOX(17, 3, 21, 4));
+    mo->push_back(new BIG_BOX(17, 3, 21, 5));
     mo->push_back(new BODY_DEAD(30, 2, 32, 4));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
