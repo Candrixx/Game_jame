@@ -8,6 +8,7 @@
 #include "../include/objects.h"
 #include "../include/timer.h"
 #include "../include/pause_menu.h"
+#include "../include/ending.h"
 
 #define UP 'w'
 #define DOWN 's'
@@ -28,6 +29,7 @@ bool cinematic_1_flag = false;
 bool cinematic_2_flag = false;
 bool entry_room_2_1_flag = false;
 bool change_room5_room5_1_flag = false;
+bool ending_flag = false;
 
 void remove_cursor(){
     HANDLE encabezado;
@@ -406,6 +408,24 @@ void take_object(std::list<OBJECT*>* &objects, int &cmmi, AVATAR &a){
     }
 }
 
+void pre_ending(MAP* &m, AVATAR &a, CAMERA &c){
+    char cam[11][51];
+    for(int i = c.get_y(); i < 11 + c.get_y(); i++){
+        for(int j = c.get_x(); j < 51 + c.get_x(); j++){
+            if(i >= 0 && j >= 0 && i < m->get_heigth() && j < m->get_width()){
+                if(j == a.get_x() && i == a.get_y() && i < m->get_heigth()-4 && !a.is_behind(*m, 0)) cam[i-c.get_y()][j-c.get_x()] = a.get_lowbody();
+                else if(j == a.get_x() && i == a.get_y()-1 && i < m->get_heigth()-4 && !a.is_behind(*m, 1)) cam[i-c.get_y()][j-c.get_x()] = a.get_head();
+                else cam[i-c.get_y()][j-c.get_x()] = m->get_map(j, i);
+            }
+            else{
+                cam[i-c.get_y()][j-c.get_x()] = 32;
+            }
+        }
+    }
+    ending(cam);
+    return;
+}
+
 void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
     ENTRY_EXITS* entry_exit;
     std::list<ENTRY_EXITS*>* e;
@@ -420,6 +440,11 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
                 if((*itE)->interact_entry(o)){
                     if((*itE)->get_code() == 15 && !change_room5_room5_1_flag){
                         change_room5_room5_1(maps, m);
+                    }
+                    else if(((*itE)->get_code() == 91 || (*itE)->get_code() == 13) && !ending_flag){
+                        pre_ending(m, a, c);
+                        ending_flag = true;
+                        return;
                     }
                     m = (*itM);
                     a.set_x((*itE)->get_entry_exit_x()+1);
@@ -507,9 +532,11 @@ void intro(std::list<MAP*> &maps, MAP* &map){
     std::list<MAP*>::iterator itM;
     char key;
     bool flag = false;
-    std::string text1 = "\t\t\tDetras de cada puerta cerrada se esconde un secreto, y detras de cada secreto,\n\n\t\t\tuna verdad. En este juego, te sumergiras en un mundo lleno de enigmas y misterios.\n\n\t\t\tEstas listo para descubrir el precio de la libertad y desvelar los secretos que se\n\n\t\t\tesconden en la sombra?";
-    std::string text2 = "\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\tEstas dispuesto a pagar el precio de la libertad?";
+    std::string text1 = "\t\t\tDetras de cada puerta cerrada se esconde un secreto, y detras de cada secreto,\n\n\t\t\tuna verdad. En este juego, te sumergiras en un mundo lleno de enigmas y misterios.\n\n\t\t\taEstas listo para descubrir el precio de la libertad y desvelar los secretos que se\n\n\t\t\tesconden en la sombra?";
+    std::string text2 = "\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\taEstas dispuesto a pagar el precio de la libertad?";
     std::string* pointer = &text1;
+    text1[186] = question;
+    text2[152] = question;
     
     while(true){
         std::cout  << std::endl << std::endl << std::endl << std::endl << std::endl;
@@ -594,6 +621,7 @@ int main(){
             }
             else if(key == ACTION || key == ACTION2) {
                 change_map(maps, map, a, c);
+                if(ending_flag) return 0;
                 menu_interact(map, a, c);
                 pick_up_item(map, a, c);
                 CLEAR_SCREEN;
@@ -618,6 +646,6 @@ int main(){
             } 
         }   
     }
-
+    
     return 0;
 }

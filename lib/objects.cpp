@@ -68,7 +68,7 @@ KEY_PRUEBA::KEY_PRUEBA(int _x, int _y): OBJECT(_x, _y, "Llave de Prueba", "Llave
 void KEY_PRUEBA::content(){
 }
 
-LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Parece ser una carta dirigida a mi", 172){
+LETTER_TUTORIAL::LETTER_TUTORIAL(int _x, int _y): OBJECT(_x, _y, "Carta sin Remitente", "Parece ser una carta dirigida a mi.", 172){
 }
 
 void LETTER_TUTORIAL::content(){
@@ -189,7 +189,7 @@ LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un ca
 }
 
 void LOG2::content(){
-    std::string text = "Acusado: Javier Reddy\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 07 de abril de 2001\n\n\t\t\t\tJavier fue atrapado robando 4 telefonos de alta gama de\n\t\t\t\tla tienda Solly Electronics. Fue acusado y condenado por\n\t\t\t\trobo mayor con una sentencia de cuarenta y ocho meses\n\t\t\t\ten Mansfield y una multa substancial";
+    std::string text = "Acusado: Javier Reddy\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 07 de abril de 2001\n\n\t\t\t\tJavier fue atrapado robando 4 telefonos de alta gama de\n\t\t\t\tla tienda Solly Electronics. Fue acusado y condenado por\n\t\t\t\trobo mayor con una sentencia de cuarenta y ocho meses\n\t\t\t\ten Mansfield y una multa substancial.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -264,7 +264,7 @@ void NOTE1::content(){
     std::string text1 = "Este lugar... "; 
     std::string text2 = "donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\talla hace un segundo. Y los rompecabezas... "; 
     std::string text3 = "no terminan! Cada vez que creo haber\n\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t";
-    std::string text4 = "Recorde mi nombre! es XXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\tAlgo esta mal, muy mal. Necesito salir de aqui. Necesito encontrar una salida.";
+    std::string text4 = "Recorde mi nombre! es JXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\tAlgo esta mal, muy mal. Necesito salir de aqui. Necesito encontrar una salida.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t" << text1 << question << text2 << exclamation << text3 << exclamation << text4;
@@ -300,7 +300,7 @@ NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es 
 }
 
 void NEWSPAPER::content(){
-    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision privada\n\t\t\tMansfield. Al parecer, la sobrepoblacion en el centro penitenciario y la necesidad de mano de\n\t\t\tobra barata habrian motivado a sus directivos a buscar complices en el poder judicial.\n\t\t\tNumerosas organizaciones defensoras de los derechos humanos han exigido la destitucion\n\t\t\tinmediata del juez XXXXXXX y la apertura de una investigacion a fondo para determinar\n\t\t\tsi existen otros magistrados involucrados en practicas similares.";
+    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez GXXXXXX para favorecer los intereses de la prision privada\n\t\t\tMansfield. Al parecer, la sobrepoblacion en el centro penitenciario y la necesidad de mano de\n\t\t\tobra barata habrian motivado a sus directivos a buscar complices en el poder judicial.\n\t\t\tNumerosas organizaciones defensoras de los derechos humanos han exigido la destitucion\n\t\t\tinmediata del juez XXXXXXX y la apertura de una investigacion a fondo para determinar\n\t\t\tsi existen otros magistrados involucrados en practicas similares.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t" << text;
@@ -318,10 +318,10 @@ NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico
 }
 
 void NEWSPAPERCUT::content(){
-    std::string text = "####\n\t\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t  ################\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t    ############\n\t\t\t\t\t\t\t      ########\n\t\t\t\t\t\t\t       ######\n\t\t\t\t\t\t\t         ##";
+    std::string text = "####\n\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t  ################\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t    ############\n\t\t\t\t\t\t      ########\n\t\t\t\t\t\t       ######\n\t\t\t\t\t\t         ##";
     CLEAR_SCREEN;
-    std::cout << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\t\t\t\t\t" << text;
+    std::cout << std::endl << std::endl << std::endl;
+    std::cout << "\t\t\t\t\t\t\t" << "Prision Privada Mansfield" << std::endl << std::endl << std::endl << text;
     while(true){
         if(kbhit()){
             char key = getch();

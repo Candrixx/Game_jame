@@ -822,7 +822,7 @@ void PICTURE_ESPECIAL::get_interact_empty(char** &map){
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tUn cuadro de un lugar que parece un tribunal.";
         std::cout << std::endl << std::endl;
-        std::cout << "\t\t\t\tParece haber algo que sobresale en el marco.";
+        std::cout << "\t\t\t\tHay algo que sobresale en el marco.";
         std::cout << std::endl << std::endl;
         std::cout << "\t\t\t\tINVESTIGAR: E         CERRAR: ESC";
         while(true){
