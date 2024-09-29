@@ -529,6 +529,7 @@ int main(){
     maps.push_back(new BASEMENT());
     maps.push_back(new HALLWAY());
     maps.push_back(new ROOM3());
+    maps.push_back(new ROOM4());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     MAP* map = (*maps.begin());

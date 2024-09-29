@@ -171,7 +171,7 @@ LOG1::LOG1(int _x, int _y): OBJECT(_x, _y, "Reporte legal #1", "Reporte de un ca
 }
 
 void LOG1::content(){
-    std::string text = "Acusado: Juan Perez\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 28 de febrero de 2001\n\n\t\t\t\tJuan Perez, un joven a la edad de veintiuno, fue acusado y posteriormente\n\t\t\t\tcondenado por el delito de vandalismo tras pintar grafitis en un\n\t\t\t\tmuro propiedad de la ciudad. El juez XXXXXXX condeno a Perez a \n\t\t\t\t12 meses de prision en Mansfield";
+    std::string text = "Acusado: Juan Perez\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 28 de febrero de 2001\n\n\t\t\t\tJuan Perez, un joven a la edad de veintiuno, fue acusado y posteriormente\n\t\t\t\tcondenado por el delito de vandalismo tras pintar grafitis en un\n\t\t\t\tmuro propiedad de la ciudad. El juez XXXXXXX condeno a Perez a \n\t\t\t\t12 meses de prision en Mansfield.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -207,7 +207,7 @@ LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un ca
 }
 
 void LOG3::content(){
-    std::string text = "Acusado: Eric de Andrade\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 13 de enero de 2002\n\n\t\t\t\tEric de Andrade, joven ingeniero a la edad de veinticinco, trabajaba para 1\n\t\t\t\tempresa no muy grande dedicada a la elaboracion\n\t\t\t\tde productos quimicos. Con el fin de ahorrar costos para la empresa,\n\t\t\t\tvirtio de manera ilegal residuos toxicos en un rio cercano. Fue\n\t\t\t\tcondenado a sesenta y cinco meses en la prision Mansfield";
+    std::string text = "Acusado: Eric de Andrade\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 13 de enero de 2002\n\n\t\t\t\tEric de Andrade, joven ingeniero a la edad de veinticinco, trabajaba para 1\n\t\t\t\tempresa no muy grande dedicada a la elaboracion\n\t\t\t\tde productos quimicos. Con el fin de ahorrar costos para la empresa,\n\t\t\t\tvirtio de manera ilegal residuos toxicos en un rio cercano. Fue\n\t\t\t\tcondenado a sesenta y cinco meses en la prision Mansfield.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -330,8 +330,8 @@ void NEWSPAPERCUT::content(){
     }
 }
 
-NOTE3::NOTE3(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico", "Parece ser un recorte de periodico", 177){
-    std::string text = "Has recogido Recorte de periodico";
+NOTE3::NOTE3(int _x, int _y): OBJECT(_x, _y, "Nota arrugada    ", "Esta arrugada pero aun es legible", 177){
+    std::string text = "Has recogido Nota arrugada";
     set_interact_text(text);
 }
 

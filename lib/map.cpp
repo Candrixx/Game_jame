@@ -531,7 +531,7 @@ ROOM1::ROOM1():MAP(74, 20, "Salon"){
     }
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
-    mo->push_back(new CUPBOARD_2(9, 3, 18, 4));
+    mo->push_back(new CUPBOARD_2_ESPECIAL2(9, 3, 18, 4));
     mo->push_back(new FLOWER(33, 3, 35, 4));
     mo->push_back(new SHELF_1(36, 3, 49, 4));
     mo->push_back(new CUPBOARD_3_SIDE(69, 4, 72, 5));
@@ -665,7 +665,7 @@ ROOM2::ROOM2():MAP(54, 30, "Taller"){
     mo->push_back(new BOX(3, 2, 8, 4));
     mo->push_back(new SHELF_3(10, 3, 23, 4));
     mo->push_back(new CUPBOARD_3(43, 3, 46, 4));
-    mo->push_back(new CUPBOARD_3(47, 3, 50, 4));
+    mo->push_back(new CUPBOARD_3_ESPECIAL(47, 3, 50, 4));
     mo->push_back(new LEVER_2(10, 7, 14, 8));
     mo->push_back(new LEVER_1(43, 7, 45, 8));
     mo->push_back(new CHAIR(43, 11, 46, 12));
@@ -910,7 +910,7 @@ HALLWAY::HALLWAY():MAP(82, 13, "Pasillo"){
     }
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
-    mo->push_back(new CUPBOARD_2(3, 3, 12, 4));
+    mo->push_back(new CUPBOARD_2_ESPECIAL(3, 3, 12, 4));
     mo->push_back(new PICTURE_1(17, 2, 21, 2));
     mo->push_back(new PICTURE_2(24, 2, 33, 2));
     mo->push_back(new FLOWER(40, 3, 42, 4));
@@ -1098,7 +1098,7 @@ ROOM3::ROOM3():MAP(54, 17, "Sala de Acustica"){
     std::list<MAP_OBJECT*>* mo = get_map_objects();
     std::list<MAP_OBJECT*>::iterator itMO;
     mo->push_back(new PIANO(21, 7, 33, 8));
-    mo->push_back(new FLOWER(21, 3, 23, 4));
+    mo->push_back(new FLOWER_ESPECIAL(21, 3, 23, 4));
     mo->push_back(new FLOWER(31, 3, 33, 4));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
@@ -1190,9 +1190,9 @@ ROOM4::ROOM4():MAP(57, 16, "Sala de Acustica"){
     mo->push_back(new SHELF_1(6, 3, 19, 4));
     mo->push_back(new SHELF_2(37, 3, 50, 4));
     mo->push_back(new CUPBOARD_SIDE(1, 7, 4, 8));
-    mo->push_back(new CUPBOARD_SIDE(1, 9, 4, 10));
+    mo->push_back(new CUPBOARD_SIDE_ESPECIAL(1, 9, 4, 10));
     mo->push_back(new CHAIR(46, 7, 49, 8));
-    mo->push_back(new DESK(51, 8, 55, 9));
+    mo->push_back(new DESK_ESPECIAL(51, 8, 55, 9));
     for(itMO = mo->begin(); itMO != mo->end(); itMO++){
         (*itMO)->print(m);
     }

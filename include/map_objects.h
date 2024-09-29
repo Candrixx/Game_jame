@@ -316,4 +316,58 @@ public:
     void move(char** &m, int const &dir, int const &higth, int const &width) override;
 };
 
+class DESK_ESPECIAL:public MAP_OBJECT{
+public:
+    DESK_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class CUPBOARD_SIDE_ESPECIAL:public MAP_OBJECT{
+public:
+    CUPBOARD_SIDE_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class CUPBOARD_2_ESPECIAL:public MAP_OBJECT{
+public:
+    CUPBOARD_2_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class CUPBOARD_3_ESPECIAL:public MAP_OBJECT{
+public:
+    CUPBOARD_3_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class CUPBOARD_2_ESPECIAL2:public MAP_OBJECT{
+public:
+    CUPBOARD_2_ESPECIAL2(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
+class FLOWER_ESPECIAL:public MAP_OBJECT{
+public:
+    FLOWER_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y);
+    void print(char** &map) override;
+    void delete_(char** &map) override;
+    void get_interact_empty(char** &map) override;
+    void move(char** &m, int const &dir, int const &higth, int const &width) override;
+};
+
 #endif
