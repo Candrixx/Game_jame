@@ -318,10 +318,10 @@ NEWSPAPERCUT::NEWSPAPERCUT(int _x, int _y): OBJECT(_x, _y, "Recorte de periodico
 }
 
 void NEWSPAPERCUT::content(){
-    std::string text = "####\n\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t  ################\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t    ############\n\t\t\t\t\t\t      ########\n\t\t\t\t\t\t       ######\n\t\t\t\t\t\t         ##";
+    std::string text = "\n\t\t\t\t\t\t\t####\n\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t ##################\n\t\t\t\t\t\t  ################\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t    ############\n\t\t\t\t\t\t      ########\n\t\t\t\t\t\t       ######\n\t\t\t\t\t\t         ##";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\t\t\t\t" << "Prision Privada Mansfield" << std::endl << std::endl << std::endl << text;
+    std::cout << "\t\t\t\t\t      " << "Prision Privada Mansfield" << std::endl << std::endl << std::endl << text;
     while(true){
         if(kbhit()){
             char key = getch();

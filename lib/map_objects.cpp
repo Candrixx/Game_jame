@@ -1284,7 +1284,10 @@ void HITBOX::delete_(char** &map){}
 
 void HITBOX::move(char** &m, int const &dir, int const &higth, int const &width){}
 
-void HITBOX::get_interact_empty(char** &map){}
+void HITBOX::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tUna caja con un decorado en el frente.";
+}
 
 BOX_ESPECIAL::BOX_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "Caja", left_up_y-1){}
 

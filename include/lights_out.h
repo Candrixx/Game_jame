@@ -46,7 +46,7 @@ inline class LightsOut {
             std::cout << std::endl;
         }
         std::cout << std::endl << std::endl << std::endl << "\t\t\t\t\tArriba: W\tAbajo: S\tAccion: Espacio" << std::endl; 
-        std::cout << "\t\t\t\t\tIzquierda: A\tDerecha: D\tSalir: E/Esc" << std::endl;     
+        std::cout << "\t\t\t\t\tIzquierda: A\tDerecha: D\tSalir: Esc" << std::endl;     
     }
 
     void reset_lights_out() {
@@ -131,7 +131,7 @@ inline int run_lights_out() {
             minigame_key = getch();
             CLEAR_SCREEN;
 
-            if (minigame_key == ESC || minigame_key == ACTION || minigame_key == ACTION2) {
+            if (minigame_key == ESC) {
                 lights_out_flag = true;
                 lightsOut.reset_lights_out();
             }

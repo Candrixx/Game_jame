@@ -539,7 +539,21 @@ void intro(std::list<MAP*> &maps, MAP* &map){
     std::string* pointer = &text1;
     text1[173] = question;
     text2[137] = question;
+
+    char enie = 164;
     
+    std::cout  << std::endl << std::endl << std::endl;
+    std::cout << std::endl << "\t\t\t\t\t Este juego solo hace uso del teclado" << std::endl << std::endl;
+    std::cout << "\t\t\t\tNo hay guardado, si cierras el juego, este se reiniciara" << std::endl << std::endl;
+    std::cout << "\t\t     Se recomienda jugar en el tama" << enie << "o base de la consola para una mejor experiencia" << std::endl << std::endl;
+    std::cout << "\t\t\t\t       PRESIONA CUALQUIER TECLA PARA CONTINUAR" << std::endl << std::endl;
+    while(true){
+        if(kbhit()){
+            CLEAR_SCREEN;
+            break;
+        } 
+    }
+
     while(true){
         std::cout  << std::endl << std::endl << std::endl << std::endl << std::endl;
         for(int i=0; i<(*pointer).length(); i++){
