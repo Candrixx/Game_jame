@@ -1302,7 +1302,7 @@ void BOX_ESPECIAL::delete_(char** &m){
 
 void BOX_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
-    std::cout << "\t\t\t\tUna caja con un decorado en el frente.";
+    std::cout << "\t\t\t\tUna caja con un decorado en el frente, parece ligera.";
 }
 
 void BOX_ESPECIAL::move(char** &m, int const &dir, int const &higth, int const &width){

@@ -549,7 +549,7 @@ void intro(std::list<MAP*> &maps, MAP* &map){
         std::cout << "\t\t\t\t\t\t    Accion/Inspeccionar: E" << std::endl << std::endl;
         std::cout << "\t\t\t\t\t\t          Empujar: R" << std::endl << std::endl;
         std::cout << "\t\t\t\t\t\t         Inventario: I" << std::endl << std::endl;
-        std::cout << "\t\t\t\t\t     PRESIONA CUALQUIER TECLA PARA CONTINUAR" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t    PRESIONA CUALQUIER TECLA PARA CONTINUAR" << std::endl << std::endl;
         while(true){
             if(kbhit()){
                 CLEAR_SCREEN;

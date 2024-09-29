@@ -184,91 +184,8 @@ void ENTRY_EXITS_MAP_PRUEBA2::print(char** &m){
 }
 
 bool ENTRY_EXITS_MAP_PRUEBA2::interact_entry(std::list<OBJECT*>* &o){
-    char panel[11][51];
-    for(int i=0; i<51 ; i++){
-        panel[0][i] = 205;
-        panel[10][i] = 205;
-    }
-    for(int i=0; i<11 ; i++){
-        panel[i][0] = 186;
-        panel[i][50] = 186;
-    }
-    for(int i = 1; i<10; i++){
-        for(int j=1; j<50; j++){
-            panel[i][j] = 32;
-        }
-    }
-    panel[0][0] = 201; panel[0][50] = 187; panel[10][0] = 200; panel[10][50] = 188;
-    panel[4][13] = 201; panel[4][14] = 205; panel[4][15] = 187;
-    panel[5][13] = 186;                     panel[5][15] = 186;
-    panel[6][13] = 200; panel[6][14] = 205; panel[6][15] = 188; 
-    panel[4][20] = 201; panel[4][21] = 205; panel[4][22] = 187;
-    panel[5][20] = 186;                     panel[5][22] = 186;
-    panel[6][20] = 200; panel[6][21] = 205; panel[6][22] = 188; 
-    panel[4][27] = 201; panel[4][28] = 205; panel[4][29] = 187;
-    panel[5][27] = 186;                     panel[5][29] = 186;
-    panel[6][27] = 200; panel[6][28] = 205; panel[6][29] = 188; 
-    panel[4][34] = 201; panel[4][35] = 205; panel[4][36] = 187;
-    panel[5][34] = 186;                     panel[5][36] = 186;
-    panel[6][34] = 200; panel[6][35] = 205; panel[6][36] = 188;
-    if(!get_acces()){
-        std::string code = "";
-        int count = 0;
-        char key;
-        std::cout << std::endl << std::endl;
-        std:: cout << "\t\t\t\tLa puerta parece necesitar un codigo." << std::endl << std::endl;
-        std:: cout << "\t\t\t\t" << question << "Quieres intentarlo?"<< std::endl << std::endl;
-        std:: cout << "\t\t\t\tSI: E      NO: ESC";
-        while(true){
-            if(kbhit()){
-                key = getch();
-                if(key == ACTION || key == ACTION2){
-                    CLEAR_SCREEN;
-                    print_panel(panel);
-                    while(true){
-                        if(kbhit()){
-                            key = getch();
-                            if(49 <= key && key <= 57 && count < 28){
-                                panel[5][14+count] = key;
-                                count += 7;
-                                code = code + key;
-                                CLEAR_SCREEN;
-                                print_panel(panel);
-                                if(code == "1234"){
-                                    set_acces(true);
-                                    return true;
-                                } 
-                            }
-                            else if((key == 'p' || key == 'P') && count > 0){
-                                count -= 7;
-                                panel[5][14+count] = 32;
-                                code.pop_back();
-                                CLEAR_SCREEN;
-                                print_panel(panel);
-                            }
-                            else if(key == ESC) return false;
-                        }
-                    }
-                }
-                else if(key == ESC) return false;
-            }
-        }
-    }
-    else{
-        char key;
-        std::cout << std::endl << std::endl;
-        std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-        std:: cout << "\t\t\t\t" << question << "Quieres entrar al Mapa Prueba?"<< std::endl << std::endl;
-        std:: cout << "\t\t\t\tSI: E      NO: ESC";
-        while(true){
-            if(kbhit()){
-                key = getch();
-                if(key == ACTION || key == ACTION2) return true;
-                else if(key == ESC) return false;
-            }
-        }
-        return false;
-    }
+    if(run_re_door()) return true;
+    else return false;
     return false;
 }
 
@@ -1270,7 +1187,7 @@ bool EXIT_ROOM5_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
         char key;
         std::cout << std::endl << std::endl;
         std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-        std:: cout << "\t\t\t\t" << question << "Quieres entrar al Mapa Prueba?"<< std::endl << std::endl;
+        std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
         std:: cout << "\t\t\t\tSI: E      NO: ESC";
         while(true){
             if(kbhit()){
@@ -1362,7 +1279,7 @@ bool EXIT_ROOM5_1_ENTRY_ROOM1::interact_entry(std::list<OBJECT*>* &o){
     char key;
     std::cout << std::endl << std::endl;
     std:: cout << "\t\t\t\tLa puerta parece estar abierta." << std::endl << std::endl;
-    std:: cout << "\t\t\t\t" << question << "Quieres entrar al Mapa Prueba?"<< std::endl << std::endl;
+    std:: cout << "\t\t\t\t" << question << "Quieres abrir la puerta?"<< std::endl << std::endl;
     std:: cout << "\t\t\t\tSI: E      NO: ESC";
     while(true){
         if(kbhit()){

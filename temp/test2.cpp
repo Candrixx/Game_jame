@@ -3,8 +3,6 @@
 #include <string>
 #include <stdlib.h>
 
-char question = 168;
-
 class Timer {
 public:
     Timer() : start_time_(std::chrono::steady_clock::now()) {}
@@ -20,10 +18,10 @@ private:
 };
 
 int main(){
-    int x = rand()%21 + 1;
-    while(true){
-        std::cout << x << " ";
-        x = rand()%21 + 1;
-        std::cin.get();
+    char camera[11][51];
+    for(int i=0; i<11; i++){
+        for(int j=0; j<51; j++){
+            camera[i][j] = 32;
+        }
     }
 }
