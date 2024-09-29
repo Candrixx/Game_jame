@@ -27,6 +27,7 @@
 bool cinematic_1_flag = false;
 bool cinematic_2_flag = false;
 bool entry_room_2_1_flag = false;
+bool change_room5_room5_1_flag = false;
 
 void remove_cursor(){
     HANDLE encabezado;
@@ -239,7 +240,7 @@ void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
         move_avatar('d', a, c, m);
         Timer time;
         while(true){
-            if(time.get_elapsed_time() >= 2.2) break;
+            if(time.get_elapsed_time() >= 1.8) break;
         }
     }
     text[0] = "Que cara.....";
@@ -267,6 +268,28 @@ void cinematic_2(MAP* &m, CAMERA &c, AVATAR &a){
     return;
 }
 
+void change_room5_room5_1(std::list<MAP*> &maps, MAP* &m){
+    std::list<MAP*>::iterator itM;
+    std::list<OBJECT*>* o; 
+    for(itM = maps.begin(); itM != maps.end(); itM++){
+        o = (*itM)->get_player_objects();
+        if((*itM)->get_name() == "Almacen" && o->empty()) change_room5_room5_1_flag = true;
+        else if((*itM)->get_name() == "Almacen") return;  
+    }
+    if(change_room5_room5_1_flag){
+        for(itM = maps.begin(); itM != maps.end(); itM++){
+            if((*itM)->get_name() == "Almacen"){
+                delete((*itM));
+                itM = maps.erase(itM);
+                break;
+            }      
+        }
+        maps.push_back(new ROOM5_1());
+    }
+    else return;
+
+}
+
 void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     char ** matriz = m->get_map_matriz(); 
     MAP_OBJECT* map_object;
@@ -290,7 +313,7 @@ void move_map_objects(MAP* &m, AVATAR &a, CAMERA &c){
     }
 }
 
-void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* map_object, std::list<OBJECT*>* &objects, int cmmi){
+void draw_menu_interaction(MAP* &m, AVATAR &a, CAMERA &c, MAP_OBJECT* &map_object, std::list<OBJECT*>* &objects, int cmmi){
     char** map = m->get_map_matriz();
     std::list<OBJECT*>::iterator itO;
     int i;
@@ -395,6 +418,9 @@ void change_map(std::list<MAP*> &maps, MAP* &m, AVATAR &a, CAMERA &c){
         for(itE = e->begin(); itE != e->end(); itE++){
             if(entry_exit->get_code()+1 == (*itE)->get_code() || entry_exit->get_code()-1 == (*itE)->get_code()){
                 if((*itE)->interact_entry(o)){
+                    if((*itE)->get_code() == 15 && !change_room5_room5_1_flag){
+                        change_room5_room5_1(maps, m);
+                    }
                     m = (*itM);
                     a.set_x((*itE)->get_entry_exit_x()+1);
                     a.set_y((*itE)->get_entry_exit_y()+1);
@@ -513,7 +539,24 @@ void intro(std::list<MAP*> &maps, MAP* &map){
             if(t.get_elapsed_time() >= 5) break;
         }
         CLEAR_SCREEN;
-        if(flag) return;
+        if(flag){
+        std::cout  << std::endl << std::endl;
+        std::cout << std::endl << "\t\t\t\t\t\t          CONTROLES" << std::endl << std::endl << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t          Arriba: W" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t          Derecha: D" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t           Abajo: S" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t         Izquierda: A" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t    Accion/Inspeccionar: E" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t          Empujar: R" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t\t         Inventario: I" << std::endl << std::endl;
+        std::cout << "\t\t\t\t\t     PRESIONA CUALQUIER TECLA PARA CONTINUAR" << std::endl << std::endl;
+        while(true){
+            if(kbhit()){
+                CLEAR_SCREEN;
+                return;
+            } 
+        }
+        }
         pointer = &text2;
         flag = true;
     }
@@ -530,6 +573,8 @@ int main(){
     maps.push_back(new HALLWAY());
     maps.push_back(new ROOM3());
     maps.push_back(new ROOM4());
+    maps.push_back(new ROOM5());
+    maps.push_back(new ROOM6());
     maps.push_back(new MAP_PRUEBA2());
     maps.push_back(new MAP_PRUEBA());
     MAP* map = (*maps.begin());

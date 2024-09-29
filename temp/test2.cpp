@@ -1,6 +1,7 @@
 #include <chrono>
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 char question = 168;
 
@@ -18,14 +19,11 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> start_time_;
 };
 
-int main() {
-    std::cin.get();
-    Timer timer;
-    std::string text = "####\n\t\t\t\t\t\t\t     ##########\n\t\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t ##################\n\t\t\t\t\t\t\t  ################\n\t\t\t\t\t\t   ##############\n\t\t\t\t\t\t    ############\n\t\t\t\t\t\t      ########\n\t\t\t\t\t\t       ######\n\t\t\t\t\t\t         ##";
-    std::cout << "\t\t\t\t\t\t\t\t" << text;
-    std::cout << std::endl << std::endl << question << "Prueba?";
-    std::cin.get();
-    float elapsed_time = timer.get_elapsed_time();
-    std::cout << "Elapsed time: " << elapsed_time << " seconds" << std::endl;
-    return 0;
+int main(){
+    int x = rand()%21 + 1;
+    while(true){
+        std::cout << x << " ";
+        x = rand()%21 + 1;
+        std::cin.get();
+    }
 }

@@ -986,7 +986,7 @@ void BODY_DEAD::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tUn cuerpo recostado de la pared.";
 }
 
-FLOWER::FLOWER(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){}
+FLOWER::FLOWER(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Florero", left_up_y-2){}
 
 void FLOWER::print(char** &map){
    map[get_up_left_y()-2][get_up_left_x()] = 32; map[get_up_left_y()-2][get_up_left_x()+1] = 64; map[get_up_left_y()-2][get_up_left_x()+2] = 32;
@@ -1123,7 +1123,6 @@ void PIANO::get_interact_empty(char** &map){
 DESK_ESPECIAL::DESK_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Escritorio", left_up_y-2){
     std::list<OBJECT*>* o = get_objects();
     o->push_back(new LOG2(0,0));
-    o->push_back(new LOG5(0,0));
 }
 
 void DESK_ESPECIAL::print(char** &map){
@@ -1249,7 +1248,7 @@ void CUPBOARD_2_ESPECIAL2::get_interact_empty(char** &map){
     std::cout << "\t\t\t\tParece un gabinete ordinario de madera.";
 }
 
-FLOWER_ESPECIAL::FLOWER_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Armario", left_up_y-2){
+FLOWER_ESPECIAL::FLOWER_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"Florero", left_up_y-2){
     std::list<OBJECT*>* o = get_objects();
     o->push_back(new PIECE5(0,0));
 }
@@ -1273,4 +1272,46 @@ void FLOWER_ESPECIAL::move(char** &m, int const &dir, int const &higth, int cons
 void FLOWER_ESPECIAL::get_interact_empty(char** &map){
     std::cout << std::endl << std::endl;
     std::cout << "\t\t\t\tUna maceta con una flor que no reconozco.";
+}
+
+HITBOX::HITBOX(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y,"", left_up_y-1){}
+
+void HITBOX::print(char** &map){}
+
+void HITBOX::delete_(char** &map){}
+
+void HITBOX::move(char** &m, int const &dir, int const &higth, int const &width){}
+
+void HITBOX::get_interact_empty(char** &map){}
+
+BOX_ESPECIAL::BOX_ESPECIAL(int left_up_x, int left_up_y, int bot_right_x, int bot_right_y):MAP_OBJECT(left_up_x, left_up_y, bot_right_x, bot_right_y, "Caja", left_up_y-1){}
+
+void BOX_ESPECIAL::print(char** &m){
+    m[get_up_left_y()-1][get_up_left_x()] = 218; m[get_up_left_y()-1][get_up_left_x()+1] = 196; m[get_up_left_y()-1][get_up_left_x()+2] = 196; m[get_up_left_y()-1][get_up_left_x()+3] = 196; m[get_up_left_y()-1][get_up_left_x()+4] = 196; m[get_up_left_y()-1][get_up_left_x()+5] = 191;
+    m[get_up_left_y()][get_up_left_x()] = 195; m[get_up_left_y()][get_up_left_x()+1] = 196; m[get_up_left_y()][get_up_left_x()+2] = 196; m[get_up_left_y()][get_up_left_x()+3] = 196; m[get_up_left_y()][get_up_left_x()+4] = 196; m[get_up_left_y()][get_up_left_x()+5] = 180;
+    m[get_up_left_y()+1][get_up_left_x()] = 124; m[get_up_left_y()+1][get_up_left_x()+1] = 42; m[get_up_left_y()+1][get_up_left_x()+2] = 46; m[get_up_left_y()+1][get_up_left_x()+3] = 42; m[get_up_left_y()+1][get_up_left_x()+4] = 46; m[get_up_left_y()+1][get_up_left_x()+5] = 124;
+    m[get_up_left_y()+2][get_up_left_x()] = 192; m[get_up_left_y()+2][get_up_left_x()+1] = 196; m[get_up_left_y()+2][get_up_left_x()+2] = 196; m[get_up_left_y()+2][get_up_left_x()+3] = 196; m[get_up_left_y()+2][get_up_left_x()+4] = 196; m[get_up_left_y()+2][get_up_left_x()+5] = 217;
+}
+
+void BOX_ESPECIAL::delete_(char** &m){
+    m[get_up_left_y()-1][get_up_left_x()] = 32; m[get_up_left_y()-1][get_up_left_x()+1] = 32; m[get_up_left_y()-1][get_up_left_x()+2] = 32; m[get_up_left_y()-1][get_up_left_x()+3] = 32; m[get_up_left_y()-1][get_up_left_x()+4] = 32; m[get_up_left_y()-1][get_up_left_x()+5] = 32;
+    m[get_up_left_y()][get_up_left_x()] = 32; m[get_up_left_y()][get_up_left_x()+1] = 32; m[get_up_left_y()][get_up_left_x()+2] = 32; m[get_up_left_y()][get_up_left_x()+3] = 32; m[get_up_left_y()][get_up_left_x()+4] = 32; m[get_up_left_y()][get_up_left_x()+5] = 32;
+    m[get_up_left_y()+1][get_up_left_x()] = 32; m[get_up_left_y()+1][get_up_left_x()+1] = 32; m[get_up_left_y()+1][get_up_left_x()+2] = 32; m[get_up_left_y()+1][get_up_left_x()+3] = 32; m[get_up_left_y()+1][get_up_left_x()+4] = 32; m[get_up_left_y()+1][get_up_left_x()+5] = 32;
+    m[get_up_left_y()+2][get_up_left_x()] = 32; m[get_up_left_y()+2][get_up_left_x()+1] = 32; m[get_up_left_y()+2][get_up_left_x()+2] = 32; m[get_up_left_y()+2][get_up_left_x()+3] = 32; m[get_up_left_y()+2][get_up_left_x()+4] = 32; m[get_up_left_y()+2][get_up_left_x()+5] = 32;
+}
+
+void BOX_ESPECIAL::get_interact_empty(char** &map){
+    std::cout << std::endl << std::endl;
+    std::cout << "\t\t\t\tUna caja con un decorado en el frente.";
+}
+
+void BOX_ESPECIAL::move(char** &m, int const &dir, int const &higth, int const &width){
+    delete_(m);
+    if(get_moved()) return;
+    else if(dir == 4 && get_up_left_x()-1 > 0){
+        set_up_left_x(get_up_left_x()-1);
+        set_bot_right_x(get_bot_right_x()-1);
+        set_object_heigth(get_up_left_y()-1);
+        set_moved(true);
+    }
 }

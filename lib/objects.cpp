@@ -189,7 +189,7 @@ LOG2::LOG2(int _x, int _y): OBJECT(_x, _y, "Reporte legal #2", "Reporte de un ca
 }
 
 void LOG2::content(){
-    std::string text = "Acusado: Javier Reddy\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 07 de abril de 2001\n\n\t\t\t\tJavier fue atrapado robando 3 telefonos de alta gama de\n\t\t\t\tla tienda Solly Electronics. Fue acusado y condenado por\n\t\t\t\trobo mayor con una sentencia de cuarenta y ocho meses\n\t\t\t\ten Mansfield y una multa substancial";
+    std::string text = "Acusado: Javier Reddy\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 07 de abril de 2001\n\n\t\t\t\tJavier fue atrapado robando 4 telefonos de alta gama de\n\t\t\t\tla tienda Solly Electronics. Fue acusado y condenado por\n\t\t\t\trobo mayor con una sentencia de cuarenta y ocho meses\n\t\t\t\ten Mansfield y una multa substancial";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -207,7 +207,7 @@ LOG3::LOG3(int _x, int _y): OBJECT(_x, _y, "Reporte legal #3", "Reporte de un ca
 }
 
 void LOG3::content(){
-    std::string text = "Acusado: Eric de Andrade\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 13 de enero de 2002\n\n\t\t\t\tEric de Andrade, joven ingeniero a la edad de veinticinco, trabajaba para 1\n\t\t\t\tempresa no muy grande dedicada a la elaboracion\n\t\t\t\tde productos quimicos. Con el fin de ahorrar costos para la empresa,\n\t\t\t\tvirtio de manera ilegal residuos toxicos en un rio cercano. Fue\n\t\t\t\tcondenado a sesenta y cinco meses en la prision Mansfield.";
+    std::string text = "Acusado: Eric de Andrade\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 13 de enero de 2002\n\n\t\t\t\tEric de Andrade, joven ingeniero a la edad de veinticinco, trabajaba\n\t\t\t\tpara 1 empresa no muy grande dedicada a la elaboracion de\n\t\t\t\tproductos quimicos. Con el fin de ahorrar costos para la empresa,\n\t\t\t\tvirtio de manera ilegal residuos toxicos en un rio cercano. Fue\n\t\t\t\tcondenado a sesenta y cinco meses en la prision Mansfield.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -243,7 +243,7 @@ LOG5::LOG5(int _x, int _y): OBJECT(_x, _y, "Reporte legal #5", "Reporte de un ca
 }
 
 void LOG5::content(){
-    std::string text = "Acusado: David Ortega\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 29 de marzo de 2003\n\n\t\t\t\tJoven a la edad de veintitres hackeo los sistemas de seguridad de 2 empresas\n\t\t\t\ttecnologicas, Zenith Innovations y Nexus Digital,\n\t\t\t\ta pesar de no haber obtenido beneficio economico\n\t\t\t\tdirecto, su condena fue de cincuenta y cuatro meses los\n\t\t\t\tcuales debio servir en la prision Mansfield.";
+    std::string text = "Acusado: David Ortega\n\t\t\t\tJuez: XXXXX XXXXXXX\n\t\t\t\tFecha de la audiencia: 29 de marzo de 2003\n\n\t\t\t\tJoven a la edad de veintitres hackeo los sistemas de seguridad de\n\t\t\t\t2 empresas tecnologicas, Zenith Innovations y Nexus Digital,\n\t\t\t\ta pesar de no haber obtenido beneficio economico\n\t\t\t\tdirecto, su condena fue de cincuenta y cuatro meses los\n\t\t\t\tcuales debio servir en la prision Mansfield.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t\t" << text;
@@ -300,7 +300,7 @@ NEWSPAPER::NEWSPAPER(int _x, int _y): OBJECT(_x, _y, "Pedazo de periodico", "Es 
 }
 
 void NEWSPAPER::content(){
-    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision privada Mansfield. Al parecer,\n\t\t\tla sobrepoblacion en el centro penitenciario y la necesidad de mano de obra barata habrian motivado\n\t\t\ta sus directivos a buscar complices en el poder judicial. Numerosas organizaciones\n\t\t\tdefensoras de los derechos humanos han exigido la destitucion inmediata del juez XXXXXXX\n\t\t\ty la apertura de una investigacion a fondo para determinar si existen\n\t\t\totros magistrados involucrados en practicas similares.";
+    std::string text = "2 de marzo de 2004\n\n\t\t\tEscandalo sacude al sistema judicial: Juez XXXXXXX involucrado en\n\t\t\ttrama de corrupcion\n\n\t\t\tEn una noticia que ha conmocionado al pais, una exhaustiva investigacion federal\n\t\t\tha destapado una red de corrupcion que involucra al juez federal, XXXXX XXXXXXX,\n\t\t\ty la prision privada Mansfield. Segun fuentes confiables, el magistrado habria\n\t\t\testado recibiendo sobornos a cambio de imponer sentencias desproporcionadas,\n\t\t\tespecialmente a jovenes acusados de delitos menores. La investigacion, que se prolongo\n\t\t\tdurante varios meses, revelo una compleja trama de pagos encubiertos y presiones\n\t\t\tejercidas sobre el juez XXXXXXX para favorecer los intereses de la prision privada\n\t\t\tMansfield. Al parecer, la sobrepoblacion en el centro penitenciario y la necesidad de mano de\n\t\t\tobra barata habrian motivado a sus directivos a buscar complices en el poder judicial.\n\t\t\tNumerosas organizaciones defensoras de los derechos humanos han exigido la destitucion\n\t\t\tinmediata del juez XXXXXXX y la apertura de una investigacion a fondo para determinar\n\t\t\tsi existen otros magistrados involucrados en practicas similares.";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
     std::cout << "\t\t\t" << text;
@@ -336,14 +336,14 @@ NOTE3::NOTE3(int _x, int _y): OBJECT(_x, _y, "Nota arrugada    ", "Esta arrugada
 }
 
 void NOTE3::content(){
-    std::string text1 = "Estan por todas partes. Numeros, codigos, simbolos que no significan nada. Paginas y paginas\n\t\t\t\tde leyes que se retuercen en mi cabeza. ";
-    std::string text2 = "Por que estoy aqui? ";
-    std::string text3 = "Que he hecho para merecer\n\t\t\t\testo? Quiero salir de este laberinto, de este limbo legal. Las paredes se cierran\n\t\t\t\tsobre mi, los puzzles me atormentan. Mis pensamientos son un rompecabezas\n\t\t\t\tsin solucion. ";
-    std::string text4 = "Alguien me oye? ";
+    std::string text1 = "Estan por todas partes. Numeros, codigos, simbolos que no significan nada.\n\t\t\tPaginas y paginas de leyes que se retuercen en mi cabeza. ";
+    std::string text2 = "Por que estoy aqui?\n\t\t\t";
+    std::string text3 = "Que he hecho para merecer esto? Quiero salir de este laberinto, de\n\t\t\teste limbo legal. Las paredes se cierran sobre mi, los puzzles me atormentan.\n\t\t\tMis pensamientos son un rompecabezas sin solucion. ";
+    std::string text4 = "Alguien\n\t\t\tme oye? ";
     std::string text5 = "Alguien puede ayudarme a escapar de esta pesadilla?";
     CLEAR_SCREEN;
     std::cout << std::endl << std::endl << std::endl << std::endl;
-    std::cout << "\t\t\t\t" << text1 << question << text2 << question << text3 << question << text4 << question << text5;
+    std::cout << "\t\t\t" << text1 << question << text2 << question << text3 << question << text4 << question << text5;
     while(true){
         if(kbhit()){
             char key = getch();

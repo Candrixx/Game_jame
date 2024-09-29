@@ -178,7 +178,8 @@ void print_minigame() {
             else
                 std::cout << game_mat[i][j];
         }
-        std::cout << std::endl;
+        std::cout << std::endl << std::endl << std::endl << "\t\t\t\t\tArriba: W\tAbajo: S\tAccion: Espacio" << std::endl; 
+        std::cout << "\t\t\t\t\tIzquierda: A\tDerecha: D\tSalir: E/Esc" << std::endl;   
     }
 }
 
