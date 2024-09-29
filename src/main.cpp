@@ -535,8 +535,8 @@ void intro(std::list<MAP*> &maps, MAP* &map){
     std::string text1 = "\t\t\tDetras de cada puerta cerrada se esconde un secreto, y detras de cada secreto,\n\n\t\t\tuna verdad. En este juego, te sumergiras en un mundo lleno de enigmas y misterios.\n\n\t\t\taEstas listo para descubrir el precio de la libertad y desvelar los secretos que se\n\n\t\t\tesconden en la sombra?";
     std::string text2 = "\t\t\tLa libertad no es gratis; es una deuda que se paga dia a dia con el sudor de nuestro\n\n\t\t\tesfuerzo y el ingenio de nuestra mente.\n\n\n\t\t\taEstas dispuesto a pagar el precio de la libertad?";
     std::string* pointer = &text1;
-    text1[186] = question;
-    text2[152] = question;
+    text1[173] = question;
+    text2[137] = question;
     
     while(true){
         std::cout  << std::endl << std::endl << std::endl << std::endl << std::endl;
