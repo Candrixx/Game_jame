@@ -262,7 +262,7 @@ NOTE1::NOTE1(int _x, int _y): OBJECT(_x, _y, "Nota               ", "Nota escrit
 
 void NOTE1::content(){
     std::string text1 = "Este lugar... "; 
-    std::string text2 = "donde estoy? Las habitaciones cambian. Juro que el armario estaba\n\t\t\talla hace un segundo. Y los rompecabezas... "; 
+    std::string text2 = "donde estoy? Las habitaciones cambian. Juro que la caja estaba\n\t\t\talla hace un segundo. Y los rompecabezas... "; 
     std::string text3 = "no terminan! Cada vez que creo haber\n\t\t\tresuelto uno, aparece otro. Encuentro estos reportes pero no se que hacer con ellos...\n\n\n\t\t\t";
     std::string text4 = "Recorde mi nombre! es JXXXX XXXXXXX, necesito escribirlo porque los recuerdos\n\t\t\tson difusos, en cualquier momento podria olvidar.\n\n\n\t\t\tAlgo esta mal, muy mal. Necesito salir de aqui. Necesito encontrar una salida.";
     CLEAR_SCREEN;
